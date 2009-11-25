@@ -48,6 +48,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="themes\Theme.cs" />
+    <Compile Include="themes\ThemeException.cs" />
+    <Compile Include="themes\themeLoader\ThemeLoader.cs" />
+    <Compile Include="themes\themeLoader\ThemeTextLoader.cs" />
     <Compile Include="verseFactory\ThemeList.cs" />
     <Compile Include="verseFactory\Verse.cs" />
     <Compile Include="verseFactory\VerseFactory.cs" />

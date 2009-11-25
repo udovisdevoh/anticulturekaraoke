@@ -98,7 +98,15 @@ namespace anticulture.karaoke.verseFactory
         /// <returns>verse</returns>
         public static Verse Build()
         {
-            #warning Implement
+            switch (algorithm)
+            {
+                case AlgorithmStraight:
+                    return VerseFactoryStraight.Build();
+                case AlgorithmMarkov:
+                    return VerseFactoryMarkov.Build();
+                default:
+                    return VerseFactoryStraight.Build();
+            }
         }
         #endregion
 

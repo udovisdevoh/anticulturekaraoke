@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using anticulture.karaoke.verseFactory;
+using anticulture.karaoke.themes;
 
 namespace anticulture.karaoke
 {
@@ -10,6 +11,9 @@ namespace anticulture.karaoke
     {
         static void Main(string[] args)
         {
+            VerseFactory.AddTheme(ThemeLoader.Load("urban"));
+            VerseFactory.AddTheme(ThemeLoader.Load("nature"));
+
             Verse verse = VerseFactory.Build();
             Console.WriteLine(verse.ToString());
             Console.ReadLine();
