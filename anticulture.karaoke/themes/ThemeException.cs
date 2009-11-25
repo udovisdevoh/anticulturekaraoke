@@ -5,7 +5,11 @@ using System.Text;
 
 namespace anticulture.karaoke.themes
 {
-    class ThemeLoader
+    class ThemeException : Exception
     {
+        public ThemeException(string message)
+            : base(message)
+        {
+        }
     }
 }
