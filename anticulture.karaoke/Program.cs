@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using anticulture.karaoke.verseFactory;
 
 namespace anticulture.karaoke
 {
@@ -9,6 +10,9 @@ namespace anticulture.karaoke
     {
         static void Main(string[] args)
         {
+            Verse verse = VerseFactory.Build();
+            Console.WriteLine(verse.ToString());
+            Console.ReadLine();
         }
     }
 }
