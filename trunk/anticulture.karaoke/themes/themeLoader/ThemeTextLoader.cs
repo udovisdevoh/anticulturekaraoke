@@ -31,11 +31,24 @@ namespace anticulture.karaoke.themes
                 if (line == null)
                     break;
 
-                if (IsThemeName(line))
-                    currentThemeName = ExtractThemeName(line);
-                else if (IsWordList(line) && currentThemeName != null)
-                    AddWordListToTheme(ExtractWordList(line), GetOrCreateTheme(themeName,themeList));
+                currentThemeName = TrySwitchTheme(line, currentThemeName);
+                
+                if (IsWordList(line) && currentThemeName != null)
+                    AddWordListToTheme(ExtractWordList(line), GetOrCreateTheme(currentThemeName, themeList));
             }
+
+            return themeList;
+        }
+
+        /// <summary>
+        /// Add word list to theme
+        /// </summary>
+        /// <param name="wordList">word list</param>
+        /// <param name="theme">theme</param>
+        private static void AddWordListToTheme(IEnumerable<string> wordList, Theme theme)
+        {
+            foreach (String word in wordList)
+                theme.Add(word);
         }
 
         /// <summary>
@@ -55,29 +68,55 @@ namespace anticulture.karaoke.themes
             return theme;
         }
 
+        /// <summary>
+        /// Whether the line is a list of words for a theme
+        /// </summary>
+        /// <param name="line">text line</param>
+        /// <returns>whether the line is a list of words for a theme</returns>
         private static bool IsWordList(string line)
         {
-            throw new NotImplementedException();
+            return !line.Contains('<');
         }
 
-        private static bool IsThemeName(string line)
+        /// <summary>
+        /// Try to switch to another theme from line
+        /// </summary>
+        /// <param name="line">line</param>
+        /// <param name="currentThemeName">current theme</param>
+        /// <returns>old theme or new theme</returns>
+        private static string TrySwitchTheme(string line, string currentThemeName)
         {
-            throw new NotImplementedException();
+            line = line.Trim();
+            line = line.Replace(" ", "");
+            if (!line.StartsWith("<") || line.StartsWith("</"))
+                return currentThemeName;
+            else
+            {
+                line = line.Substring(line.IndexOf("\"") + 1);
+                line = line.Substring(0, line.IndexOf("\""));
+                return line;
+            }
         }
 
-        private static string ExtractThemeName(string line)
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void AddWordListToTheme(IEnumerable<string> iEnumerable, Theme currentTheme)
-        {
-            throw new NotImplementedException();
-        }
-
+        /// <summary>
+        /// Extract word list from line
+        /// </summary>
+        /// <param name="line">line</param>
+        /// <returns>word list from line</returns>
         private static IEnumerable<string> ExtractWordList(string line)
         {
-            throw new NotImplementedException();
+            string[] wordArray = line.Split(',');
+            List<string> wordList = new List<string>();
+
+            foreach (string currentWord in wordArray)
+            {
+                string word = currentWord;
+                word = word.Trim().ToLower();
+                if (word.Length > 0)
+                    wordList.Add(word);
+            }
+
+            return wordList;
         }
         #endregion
     }
