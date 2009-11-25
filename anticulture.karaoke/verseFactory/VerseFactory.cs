@@ -53,6 +53,16 @@ namespace anticulture.karaoke.verseFactory
         /// Default desired length in char
         /// </summary>
         public const byte DefaultDesiredLength = 32;
+
+        /// <summary>
+        /// Ordered lyrics file name
+        /// </summary>
+        public const string lyricsFileName = "en.lyrics.txt";
+
+        /// <summary>
+        /// Reversed order lyrics file name
+        /// </summary>
+        public const string reversedLyricsFileName = "en.lyrics.reversed.txt";
         #endregion
 
         #region Constructors
