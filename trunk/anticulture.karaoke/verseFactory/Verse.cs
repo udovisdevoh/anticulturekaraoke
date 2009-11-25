@@ -10,5 +10,15 @@ namespace anticulture.karaoke.verseFactory
     /// </summary>
     public class Verse
     {
+        #region Public Methods
+        /// <summary>
+        /// Get verse's text value
+        /// </summary>
+        /// <returns>verse's string value</returns>
+        public override string ToString()
+        {
+            return "this should be a verse";
+        }
+        #endregion
     }
 }
