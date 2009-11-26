@@ -13,6 +13,7 @@ namespace anticulture.karaoke
         {
             VerseFactory.AddTheme(ThemeLoader.Load("urban"));
             VerseFactory.AddTheme(ThemeLoader.Load("nature"));
+            VerseFactory.AddTheme(ThemeLoader.Load("religion"));
 
             Verse verse = VerseFactory.Build();
             Console.WriteLine(verse.ToString());
