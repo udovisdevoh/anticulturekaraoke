@@ -20,31 +20,7 @@ namespace anticulture.karaoke.themes
         #endregion
 
         #region Public Methods
-        /// <summary>
-        /// Match a verse line to a theme
-        /// </summary>
-        /// <param name="verseLine">verse line</param>
-        /// <param name="themeName">theme name</param>
-        /// <returns>float from 0 to something big</returns>
-        public static float Match(string verseLine, string themeName)
-        {
-            Theme theme = ThemeLoader.Load(themeName);
-            float match = 0.0f;
-            float incrementor = 1.0f;
-            verseLine = notALetter.Replace(verseLine, " ");
-            string[] words = verseLine.Split(' ');
 
-            foreach (string currentWord in words)
-            {
-                string word = currentWord.Trim();
-                if (theme.Contains(currentWord) && currentWord.Length > 0)
-                {
-                    match+= incrementor;
-                    incrementor/=3.0f;
-                }
-            }
-            return match;
-        }
 
         /// <summary>
         /// Get score for a verse according to desired and undesired themes
@@ -56,14 +32,41 @@ namespace anticulture.karaoke.themes
         public static float GetScore(Verse currentVerse, ThemeList themeList, ThemeList blackThemeList)
         {
             float score = 0.0f;
-
-            foreach (Theme theme in themeList)
-                score += ThemeMatcher.Match(currentVerse.ToString(), theme.Name);
-
-            foreach (Theme theme in blackThemeList)
-                score += ThemeMatcher.Match(currentVerse.ToString(), theme.Name);
-
+            score += Match(currentVerse.ToString(), themeList);
+            score -= Match(currentVerse.ToString(), blackThemeList);
             return score;
+        }
+        #endregion
+
+        #region Private Methods
+        /// <summary>
+        /// How mutch the verse line matches provided theme list
+        /// </summary>
+        /// <param name="verseLine">verse line</param>
+        /// <param name="themeList">provided theme list</param>
+        /// <returns>how mutch the verse line matches provided theme list</returns>
+        private static float Match(string verseLine, ThemeList themeList)
+        {
+            float match = 0.0f;
+            verseLine = notALetter.Replace(verseLine, " ");
+            string[] words = verseLine.Split(' ');
+            HashSet<string> wordIgnoreList = new HashSet<string>();
+
+            foreach (Theme currentTheme in themeList)
+            {
+                foreach (string currentWord in words)
+                {
+                    string word = currentWord.Trim();
+                    if (currentTheme.Contains(word) && word.Length > 0 && !wordIgnoreList.Contains(word))
+                    {
+                        match += 1;
+                        wordIgnoreList.Add(word);
+                        break;
+                    }
+                }
+            }
+            
+            return match;
         }
         #endregion
     }

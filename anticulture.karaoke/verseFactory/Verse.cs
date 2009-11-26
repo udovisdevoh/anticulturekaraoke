@@ -43,22 +43,6 @@ namespace anticulture.karaoke.verseFactory
         {
             return textValue;
         }
-
-        /// <summary>
-        /// Get matching score for selected theme
-        /// </summary>
-        /// <param name="themeName">theme to match</param>
-        /// <returns> score for theme</returns>
-        public float GetScore(string themeName)
-        {
-            float score;
-            if (!ThemeScore.TryGetValue(themeName, out score))
-            {
-                score = ThemeMatcher.Match(textValue, themeName);
-                ThemeScore.Add(themeName, score);
-            }
-            return score;
-        }
         #endregion
 
         #region Private Properties
