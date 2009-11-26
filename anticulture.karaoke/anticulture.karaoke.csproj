@@ -51,6 +51,7 @@
     <Compile Include="themes\ThemeException.cs" />
     <Compile Include="themes\themeLoader\ThemeLoader.cs" />
     <Compile Include="themes\themeLoader\ThemeTextLoader.cs" />
+    <Compile Include="themes\ThemeMatcher.cs" />
     <Compile Include="verseFactory\LyricSource.cs" />
     <Compile Include="verseFactory\markov\VerseFactoryMarkov.cs" />
     <Compile Include="verseFactory\straight\VerseFactoryStraight.cs" />
