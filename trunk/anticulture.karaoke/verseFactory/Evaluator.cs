@@ -73,6 +73,31 @@ namespace anticulture.karaoke.verseFactory
             
             return match;
         }
+
+        /// <summary>
+        /// From verses, pick the one with length closest to desired length
+        /// </summary>
+        /// <param name="verseList">verse list</param>
+        /// <param name="desiredLength">desired length</param>
+        /// <returns>from verses, pick the one with length closest to desired length</returns>
+        public static Verse PickBestLength(IList<Verse> verseList, int desiredLength)
+        {
+            Verse bestVerse = null;
+            int bestDifference = -1;
+            int currentDifference = -1;
+
+            foreach (Verse currentVerse in verseList)
+            {
+                currentDifference = Math.Abs(currentVerse.ToString().Length - desiredLength);
+                if (currentDifference < bestDifference || bestVerse == null)
+                {
+                    bestVerse = currentVerse;
+                    bestDifference = currentDifference;
+                }
+            }
+
+            return bestVerse;
+        }
         #endregion
     }
 }
