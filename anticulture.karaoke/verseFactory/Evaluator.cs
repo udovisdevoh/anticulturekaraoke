@@ -19,6 +19,9 @@ namespace anticulture.karaoke.verseFactory
         /// </summary>
         private static Regex notALetter = new Regex(@"[^a-zA-Z]");
 
+        /// <summary>
+        /// Anything but a letter or space
+        /// </summary>
         private static Regex notALetterNorSpace = new Regex(@"[^a-zA-Z ]");
         #endregion
 

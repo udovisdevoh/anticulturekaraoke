@@ -58,7 +58,7 @@
     <Compile Include="verseFactory\markov\VerseFactoryMarkov.cs" />
     <Compile Include="verseFactory\markov\WordMatrix.cs" />
     <Compile Include="verseFactory\straight\VerseFactoryStraight.cs" />
-    <Compile Include="verseFactory\StringManipulation.cs" />
+    <Compile Include="common\StringManipulation.cs" />
     <Compile Include="verseFactory\ThemeList.cs" />
     <Compile Include="verseFactory\Verse.cs" />
     <Compile Include="verseFactory\VerseFactory.cs" />

@@ -32,7 +32,9 @@ namespace anticulture.karaoke.verseFactory
         {
             IList<Verse> verseList = GetMarkovVerseList(previousVerse, SamplingSize);
             verseList = TryKeepOnlyEndingWithStop(verseList);
-            return Evaluator.PickBestLength(verseList, VerseFactory.DesiredLength);
+            Verse verse = Evaluator.PickBestLength(verseList, VerseFactory.DesiredLength);
+            verse = verse.HardTrim();
+            return verse;
         }
         #endregion
 

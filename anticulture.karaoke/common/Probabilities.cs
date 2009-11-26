@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace anticulture.karaoke.common
+namespace anticulture.karaoke
 {
     public static class Probabilities
     {
