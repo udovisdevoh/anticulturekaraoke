@@ -81,6 +81,39 @@ namespace anticulture.karaoke.verseFactory
                 verseList.Add(GetRandomSourceLine(random));
             return verseList;
         }
+
+        public IEnumerable<Verse> GetRandomContiguousSourceLineList(Random random, int samplingSize)
+        {
+            FileStream fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
+            StreamReader streamReader = new StreamReader(fileStream);
+
+            string line = string.Empty;
+            long position = (long)(random.NextDouble() * fileStream.Length - 300 * samplingSize);
+
+            if (position < 0)
+                position = 0;
+
+            fileStream.Seek(position, 0);
+
+            line = streamReader.ReadLine();
+
+            HashSet<Verse> verseList = new HashSet<Verse>();
+            for (int i = 0; i < samplingSize; i++)
+            {
+                line = streamReader.ReadLine();
+                line = line.HardTrim();
+
+                Verse verse;
+
+                if (!verseListCache.TryGetValue(line, out verse))
+                {
+                    verse = new Verse(line);
+                    verseListCache.Add(line, verse);
+                }
+                verseList.Add(verse);
+            }
+            return verseList;
+        }
         #endregion
     }
 }
