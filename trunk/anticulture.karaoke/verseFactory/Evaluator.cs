@@ -17,24 +17,28 @@ namespace anticulture.karaoke.verseFactory
         /// <summary>
         /// Anything but a letter
         /// </summary>
-        private static Regex notALetter = new Regex("[^a-zA-Z]");
+        private static Regex notALetter = new Regex(@"[^a-zA-Z]");
+
+        private static Regex notALetterNorSpace = new Regex(@"[^a-zA-Z ]");
         #endregion
 
         #region Public Methods
-
-
         /// <summary>
         /// Get score for a verse according to desired and undesired themes
         /// </summary>
         /// <param name="currentVerse">current verse</param>
         /// <param name="themeList">desired theme list</param>
         /// <param name="blackThemeList">undesired theme list</param>
+        /// <param name="desiredLength">desired length</param>
         /// <returns>score for a verse according to desired and undesired themes</returns>
-        public static int GetScore(Verse currentVerse, ThemeList themeList, ThemeList blackThemeList)
+        public static int GetScore(Verse currentVerse, ThemeList themeList, ThemeList blackThemeList, byte desiredLength)
         {
             int score = 0;
             score += Match(currentVerse.ToString(), themeList);
             score -= Match(currentVerse.ToString(), blackThemeList);
+
+            score = score - Math.Abs(notALetterNorSpace.Replace(currentVerse.ToString(), "").Length - desiredLength);
+
             return score;
         }
         #endregion
@@ -60,7 +64,7 @@ namespace anticulture.karaoke.verseFactory
                     string word = currentWord.Trim();
                     if (currentTheme.Contains(word) && word.Length > 0 && !wordIgnoreList.Contains(word))
                     {
-                        match += 1;
+                        match += 10;
                         wordIgnoreList.Add(word);
                         break;
                     }

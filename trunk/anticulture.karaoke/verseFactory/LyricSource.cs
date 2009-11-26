@@ -56,7 +56,7 @@ namespace anticulture.karaoke.verseFactory
 
             line = streamReader.ReadLine();
             line = streamReader.ReadLine();
-            line = line.Trim();
+            line = line.HardTrim();
 
             Verse verse;
 
