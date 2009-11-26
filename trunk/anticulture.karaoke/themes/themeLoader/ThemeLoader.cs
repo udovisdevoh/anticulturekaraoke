@@ -46,5 +46,23 @@ namespace anticulture.karaoke.themes
             return theme;
         }
         #endregion
+
+        #region Properties
+        /// <summary>
+        /// Theme name list
+        /// </summary>
+        public static IEnumerable<string> ThemeNameList
+        {
+            get{return themeCache.Keys;}
+        }
+
+        /// <summary>
+        /// Theme list
+        /// </summary>
+        public static IEnumerable<Theme> ThemeList
+        {
+            get { return themeCache.Values; }
+        }
+        #endregion
     }
 }

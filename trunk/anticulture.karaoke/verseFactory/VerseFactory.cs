@@ -36,6 +36,21 @@ namespace anticulture.karaoke.verseFactory
         /// Internal theme list, do not use directly : lazy initialization
         /// </summary>
         private static ThemeList _themeList;
+
+        /// <summary>
+        /// Straight ordered lyrics
+        /// </summary>
+        private static LyricSource lyricSource;
+
+        /// <summary>
+        /// Reverse ordered lyrics
+        /// </summary>
+        private static LyricSource lyricSourceReversed;
+
+        /// <summary>
+        /// Random number generator
+        /// </summary>
+        private static Random random;
         #endregion
 
         #region Constants
@@ -57,18 +72,21 @@ namespace anticulture.karaoke.verseFactory
         /// <summary>
         /// Ordered lyrics file name
         /// </summary>
-        public const string lyricsFileName = "en.lyrics.txt";
+        public const string lyricsFileName = "lyrics.en.txt";
 
         /// <summary>
         /// Reversed order lyrics file name
         /// </summary>
-        public const string reversedLyricsFileName = "en.lyrics.reversed.txt";
+        public const string reversedLyricsFileName = "lyrics.en.reversed.txt";
         #endregion
 
         #region Constructors
         static VerseFactory()
         {
             ResetToDefaultSettings();
+            lyricSource = new LyricSource(lyricsFileName);
+            lyricSourceReversed = new LyricSource(reversedLyricsFileName);
+            random = new Random();
         }
         #endregion
 
@@ -108,14 +126,23 @@ namespace anticulture.karaoke.verseFactory
         /// <returns>verse</returns>
         public static Verse Build()
         {
+            return Build(null);
+        }
+
+        /// <summary>
+        /// Build a verse
+        /// </summary>
+        /// <returns>verse</returns>
+        public static Verse Build(Verse previousVerse)
+        {
             switch (algorithm)
             {
                 case AlgorithmStraight:
-                    return VerseFactoryStraight.Build();
+                    return VerseFactoryStraight.Build(previousVerse);
                 case AlgorithmMarkov:
-                    return VerseFactoryMarkov.Build();
+                    return VerseFactoryMarkov.Build(previousVerse);
                 default:
-                    return VerseFactoryStraight.Build();
+                    return VerseFactoryStraight.Build(previousVerse);
             }
         }
         #endregion
@@ -146,6 +173,30 @@ namespace anticulture.karaoke.verseFactory
         {
             get { return desiredLength; }
             set { desiredLength = value; }
+        }
+
+        /// <summary>
+        /// Ordered lyric source
+        /// </summary>
+        public static LyricSource LyricSource
+        {
+            get { return lyricSource; }
+        }
+
+        /// <summary>
+        /// Reverse order lyric source
+        /// </summary>
+        public static LyricSource LyricSourceReversed
+        {
+            get { return lyricSource; }
+        }
+
+        /// <summary>
+        /// Random number generator
+        /// </summary>
+        public static Random Random
+        {
+            get { return random; }
         }
         #endregion
 

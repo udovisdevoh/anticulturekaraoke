@@ -7,9 +7,15 @@ namespace anticulture.karaoke.verseFactory
 {
     class VerseFactoryStraight
     {
-        public static Verse Build()
+        /// <summary>
+        /// Build a straight verse
+        /// </summary>
+        /// <param name="previousVerse">previous verse</param>
+        /// <returns>straight verse</returns>
+        public static Verse Build(Verse previousVerse)
         {
-            throw new NotImplementedException();
+            Verse sourceLine = VerseFactory.LyricSource.GetRandomSourceLine(VerseFactory.Random);
+            return sourceLine;
         }
     }
 }

@@ -7,7 +7,7 @@ namespace anticulture.karaoke.verseFactory
 {
     class VerseFactoryMarkov
     {
-        public static Verse Build()
+        public static Verse Build(Verse previousVerse)
         {
             throw new NotImplementedException();
         }
