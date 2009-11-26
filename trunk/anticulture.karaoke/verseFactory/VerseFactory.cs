@@ -35,7 +35,12 @@ namespace anticulture.karaoke.verseFactory
         /// <summary>
         /// Internal theme list, do not use directly : lazy initialization
         /// </summary>
-        private static ThemeList _themeList;
+        private static ThemeList themeList = new ThemeList();
+
+        /// <summary>
+        /// Internal theme black list, do not use directly : lazy initialization
+        /// </summary>
+        private static ThemeList themeBlackList = new ThemeList();
 
         /// <summary>
         /// Straight ordered lyrics
@@ -108,16 +113,30 @@ namespace anticulture.karaoke.verseFactory
         /// </summary>
         public static void ResetThemes()
         {
-            ThemeList.Clear();
+            themeList.Clear();
+            themeBlackList.Clear();
         }
 
         /// <summary>
-        /// Add a theme to current theme manager
+        /// Add a theme to current theme list
         /// </summary>
         /// <param name="theme">theme to add</param>
         public static void AddTheme(Theme theme)
         {
-            ThemeList.Add(theme);
+            if (themeBlackList.Contains(theme))
+                themeBlackList.Remove(theme);
+            themeList.Add(theme);
+        }
+
+        /// <summary>
+        /// Censor a theme 
+        /// </summary>
+        /// <param name="theme">theme to censor</param>
+        public static void CensorTheme(Theme theme)
+        {
+            if (themeList.Contains(theme))
+                themeList.Remove(theme);
+            themeBlackList.Add(theme);
         }
 
         /// <summary>
@@ -197,21 +216,6 @@ namespace anticulture.karaoke.verseFactory
         public static Random Random
         {
             get { return random; }
-        }
-        #endregion
-
-        #region Private Properties
-        /// <summary>
-        /// Current theme manager
-        /// </summary>
-        private static ThemeList ThemeList
-        {
-            get
-            {
-                if (_themeList == null)
-                    _themeList = new ThemeList();
-                return _themeList;
-            }
         }
         #endregion
     }
