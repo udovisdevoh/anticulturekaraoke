@@ -9,7 +9,7 @@ namespace anticulture.karaoke.verseFactory
     /// <summary>
     /// Represents a set of themes
     /// </summary>
-    class ThemeList : ICollection<Theme>
+    public class ThemeList : ICollection<Theme>
     {
         #region Fields
         /// <summary>

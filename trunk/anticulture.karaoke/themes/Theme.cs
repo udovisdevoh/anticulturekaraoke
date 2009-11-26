@@ -33,6 +33,16 @@ namespace anticulture.karaoke.themes
         }
         #endregion
 
+        #region Properties
+        /// <summary>
+        /// Theme's name
+        /// </summary>
+        public string Name
+        {
+            get { return name; }
+        }
+        #endregion
+
         #region ICollection<string> Members
         public void Add(string item)
         {

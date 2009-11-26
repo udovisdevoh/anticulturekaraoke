@@ -217,6 +217,22 @@ namespace anticulture.karaoke.verseFactory
         {
             get { return random; }
         }
+
+        /// <summary>
+        /// Desired themes
+        /// </summary>
+        public static ThemeList ThemeList
+        {
+            get { return themeList; }
+        }
+
+        /// <summary>
+        /// Undesired themes
+        /// </summary>
+        public static ThemeList ThemeBlackList
+        {
+            get { return themeBlackList; }
+        }
         #endregion
     }
 }
