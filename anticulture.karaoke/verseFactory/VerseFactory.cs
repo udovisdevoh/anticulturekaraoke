@@ -18,16 +18,6 @@ namespace anticulture.karaoke.verseFactory
         private static byte algorithm;
 
         /// <summary>
-        /// Whether we want to make verse rhyme with previous verse
-        /// </summary>
-        private static bool endRhyme;
-
-        /// <summary>
-        /// Whether we want to make verse begin like previous verse
-        /// </summary>
-        private static bool startRhyme;
-
-        /// <summary>
         /// Desired length for verse
         /// </summary>
         private static byte desiredLength;
@@ -102,8 +92,6 @@ namespace anticulture.karaoke.verseFactory
         public static void ResetToDefaultSettings()
         {
             algorithm = AlgorithmStraight;
-            endRhyme = false;
-            startRhyme = false;
             desiredLength = DefaultDesiredLength;
             ResetThemes();
         }
@@ -174,15 +162,6 @@ namespace anticulture.karaoke.verseFactory
         {
             get { return algorithm; }
             set { algorithm = value; }
-        }
-
-        /// <summary>
-        /// Whether we want to make verse begin like previous verse
-        /// </summary>
-        public static bool EndRhyme
-        {
-            get { return endRhyme; }
-            set { endRhyme = value; }
         }
 
         /// <summary>

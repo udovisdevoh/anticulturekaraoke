@@ -44,7 +44,7 @@ namespace anticulture.karaoke.verseFactory
             int currentScore = 0;
             foreach (Verse currentVerse in verseList)
             {
-                currentScore = ThemeMatcher.GetScore(currentVerse, VerseFactory.ThemeList, VerseFactory.ThemeBlackList);
+                currentScore = Evaluator.GetScore(currentVerse, VerseFactory.ThemeList, VerseFactory.ThemeBlackList);
                 if (currentScore > bestScore)
                 {
                     bestScore = currentScore;

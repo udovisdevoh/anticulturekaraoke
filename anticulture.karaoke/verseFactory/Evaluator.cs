@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using anticulture.karaoke.verseFactory;
+using anticulture.karaoke.themes;
 
-namespace anticulture.karaoke.themes
+namespace anticulture.karaoke.verseFactory
 {
     /// <summary>
     /// Use this to match strings with themes
     /// </summary>
-    static class ThemeMatcher
+    static class Evaluator
     {
         #region Fields
         /// <summary>
