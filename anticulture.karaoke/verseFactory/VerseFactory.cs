@@ -55,9 +55,14 @@ namespace anticulture.karaoke.verseFactory
         public const byte AlgorithmStraight = 0;
 
         /// <summary>
-        /// Identifies markov chain algorithm
+        /// Identifies word based markov chain algorithm
         /// </summary>
         public const byte AlgorithmMarkov = 1;
+
+        /// <summary>
+        /// Identifies cryptic char based markov chain algorithm
+        /// </summary>
+        public const byte AlgorithmCryptic = 2;
 
         /// <summary>
         /// Default desired length in char
@@ -148,6 +153,8 @@ namespace anticulture.karaoke.verseFactory
                     return VerseFactoryStraight.Build(previousVerse);
                 case AlgorithmMarkov:
                     return VerseFactoryMarkov.Build(previousVerse);
+                case AlgorithmCryptic:
+                    return VerseFactoryCryptic.Build(previousVerse);
                 default:
                     return VerseFactoryStraight.Build(previousVerse);
             }
