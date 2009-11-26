@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using anticulture.karaoke.verseFactory;
 
-namespace anticulture.karaoke.verseFactory
+namespace anticulture.karaoke
 {
     /// <summary>
     /// Manipulations on strings
@@ -19,8 +20,20 @@ namespace anticulture.karaoke.verseFactory
         {
             while (text.Contains("  "))
                 text = text.Replace("  ", " ");
+            if (text.EndsWith("[stop]"))
+                text = text.Substring(0, text.Length - 6);
             text = text.Trim();
             return text;
+        }
+
+        /// <summary>
+        /// Clean the verse
+        /// </summary>
+        /// <param name="verse">source verse</param>
+        /// <returns>cleaned verse</returns>
+        public static Verse HardTrim(this Verse verse)
+        {
+            return new Verse(verse.ToString().HardTrim());
         }
     }
 }
