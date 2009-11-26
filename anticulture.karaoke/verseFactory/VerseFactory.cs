@@ -193,7 +193,7 @@ namespace anticulture.karaoke.verseFactory
         /// </summary>
         public static LyricSource LyricSourceReversed
         {
-            get { return lyricSource; }
+            get { return lyricSourceReversed; }
         }
 
         /// <summary>

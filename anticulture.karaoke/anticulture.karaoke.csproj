@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="common\Probabilities.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="themes\Theme.cs" />
@@ -55,6 +56,7 @@
     <Compile Include="verseFactory\Evaluator.cs" />
     <Compile Include="verseFactory\LyricSource.cs" />
     <Compile Include="verseFactory\markov\VerseFactoryMarkov.cs" />
+    <Compile Include="verseFactory\markov\WordMatrix.cs" />
     <Compile Include="verseFactory\straight\VerseFactoryStraight.cs" />
     <Compile Include="verseFactory\StringManipulation.cs" />
     <Compile Include="verseFactory\ThemeList.cs" />
