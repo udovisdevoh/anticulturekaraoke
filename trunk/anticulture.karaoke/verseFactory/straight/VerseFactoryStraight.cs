@@ -27,7 +27,7 @@ namespace anticulture.karaoke.verseFactory
         public static Verse Build(Verse previousVerse)
         {
             IEnumerable<Verse> verseList = VerseFactory.LyricSource.GetRandomSourceLineList(VerseFactory.Random, SamplingSize);
-            return GetBestVerse(verseList);
+            return GetMostThemeRelatedVerse(verseList);
         }
         #endregion
 
@@ -37,7 +37,7 @@ namespace anticulture.karaoke.verseFactory
         /// </summary>
         /// <param name="verseList">verse list</param>
         /// <returns>best verse</returns>
-        private static Verse GetBestVerse(IEnumerable<Verse> verseList)
+        private static Verse GetMostThemeRelatedVerse(IEnumerable<Verse> verseList)
         {
             Verse bestVerse = null;
             float bestScore = -1.0f;
