@@ -15,6 +15,7 @@ namespace anticulture.karaoke
             VerseFactory.AddTheme(ThemeLoader.Load("nature"));
             VerseFactory.AddTheme(ThemeLoader.Load("religion"));
 
+            VerseFactory.DesiredLength = 255;
             VerseFactory.Algorithm = VerseFactory.AlgorithmMarkov;
 
             Verse verse = VerseFactory.Build();
