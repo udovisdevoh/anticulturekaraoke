@@ -251,8 +251,8 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>592.0</double> 
-     <double>39.0</double> 
+     <double>729.0</double> 
+     <double>48.0</double> 
     </void> 
    </object> 
   </void> 
@@ -266,23 +266,8 @@
    </object> 
    <object class="java.awt.geom.Point2D$Double"> 
     <void method="setLocation"> 
-     <double>731.0</double> 
-     <double>41.0</double> 
-    </void> 
-   </object> 
-  </void> 
-  <void method="addNode"> 
-   <object id="ClassNode14" class="com.horstmann.violet.ClassNode"> 
-    <void property="name"> 
-     <void property="text"> 
-      <string>RhymingEngine</string> 
-     </void> 
-    </void> 
-   </object> 
-   <object class="java.awt.geom.Point2D$Double"> 
-    <void method="setLocation"> 
-     <double>874.0</double> 
-     <double>40.0</double> 
+     <double>852.0</double> 
+     <double>50.0</double> 
     </void> 
    </object> 
   </void> 
@@ -342,6 +327,21 @@
     <void method="setLocation"> 
      <double>112.0</double> 
      <double>312.0</double> 
+    </void> 
+   </object> 
+  </void> 
+  <void method="addNode"> 
+   <object id="ClassNode14" class="com.horstmann.violet.ClassNode"> 
+    <void property="name"> 
+     <void property="text"> 
+      <string>CrypticEngine</string> 
+     </void> 
+    </void> 
+   </object> 
+   <object class="java.awt.geom.Point2D$Double"> 
+    <void method="setLocation"> 
+     <double>614.0</double> 
+     <double>46.0</double> 
     </void> 
    </object> 
   </void> 
@@ -537,7 +537,7 @@
      <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
     </void> 
    </object> 
-   <object idref="ClassNode14"/> 
+   <object idref="ClassNode12"/> 
    <object idref="ClassNode10"/> 
   </void> 
   <void method="connect"> 
@@ -549,7 +549,7 @@
      <object class="com.horstmann.violet.ArrowHead" field="TRIANGLE"/> 
     </void> 
    </object> 
-   <object idref="ClassNode12"/> 
+   <object idref="ClassNode14"/> 
    <object idref="ClassNode10"/> 
   </void> 
  </object> 
