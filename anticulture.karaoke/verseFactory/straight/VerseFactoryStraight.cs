@@ -2,11 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using anticulture.karaoke.themes;
 
 namespace anticulture.karaoke.verseFactory
 {
+    /// <summary>
+    /// Create straight verses from existing verses
+    /// </summary>
     class VerseFactoryStraight
     {
+        #region Constants
+        /// <summary>
+        /// Sampling size
+        /// </summary>
+        private const int SamplingSize = 200;
+        #endregion
+
+        #region Public Methods
         /// <summary>
         /// Build a straight verse
         /// </summary>
@@ -14,8 +26,33 @@ namespace anticulture.karaoke.verseFactory
         /// <returns>straight verse</returns>
         public static Verse Build(Verse previousVerse)
         {
-            Verse sourceLine = VerseFactory.LyricSource.GetRandomSourceLine(VerseFactory.Random);
-            return sourceLine;
+            IEnumerable<Verse> verseList = VerseFactory.LyricSource.GetRandomSourceLineList(VerseFactory.Random, SamplingSize);
+            return GetBestVerse(verseList);
         }
+        #endregion
+
+        #region Private Methods
+        /// <summary>
+        /// Get best verse from verse list
+        /// </summary>
+        /// <param name="verseList">verse list</param>
+        /// <returns>best verse</returns>
+        private static Verse GetBestVerse(IEnumerable<Verse> verseList)
+        {
+            Verse bestVerse = null;
+            float bestScore = -1.0f;
+            float currentScore = 0.0f;
+            foreach (Verse currentVerse in verseList)
+            {
+                currentScore = ThemeMatcher.GetScore(currentVerse, VerseFactory.ThemeList, VerseFactory.ThemeBlackList);
+                if (currentScore > bestScore)
+                {
+                    bestScore = currentScore;
+                    bestVerse = currentVerse;
+                }
+            }
+            return bestVerse;
+        }
+        #endregion
     }
 }

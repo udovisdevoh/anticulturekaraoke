@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using anticulture.karaoke.verseFactory;
 
 namespace anticulture.karaoke.themes
 {
@@ -30,18 +31,39 @@ namespace anticulture.karaoke.themes
             Theme theme = ThemeLoader.Load(themeName);
             float match = 0.0f;
             float incrementor = 1.0f;
-            verseLine = notALetter.Replace(verseLine, "");
+            verseLine = notALetter.Replace(verseLine, " ");
             string[] words = verseLine.Split(' ');
 
-            foreach (string word in words)
+            foreach (string currentWord in words)
             {
-                if (theme.Contains(word))
+                string word = currentWord.Trim();
+                if (theme.Contains(currentWord) && currentWord.Length > 0)
                 {
                     match+= incrementor;
                     incrementor/=3.0f;
                 }
             }
             return match;
+        }
+
+        /// <summary>
+        /// Get score for a verse according to desired and undesired themes
+        /// </summary>
+        /// <param name="currentVerse">current verse</param>
+        /// <param name="themeList">desired theme list</param>
+        /// <param name="blackThemeList">undesired theme list</param>
+        /// <returns>score for a verse according to desired and undesired themes</returns>
+        public static float GetScore(Verse currentVerse, ThemeList themeList, ThemeList blackThemeList)
+        {
+            float score = 0.0f;
+
+            foreach (Theme theme in themeList)
+                score += ThemeMatcher.Match(currentVerse.ToString(), theme.Name);
+
+            foreach (Theme theme in blackThemeList)
+                score += ThemeMatcher.Match(currentVerse.ToString(), theme.Name);
+
+            return score;
         }
         #endregion
     }

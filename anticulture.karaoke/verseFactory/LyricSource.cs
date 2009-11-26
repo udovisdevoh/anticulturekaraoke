@@ -67,6 +67,20 @@ namespace anticulture.karaoke.verseFactory
             }
             return verse;
         }
+
+        /// <summary>
+        /// Return random source lines
+        /// </summary>
+        /// <param name="random">random number generator</param>
+        /// <param name="samplingSize">sampling size</param>
+        /// <returns>random source lines</returns>
+        public IEnumerable<Verse> GetRandomSourceLineList(Random random, int samplingSize)
+        {
+            HashSet<Verse> verseList = new HashSet<Verse>();
+            for (int i = 0; i < samplingSize; i++)
+                verseList.Add(GetRandomSourceLine(random));
+            return verseList;
+        }
         #endregion
     }
 }
