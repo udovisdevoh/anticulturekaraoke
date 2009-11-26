@@ -29,9 +29,9 @@ namespace anticulture.karaoke.themes
         /// <param name="themeList">desired theme list</param>
         /// <param name="blackThemeList">undesired theme list</param>
         /// <returns>score for a verse according to desired and undesired themes</returns>
-        public static float GetScore(Verse currentVerse, ThemeList themeList, ThemeList blackThemeList)
+        public static int GetScore(Verse currentVerse, ThemeList themeList, ThemeList blackThemeList)
         {
-            float score = 0.0f;
+            int score = 0;
             score += Match(currentVerse.ToString(), themeList);
             score -= Match(currentVerse.ToString(), blackThemeList);
             return score;
@@ -45,9 +45,9 @@ namespace anticulture.karaoke.themes
         /// <param name="verseLine">verse line</param>
         /// <param name="themeList">provided theme list</param>
         /// <returns>how mutch the verse line matches provided theme list</returns>
-        private static float Match(string verseLine, ThemeList themeList)
+        private static int Match(string verseLine, ThemeList themeList)
         {
-            float match = 0.0f;
+            int match = 0;
             verseLine = notALetter.Replace(verseLine, " ");
             string[] words = verseLine.Split(' ');
             HashSet<string> wordIgnoreList = new HashSet<string>();

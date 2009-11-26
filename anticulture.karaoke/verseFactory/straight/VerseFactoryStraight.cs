@@ -40,8 +40,8 @@ namespace anticulture.karaoke.verseFactory
         private static Verse GetMostThemeRelatedVerse(IEnumerable<Verse> verseList)
         {
             Verse bestVerse = null;
-            float bestScore = -1.0f;
-            float currentScore = 0.0f;
+            int bestScore = -1;
+            int currentScore = 0;
             foreach (Verse currentVerse in verseList)
             {
                 currentScore = ThemeMatcher.GetScore(currentVerse, VerseFactory.ThemeList, VerseFactory.ThemeBlackList);
