@@ -82,13 +82,37 @@ namespace anticulture.karaoke.verseFactory
             return verseList;
         }
 
+        /// <summary>
+        /// Return random contiguous line list
+        /// </summary>
+        /// <param name="random">random number generator</param>
+        /// <param name="samplingSize">how many ling you want</param>
+        /// <returns>random contiguous line list</returns>
         public IEnumerable<Verse> GetRandomContiguousSourceLineList(Random random, int samplingSize)
+        {
+            return GetRandomContiguousSourceLineList(random, samplingSize, null, false);
+        }
+
+        /// <summary>
+        /// Return random contiguous line list
+        /// </summary>
+        /// <param name="random">random number generator</param>
+        /// <param name="samplingSize">how many ling you want</param>
+        /// <param name="startLine">line to start search on</param>
+        /// <param name="isStartPointPositive">whether the start point is considered from begining of line or end of line</param>
+        /// <returns>random contiguous line list</returns>
+        public IEnumerable<Verse> GetRandomContiguousSourceLineList(Random random, int samplingSize, string startLine, bool isStartPointPositive)
         {
             FileStream fileStream = new FileStream(fileName, FileMode.Open, FileAccess.Read);
             StreamReader streamReader = new StreamReader(fileStream);
 
             string line = string.Empty;
-            long position = (long)(random.NextDouble() * fileStream.Length - 300 * samplingSize);
+            long position;
+
+            if (startLine == null)
+                position = (long)(random.NextDouble() * fileStream.Length - 300 * samplingSize);
+            else
+                position = GetStartLinePosition(fileStream, streamReader, fileStream.Length, startLine, isStartPointPositive);
 
             if (position < 0)
                 position = 0;
@@ -113,6 +137,56 @@ namespace anticulture.karaoke.verseFactory
                 verseList.Add(verse);
             }
             return verseList;
+        }
+        #endregion
+
+        #region Private Methods
+        /// <summary>
+        /// Get start line position from previous verse
+        /// </summary>
+        /// <param name="fileStream">file stream</param>
+        /// <param name="streamReader">stream reader</param>
+        /// <param name="fileSize">file size</param>
+        /// <param name="startLine">previous verse line</param>
+        /// <param name="isStartPointPositive">if true: we use begining of previous verse line, else: we use the end of it</param>
+        /// <returns>start line position</returns>
+        private long GetStartLinePosition(FileStream fileStream, StreamReader streamReader, long fileSize, string startLine, bool isStartPointPositive)
+        {
+            string currentLine;
+            long start = 0;
+            long end = fileSize;
+            long pivot;
+            int comparison;
+
+            while (true)
+            {
+                streamReader = new StreamReader(fileStream);
+
+                pivot = (start + end) / 2;
+                fileStream.Seek(pivot, 0);
+                currentLine = streamReader.ReadLine();
+                currentLine = streamReader.ReadLine();
+
+                if (isStartPointPositive)
+                    comparison = currentLine.CompareTo(startLine);
+                else
+                    comparison = currentLine.ReverseString().CompareTo(startLine.ReverseString());
+
+                if (end - start < 300)
+                {
+                    break;
+                }
+                else if (comparison < 0)
+                {
+                    start = pivot;
+                }
+                else
+                {
+                    end = pivot;
+                }
+            }
+
+            return pivot;
         }
         #endregion
     }

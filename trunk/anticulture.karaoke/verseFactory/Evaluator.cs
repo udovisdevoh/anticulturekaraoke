@@ -88,10 +88,12 @@ namespace anticulture.karaoke.verseFactory
             Verse bestVerse = null;
             int bestDifference = -1;
             int currentDifference = -1;
+            string verseLine;
 
             foreach (Verse currentVerse in verseList)
             {
-                currentDifference = Math.Abs(currentVerse.ToString().Length - desiredLength);
+                verseLine = notALetter.Replace(currentVerse.ToString(), " ").Trim();
+                currentDifference = Math.Abs(verseLine.Length - desiredLength);
                 if (currentDifference < bestDifference || bestVerse == null)
                 {
                     bestVerse = currentVerse;

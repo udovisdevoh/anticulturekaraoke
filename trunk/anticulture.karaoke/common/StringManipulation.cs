@@ -35,5 +35,16 @@ namespace anticulture.karaoke
         {
             return new Verse(verse.ToString().HardTrim());
         }
+
+        /// <summary>
+        /// Receives string and returns the string with its letters reversed.
+        /// </summary>
+        public static string ReverseString(this string s)
+        {
+            char[] arr = s.ToCharArray();
+            Array.Reverse(arr);
+            return new string(arr);
+        }
+
     }
 }
