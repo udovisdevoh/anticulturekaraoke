@@ -47,8 +47,30 @@ namespace anticulture.karaoke.verseFactory
         /// <returns>list of markovly generated verse</returns>
         private static IList<Verse> GetMarkovVerseList(Verse previousVerse, int samplingSize)
         {
-            IEnumerable<Verse> verseListStraight = VerseFactory.LyricSource.GetRandomContiguousSourceLineList(VerseFactory.Random, SamplingSize);
-            IEnumerable<Verse> verseListReversed = VerseFactory.LyricSourceReversed.GetRandomContiguousSourceLineList(VerseFactory.Random, SamplingSize);
+            IEnumerable<Verse> verseListStraight;
+            IEnumerable<Verse> verseListReversed;
+
+            if (previousVerse == null)
+            {
+                verseListStraight = VerseFactory.LyricSource.GetRandomContiguousSourceLineList(VerseFactory.Random, SamplingSize);
+                verseListReversed = VerseFactory.LyricSourceReversed.GetRandomContiguousSourceLineList(VerseFactory.Random, SamplingSize);
+            }
+            else
+            {
+                verseListStraight = VerseFactory.LyricSource.GetRandomContiguousSourceLineList(VerseFactory.Random, SamplingSize, previousVerse.ToString(), true);
+                verseListReversed = VerseFactory.LyricSourceReversed.GetRandomContiguousSourceLineList(VerseFactory.Random, SamplingSize);
+                /*
+                if (VerseFactory.Random.Next(0, 2) == 1)
+                {
+                    verseListStraight = VerseFactory.LyricSource.GetRandomContiguousSourceLineList(VerseFactory.Random, SamplingSize,previousVerse.ToString(),true);
+                    verseListReversed = VerseFactory.LyricSourceReversed.GetRandomContiguousSourceLineList(VerseFactory.Random, SamplingSize);
+                }
+                else
+                {
+                    verseListStraight = VerseFactory.LyricSource.GetRandomContiguousSourceLineList(VerseFactory.Random, SamplingSize);
+                    verseListReversed = VerseFactory.LyricSourceReversed.GetRandomContiguousSourceLineList(VerseFactory.Random, SamplingSize, previousVerse.ToString(), false);
+                }*/
+            }
 
             List<Verse> verseList = new List<Verse>();
 

@@ -11,15 +11,24 @@ namespace anticulture.karaoke
     {
         static void Main(string[] args)
         {
-            VerseFactory.AddTheme(ThemeLoader.Load("urban"));
-            VerseFactory.AddTheme(ThemeLoader.Load("nature"));
-            VerseFactory.AddTheme(ThemeLoader.Load("religion"));
+            //VerseFactory.AddTheme(ThemeLoader.Load("urban"));
+            //VerseFactory.AddTheme(ThemeLoader.Load("nature"));
+            //VerseFactory.AddTheme(ThemeLoader.Load("religion"));
+
+            VerseFactory.AddTheme(ThemeLoader.Load("geek"));
+            VerseFactory.AddTheme(ThemeLoader.Load("activism"));
+
+            Verse verse;
 
             VerseFactory.DesiredLength = 32;
-            VerseFactory.Algorithm = VerseFactory.AlgorithmMarkov;
-
-            Verse verse = VerseFactory.Build();
+            
+            verse = VerseFactory.Build();
             Console.WriteLine(verse.ToString());
+
+            VerseFactory.Algorithm = VerseFactory.AlgorithmMarkov;
+            verse = VerseFactory.Build(verse);
+            Console.WriteLine(verse.ToString());
+
             Console.ReadLine();
         }
     }
