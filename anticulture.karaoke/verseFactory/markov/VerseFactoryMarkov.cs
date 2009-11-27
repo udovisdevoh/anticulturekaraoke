@@ -31,7 +31,11 @@ namespace anticulture.karaoke.verseFactory
         public static Verse Build(Verse previousVerse)
         {
             IList<Verse> verseList = GetMarkovVerseList(previousVerse, SamplingSize);
-            verseList = TryKeepOnlyEndingWithStop(verseList);
+            
+            verseList = GetVerseEndingWithStop(verseList);
+            if (verseList.Count < 1)
+                return VerseFactoryStraight.Build(previousVerse);
+
             Verse verse = Evaluator.PickBestLength(verseList, VerseFactory.DesiredLength);
             verse = verse.HardTrim();
             return verse;
@@ -57,9 +61,8 @@ namespace anticulture.karaoke.verseFactory
             }
             else
             {
-                verseListStraight = VerseFactory.LyricSource.GetRandomContiguousSourceLineList(VerseFactory.Random, SamplingSize, previousVerse.ToString(), true);
-                verseListReversed = VerseFactory.LyricSourceReversed.GetRandomContiguousSourceLineList(VerseFactory.Random, SamplingSize);
-                /*
+                //verseListStraight = VerseFactory.LyricSource.GetRandomContiguousSourceLineList(VerseFactory.Random, SamplingSize, previousVerse.ToString(), true);
+                //verseListReversed = VerseFactory.LyricSourceReversed.GetRandomContiguousSourceLineList(VerseFactory.Random, SamplingSize);
                 if (VerseFactory.Random.Next(0, 2) == 1)
                 {
                     verseListStraight = VerseFactory.LyricSource.GetRandomContiguousSourceLineList(VerseFactory.Random, SamplingSize,previousVerse.ToString(),true);
@@ -69,7 +72,7 @@ namespace anticulture.karaoke.verseFactory
                 {
                     verseListStraight = VerseFactory.LyricSource.GetRandomContiguousSourceLineList(VerseFactory.Random, SamplingSize);
                     verseListReversed = VerseFactory.LyricSourceReversed.GetRandomContiguousSourceLineList(VerseFactory.Random, SamplingSize, previousVerse.ToString(), false);
-                }*/
+                }
             }
 
             List<Verse> verseList = new List<Verse>();
@@ -99,17 +102,14 @@ namespace anticulture.karaoke.verseFactory
         /// </summary>
         /// <param name="verseList">verse list</param>
         /// <returns>verses that end with real end or just random verse if not possible</returns>
-        private static IList<Verse> TryKeepOnlyEndingWithStop(IList<Verse> verseList)
+        private static IList<Verse> GetVerseEndingWithStop(IList<Verse> verseList)
         {
             List<Verse> listEndingWithStop = new List<Verse>();
             foreach (Verse currentVerse in verseList)
                 if (currentVerse.ToString().EndsWith("[stop]"))
                     listEndingWithStop.Add(currentVerse);
             
-            if (listEndingWithStop.Count >= MinimumCountEndingWithStop)
-                return listEndingWithStop;
-            else
-                return verseList;
+            return listEndingWithStop;
         }
         #endregion
     }
