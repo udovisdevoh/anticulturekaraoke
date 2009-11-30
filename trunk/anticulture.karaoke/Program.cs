@@ -11,18 +11,20 @@ namespace anticulture.karaoke
     {
         static void Main(string[] args)
         {
-            VerseFactory.AddTheme(ThemeLoader.Load("urban"));
-            VerseFactory.AddTheme(ThemeLoader.Load("nature"));
+            VerseFactory verseFactory = new VerseFactory();
+
+            verseFactory.AddTheme(ThemeLoader.Load("urban"));
+            verseFactory.AddTheme(ThemeLoader.Load("nature"));
 
             Verse verse;
 
-            VerseFactory.DesiredLength = 64;
-            
-            verse = VerseFactory.Build();
+            verseFactory.DesiredLength = 32;
+
+            verse = verseFactory.Build();
             Console.WriteLine(verse.ToString());
 
-            VerseFactory.Algorithm = VerseFactory.AlgorithmMarkov;
-            verse = VerseFactory.Build(verse);
+            verseFactory.Algorithm = VerseFactory.AlgorithmMarkov;
+            verse = verseFactory.Build(verse);
             Console.WriteLine(verse.ToString());
 
             Console.ReadLine();
