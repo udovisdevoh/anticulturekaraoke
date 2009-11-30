@@ -29,6 +29,8 @@ namespace anticulture.karaoke
             Console.WriteLine(verse.ToString());
 
             verseFactory.Algorithm = VerseConstructionSettings.AlgorithmCryptic;
+            verseFactory.ResetThemes();
+            verseFactory.AddTheme(ThemeLoader.Load("gangsta"));
             verse = verseFactory.Build();
             Console.WriteLine(verse.ToString());
 
