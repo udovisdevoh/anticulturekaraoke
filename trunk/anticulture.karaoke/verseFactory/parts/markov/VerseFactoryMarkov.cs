@@ -57,8 +57,8 @@ namespace anticulture.karaoke.verseFactory
             Verse verse = Evaluator.PickBestLength(verseList, verseConstructionSettings.DesiredLength);
             verse = verse.HardTrim();
 
-            if (verse.Length * 1.4 < verseConstructionSettings.DesiredLength || verseConstructionSettings.DesiredLength * 1.4 < verse.Length)
-                return null;
+            //if (verse.Length * 1.4 < verseConstructionSettings.DesiredLength || verseConstructionSettings.DesiredLength * 1.4 < verse.Length)
+            //    return null;
 
             return verse;
         }
@@ -92,6 +92,7 @@ namespace anticulture.karaoke.verseFactory
                 string verseContent = string.Empty;
                 string currentWord = null;
 
+                wordMatrix.resetCursor();
                 do
                 {
                     currentWord = wordMatrix.GenerateNextWord(VerseConstructionSettings.Random);

@@ -14,7 +14,7 @@ namespace anticulture.karaoke.verseFactory
         /// <summary>
         /// Sampling size
         /// </summary>
-        private const int SamplingSize = 200;
+        private const int SamplingSize = 2000;
         #endregion
 
         #region Fields
@@ -46,7 +46,14 @@ namespace anticulture.karaoke.verseFactory
             IEnumerable<Verse> verseList = VerseConstructionSettings.LyricSource.GetRandomSourceLineList(VerseConstructionSettings.Random, SamplingSize);
             verseList = TryGetMostThemeRelatedVerseList(verseList);
             LetterMatrix letterMatrix = new LetterMatrix(verseList);
-            return letterMatrix.BuildSentence(verseConstructionSettings.DesiredLength,VerseConstructionSettings.Random);
+
+            string sentence = string.Empty;
+            while (sentence.Length < verseConstructionSettings.DesiredLength)
+                sentence += letterMatrix.GenerateNextChar(VerseConstructionSettings.Random);
+
+            sentence = sentence.HardTrim();
+
+            return new Verse(sentence);
         }
         #endregion
 
@@ -58,7 +65,22 @@ namespace anticulture.karaoke.verseFactory
         /// <returns>verse list with desired theme words</returns>
         private IEnumerable<Verse> TryGetMostThemeRelatedVerseList(IEnumerable<Verse> verseList)
         {
-            throw new NotImplementedException();
+            List<Verse> themeRelatedVerseList = new List<Verse>();
+
+            int currentScore;
+            foreach (Verse currentVerse in verseList)
+            {
+                currentScore = Evaluator.GetScore(currentVerse, verseConstructionSettings.ThemeList, verseConstructionSettings.ThemeBlackList);
+                if (currentScore > 0)
+                {
+                    themeRelatedVerseList.Add(currentVerse);
+                }
+            }
+
+            if (themeRelatedVerseList.Count > verseConstructionSettings.DesiredLength / 3)
+                return themeRelatedVerseList;
+            else
+                return verseList;
         }
         #endregion
     }
