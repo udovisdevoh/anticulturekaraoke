@@ -35,6 +35,8 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -52,16 +54,19 @@
     <Compile Include="themes\ThemeException.cs" />
     <Compile Include="themes\themeLoader\ThemeLoader.cs" />
     <Compile Include="themes\themeLoader\ThemeTextLoader.cs" />
-    <Compile Include="verseFactory\cryptic\VerseFactoryCryptic.cs" />
+    <Compile Include="verseFactory\AbstractVerseFactory.cs" />
+    <Compile Include="verseFactory\ConstructionSettings.cs" />
+    <Compile Include="verseFactory\parts\cryptic\VerseFactoryCryptic.cs" />
     <Compile Include="verseFactory\Evaluator.cs" />
     <Compile Include="verseFactory\LyricSource.cs" />
-    <Compile Include="verseFactory\markov\VerseFactoryMarkov.cs" />
-    <Compile Include="verseFactory\markov\WordMatrix.cs" />
-    <Compile Include="verseFactory\straight\VerseFactoryStraight.cs" />
+    <Compile Include="verseFactory\parts\markov\VerseFactoryMarkov.cs" />
+    <Compile Include="verseFactory\parts\markov\WordMatrix.cs" />
+    <Compile Include="verseFactory\parts\straight\VerseFactoryStraight.cs" />
     <Compile Include="common\StringManipulation.cs" />
     <Compile Include="verseFactory\ThemeList.cs" />
     <Compile Include="verseFactory\Verse.cs" />
     <Compile Include="verseFactory\VerseFactory.cs" />
+    <Compile Include="verseFactory\VerseFactoryException.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
