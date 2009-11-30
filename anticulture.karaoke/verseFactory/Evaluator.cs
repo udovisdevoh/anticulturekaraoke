@@ -91,8 +91,9 @@ namespace anticulture.karaoke.verseFactory
 
             foreach (Verse currentVerse in verseList)
             {
-                verseLine = notALetter.Replace(currentVerse.ToString(), " ").Trim();
+                verseLine = currentVerse.ToString().HardTrim();
                 currentDifference = Math.Abs(verseLine.Length - desiredLength);
+
                 if (currentDifference < bestDifference || bestVerse == null)
                 {
                     bestVerse = currentVerse;

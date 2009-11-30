@@ -43,6 +43,17 @@ namespace anticulture.karaoke.verseFactory
         {
             return textValue;
         }
+
+        /// <summary>
+        /// Verse's length
+        /// </summary>
+        public int Length
+        {
+            get
+            {
+                return textValue.Length;
+            }
+        }
         #endregion
 
         #region Private Properties
