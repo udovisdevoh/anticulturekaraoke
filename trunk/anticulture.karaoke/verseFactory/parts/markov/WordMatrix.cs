@@ -25,11 +25,6 @@ namespace anticulture.karaoke.verseFactory
         /// Integer based word matrix (key: pair of word, value: count)
         /// </summary>
         private Dictionary<string, Dictionary<string,int>> absoluteMatrix;
-
-        /// <summary>
-        /// Double based word matrix (key: pair of word, value: probability)
-        /// </summary>
-        private Dictionary<string, Dictionary<string, double>> relativeMatrix;
         #endregion
 
         #region Constructor
@@ -43,7 +38,6 @@ namespace anticulture.karaoke.verseFactory
             absoluteMatrix = new Dictionary<string, Dictionary<string, int>>();
             foreach (Verse verse in verseList)
                 Learn(absoluteMatrix, verse.ToString() + " [stop]");
-            relativeMatrix = Normalize(absoluteMatrix);
         }
 
         /// <summary>
@@ -59,7 +53,6 @@ namespace anticulture.karaoke.verseFactory
                 Learn(absoluteMatrix, verse.ToString() + " [stop]");
             foreach (Verse verse in verseList2)
                 Learn(absoluteMatrix, verse.ToString() + " [stop]");
-            relativeMatrix = Normalize(absoluteMatrix);
         }
         #endregion
 
@@ -80,8 +73,8 @@ namespace anticulture.karaoke.verseFactory
         /// <returns>next word</returns>
         public string GenerateNextWord(Random random)
         {
-            Dictionary<string, double> row;
-            if (!relativeMatrix.TryGetValue(previousPreviousWord + " " + previousWord, out row))
+            Dictionary<string, int> row;
+            if (!absoluteMatrix.TryGetValue(previousPreviousWord + " " + previousWord, out row))
                 return null;
             string selectedWord = row.GetPonderatedRandom(random);
 
