@@ -140,7 +140,7 @@ namespace anticulture.karaoke.verseFactory
         /// <summary>
         /// Reverse order lyric source
         /// </summary>
-        public LyricSource LyricSourceReversed
+        public static LyricSource LyricSourceReversed
         {
             get { return lyricSourceReversed; }
         }

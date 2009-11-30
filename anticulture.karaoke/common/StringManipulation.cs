@@ -18,6 +18,9 @@ namespace anticulture.karaoke
         /// <returns>cleaned string</returns>
         public static string HardTrim(this string text)
         {
+            if (text == "[stop]")
+                return text;
+
             while (text.Contains("  "))
                 text = text.Replace("  ", " ");
             if (text.EndsWith("[stop]"))
