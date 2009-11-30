@@ -15,7 +15,7 @@ namespace anticulture.karaoke.verseFactory
         /// <summary>
         /// Sampling size
         /// </summary>
-        private const int SamplingSize = 2000;
+        private const int SamplingSize = 20000;
         #endregion
 
         #region Fields

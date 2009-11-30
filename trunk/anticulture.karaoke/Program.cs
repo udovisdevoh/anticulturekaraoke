@@ -13,14 +13,13 @@ namespace anticulture.karaoke
         {
             VerseFactory verseFactory = new VerseFactory();
 
-            verseFactory.AddTheme(ThemeLoader.Load("western"));
-            verseFactory.AddTheme(ThemeLoader.Load("sex"));
+            verseFactory.AddTheme(ThemeLoader.Load("activism"));
+            verseFactory.AddTheme(ThemeLoader.Load("philosophy"));
 
             Verse verse;
 
             verseFactory.DesiredLength = 64;
 
-            verseFactory.Algorithm = VerseConstructionSettings.AlgorithmMarkov;
             verse = verseFactory.Build();
             Console.WriteLine(verse.ToString());
 
