@@ -95,7 +95,7 @@ namespace anticulture.karaoke.verseFactory
         /// <summary>
         /// Desired length in char for verse
         /// </summary>
-        public byte DesiredLength
+        public short DesiredLength
         {
             get { return verseConstructionSettings.DesiredLength; }
             set { verseConstructionSettings.DesiredLength = value; }

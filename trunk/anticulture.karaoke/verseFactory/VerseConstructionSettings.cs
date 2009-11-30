@@ -49,7 +49,7 @@ namespace anticulture.karaoke.verseFactory
         /// <summary>
         /// Desired length for verse
         /// </summary>
-        private byte desiredLength;
+        private short desiredLength;
 
         /// <summary>
         /// Internal theme list, do not use directly : lazy initialization
@@ -123,7 +123,7 @@ namespace anticulture.karaoke.verseFactory
         /// <summary>
         /// Desired length in char for verse
         /// </summary>
-        public byte DesiredLength
+        public short DesiredLength
         {
             get { return desiredLength; }
             set { desiredLength = value; }
