@@ -14,7 +14,7 @@ namespace anticulture.karaoke.verseFactory
         /// <summary>
         /// Sampling size
         /// </summary>
-        private const int SamplingSize = 2000;
+        private const int SamplingSize = 200;
 
         /// <summary>
         /// Minimum count verse ending with stop marker

@@ -117,7 +117,8 @@ namespace anticulture.karaoke.verseFactory
         /// <returns>relative row</returns>
         private Dictionary<string, double> Normalize(Dictionary<string, int> absoluteRow)
         {
-            int sum = absoluteRow.Sum(currentRow => currentRow.Value);
+            //int sum = absoluteRow.Sum(currentRow => currentRow.Value);
+            int sum = Sum(absoluteRow.Values);
             Dictionary<string, double> normalizedRow = new Dictionary<string, double>();
 
             foreach (KeyValuePair<string, int> textAndValue in absoluteRow)
@@ -127,6 +128,14 @@ namespace anticulture.karaoke.verseFactory
                 normalizedRow.Add(text,((double)(value)) / ((double)(sum)));
             }
             return normalizedRow;
+        }
+
+        private int Sum(IEnumerable<int> set)
+        {
+            int sum = 0;
+            foreach (int number in set)
+                sum += number;
+            return sum;
         }
 
         /// <summary>
