@@ -15,7 +15,7 @@ namespace anticulture.karaoke.verseFactory
         /// <summary>
         /// Construction settings
         /// </summary>
-        private VerseConstructionSettings constructionSettings;
+        private VerseConstructionSettings verseConstructionSettings;
         #endregion
 
         #region Parts
@@ -41,10 +41,10 @@ namespace anticulture.karaoke.verseFactory
         /// </summary>
         public VerseFactory()
         {
-            constructionSettings = new VerseConstructionSettings();
-            verseFactoryStraight = new VerseFactoryStraight(constructionSettings);
-            verseFactoryMarkov = new VerseFactoryMarkov(constructionSettings);
-            verseFactoryCryptic = new VerseFactoryCryptic(constructionSettings);
+            verseConstructionSettings = new VerseConstructionSettings();
+            verseFactoryStraight = new VerseFactoryStraight(verseConstructionSettings);
+            verseFactoryMarkov = new VerseFactoryMarkov(verseConstructionSettings);
+            verseFactoryCryptic = new VerseFactoryCryptic(verseConstructionSettings);
         }
         #endregion
 
@@ -56,15 +56,15 @@ namespace anticulture.karaoke.verseFactory
         public override Verse Build(Verse previousVerse)
         {
             Verse verse;
-            if (constructionSettings.Algorithm == AlgorithmStraight)
+            if (verseConstructionSettings.Algorithm == VerseConstructionSettings.AlgorithmStraight)
             {
                 verse = verseFactoryStraight.Build(previousVerse);
             }
-            else if (constructionSettings.Algorithm == AlgorithmMarkov)
+            else if (verseConstructionSettings.Algorithm == VerseConstructionSettings.AlgorithmMarkov)
             {
                 verse = verseFactoryMarkov.Build(previousVerse);
             }
-            else if (constructionSettings.Algorithm == AlgorithmCryptic)
+            else if (verseConstructionSettings.Algorithm == VerseConstructionSettings.AlgorithmCryptic)
             {
                 verse = verseFactoryCryptic.Build(previousVerse);
             }
@@ -79,6 +79,35 @@ namespace anticulture.karaoke.verseFactory
             }
 
             return verse;
+        }
+
+        /// <summary>
+        /// Add theme to construction settings
+        /// </summary>
+        /// <param name="theme">theme to add</param>
+        public void AddTheme(Theme theme)
+        {
+            verseConstructionSettings.AddTheme(theme);
+        }
+        #endregion
+
+        #region Public Properties
+        /// <summary>
+        /// Desired length in char for verse
+        /// </summary>
+        public byte DesiredLength
+        {
+            get { return verseConstructionSettings.DesiredLength; }
+            set { verseConstructionSettings.DesiredLength = value; }
+        }
+
+        /// <summary>
+        /// Set which algorithm to use
+        /// </summary>
+        public byte Algorithm
+        {
+            get { return verseConstructionSettings.Algorithm; }
+            set { verseConstructionSettings.Algorithm = value; }
         }
         #endregion
     }
