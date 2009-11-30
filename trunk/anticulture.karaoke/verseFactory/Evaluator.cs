@@ -56,7 +56,6 @@ namespace anticulture.karaoke.verseFactory
         private static int Match(string verseLine, ThemeList themeList)
         {
             int match = 0;
-            verseLine = notALetter.Replace(verseLine, " ");
             string[] words = verseLine.Split(' ');
             HashSet<string> wordIgnoreList = new HashSet<string>();
 
