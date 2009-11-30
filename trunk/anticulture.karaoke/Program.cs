@@ -13,8 +13,8 @@ namespace anticulture.karaoke
         {
             VerseFactory verseFactory = new VerseFactory();
 
-            verseFactory.AddTheme(ThemeLoader.Load("urban"));
-            verseFactory.AddTheme(ThemeLoader.Load("nature"));
+            verseFactory.AddTheme(ThemeLoader.Load("western"));
+            verseFactory.AddTheme(ThemeLoader.Load("sex"));
 
             Verse verse;
 
@@ -24,6 +24,14 @@ namespace anticulture.karaoke
             Console.WriteLine(verse.ToString());
 
             verseFactory.Algorithm = VerseConstructionSettings.AlgorithmMarkov;
+            verse = verseFactory.Build(verse);
+            Console.WriteLine(verse.ToString());
+
+            verseFactory.Algorithm = VerseConstructionSettings.AlgorithmMarkov;
+            verse = verseFactory.Build(verse);
+            Console.WriteLine(verse.ToString());
+
+            verseFactory.Algorithm = VerseConstructionSettings.AlgorithmStraight;
             verse = verseFactory.Build(verse);
             Console.WriteLine(verse.ToString());
 
