@@ -18,12 +18,12 @@ namespace anticulture.karaoke
 
             Verse verse;
 
-            verseFactory.DesiredLength = 32;
+            verseFactory.DesiredLength = 64;
 
             verse = verseFactory.Build();
             Console.WriteLine(verse.ToString());
 
-            verseFactory.Algorithm = VerseFactory.AlgorithmMarkov;
+            verseFactory.Algorithm = VerseConstructionSettings.AlgorithmMarkov;
             verse = verseFactory.Build(verse);
             Console.WriteLine(verse.ToString());
 
