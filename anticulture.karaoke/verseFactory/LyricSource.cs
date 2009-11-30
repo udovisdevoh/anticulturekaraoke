@@ -76,9 +76,10 @@ namespace anticulture.karaoke.verseFactory
         /// <returns>random source lines</returns>
         public IEnumerable<Verse> GetRandomSourceLineList(Random random, int samplingSize)
         {
+            int samplingSizeSqrt = (int)(Math.Sqrt(samplingSize));
             HashSet<Verse> verseList = new HashSet<Verse>();
-            for (int i = 0; i < samplingSize; i++)
-                verseList.Add(GetRandomSourceLine(random));
+            for (int i = 0; i < samplingSizeSqrt; i++)
+                verseList.UnionWith(GetRandomContiguousSourceLineList(random, samplingSizeSqrt));
             return verseList;
         }
 
