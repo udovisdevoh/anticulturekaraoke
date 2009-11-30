@@ -19,7 +19,7 @@ namespace anticulture.karaoke
 
             Verse verse;
 
-            verseFactory.DesiredLength = 32;
+            verseFactory.DesiredLength = 64;
 
             verse = verseFactory.Build();
             Console.WriteLine(verse.ToString());
@@ -29,7 +29,7 @@ namespace anticulture.karaoke
             Console.WriteLine(verse.ToString());
 
             verseFactory.Algorithm = VerseConstructionSettings.AlgorithmCryptic;
-            verse = verseFactory.Build(verse);
+            verse = verseFactory.Build();
             Console.WriteLine(verse.ToString());
 
             Console.ReadLine();

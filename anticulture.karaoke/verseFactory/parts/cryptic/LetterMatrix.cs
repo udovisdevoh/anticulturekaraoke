@@ -10,6 +10,23 @@ namespace anticulture.karaoke.verseFactory
     /// </summary>
     class LetterMatrix
     {
+        #region Fields
+        /// <summary>
+        /// Previous word
+        /// </summary>
+        private char previousChar;
+
+        /// <summary>
+        /// Previous previous word
+        /// </summary>
+        private char previousPreviousChar;
+
+        /// <summary>
+        /// Integer based letter matrix (key: starting pair of letter, value: (key: ending letter, value: count))
+        /// </summary>
+        private Dictionary<string, Dictionary<char, int>> absoluteMatrix;
+        #endregion
+
         #region Constructor
         /// <summary>
         /// Constructor
@@ -17,7 +34,10 @@ namespace anticulture.karaoke.verseFactory
         /// <param name="verseList">Verse list</param>
         public LetterMatrix(IEnumerable<Verse> verseList)
         {
-            throw new NotImplementedException();
+            resetCursor();
+            absoluteMatrix = new Dictionary<string, Dictionary<char, int>>();
+            foreach (Verse verse in verseList)
+                Learn(absoluteMatrix,verse.ToString());
         }
         #endregion
 
@@ -25,12 +45,63 @@ namespace anticulture.karaoke.verseFactory
         /// <summary>
         /// Build a verse from letter markov matrix
         /// </summary>
-        /// <param name="desiredLength">Desired length (in chars)</param>
-        /// <param name="random">random</param>
+        /// <param name="random">random number generator</param>
         /// <returns>Verse</returns>
-        public Verse BuildSentence(short desiredLength, Random random)
+        public char GenerateNextChar(Random random)
         {
-            throw new NotImplementedException();
+            string sentence = string.Empty;
+            Dictionary<char, int> row;
+
+            if (!absoluteMatrix.TryGetValue(previousPreviousChar + "" + previousChar, out row))
+                return ' ';
+            char selectedChar = row.GetPonderatedRandom(random);
+
+            previousPreviousChar = previousChar;
+            previousChar = selectedChar;
+
+            return selectedChar;
+        }
+        #endregion
+
+        #region Private Methods
+        /// <summary>
+        /// Reset cursor to begining
+        /// </summary>
+        private void resetCursor()
+        {
+            previousChar = '*';
+            previousPreviousChar = '*';
+        }
+
+        /// <summary>
+        /// Learn from text line
+        /// </summary>
+        /// <param name="absoluteMatrix">absolute matrix</param>
+        /// <param name="textLine">text line</param>
+        private void Learn(Dictionary<string, Dictionary<char, int>> absoluteMatrix, string textLine)
+        {
+            char currentPreviousPreviousChar = '*';
+            char currentPreviousChar = '*';
+            int currentValue;
+            foreach (char currentChar in textLine)
+            {
+                string sourcePair = currentPreviousPreviousChar + "" + currentPreviousChar;
+
+                Dictionary<char, int> currentRow;
+                if (!absoluteMatrix.TryGetValue(sourcePair, out currentRow))
+                {
+                    currentRow = new Dictionary<char, int>();
+                    absoluteMatrix.Add(sourcePair, currentRow);
+                }
+
+                if (!currentRow.TryGetValue(currentChar, out currentValue))
+                    currentRow.Add(currentChar, 0);
+
+                currentRow[currentChar]++;
+
+                currentPreviousPreviousChar = currentPreviousChar;
+                currentPreviousChar = currentChar;
+            }
         }
         #endregion
     }

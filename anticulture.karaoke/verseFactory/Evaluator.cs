@@ -44,6 +44,21 @@ namespace anticulture.karaoke.verseFactory
 
             return score;
         }
+
+        /// <summary>
+        /// Get score for a verse according to desired and undesired themes
+        /// </summary>
+        /// <param name="currentVerse">current verse</param>
+        /// <param name="themeList">desired theme list</param>
+        /// <param name="blackThemeList">undesired theme list</param>
+        /// <returns>score for a verse according to desired and undesired themes</returns>
+        public static int GetScore(Verse currentVerse, ThemeList themeList, ThemeList blackThemeList)
+        {
+            int score = 0;
+            score += Match(currentVerse.ToString(), themeList);
+            score -= Match(currentVerse.ToString(), blackThemeList);
+            return score;
+        }
         #endregion
 
         #region Private Methods
@@ -100,7 +115,6 @@ namespace anticulture.karaoke.verseFactory
                     bestDifference = currentDifference;
                 }
             }
-
             return bestVerse;
         }
         #endregion

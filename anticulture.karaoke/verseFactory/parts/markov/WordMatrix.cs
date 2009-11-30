@@ -87,51 +87,6 @@ namespace anticulture.karaoke.verseFactory
 
         #region Private Methods
         /// <summary>
-        /// Normalize absolute matrix into relative matrix
-        /// </summary>
-        /// <param name="absoluteMatrix">absolute matrix</param>
-        /// <returns>relative matrix</returns>
-        private Dictionary<string, Dictionary<string, double>> Normalize(Dictionary<string, Dictionary<string, int>> absoluteMatrix)
-        {
-            Dictionary<string, Dictionary<string, double>> normalizedMatrix = new Dictionary<string, Dictionary<string, double>>();
-            foreach (KeyValuePair<string, Dictionary<string, int>> sourceAndRow in absoluteMatrix)
-            {
-                string source = sourceAndRow.Key;
-                Dictionary<string, int> row = sourceAndRow.Value;
-                normalizedMatrix.Add(source, Normalize(row));
-            }
-            return normalizedMatrix;
-        }
-
-        /// <summary>
-        /// Normalize an absolute row
-        /// </summary>
-        /// <param name="absoluteRow">absolute row</param>
-        /// <returns>relative row</returns>
-        private Dictionary<string, double> Normalize(Dictionary<string, int> absoluteRow)
-        {
-            //int sum = absoluteRow.Sum(currentRow => currentRow.Value);
-            int sum = Sum(absoluteRow.Values);
-            Dictionary<string, double> normalizedRow = new Dictionary<string, double>();
-
-            foreach (KeyValuePair<string, int> textAndValue in absoluteRow)
-            {
-                string text = textAndValue.Key;
-                int value = textAndValue.Value;
-                normalizedRow.Add(text,((double)(value)) / ((double)(sum)));
-            }
-            return normalizedRow;
-        }
-
-        private int Sum(IEnumerable<int> set)
-        {
-            int sum = 0;
-            foreach (int number in set)
-                sum += number;
-            return sum;
-        }
-
-        /// <summary>
         /// Learn line into absolute matrix
         /// </summary>
         /// <param name="absoluteMatrix">absolute matrix</param>
@@ -158,10 +113,6 @@ namespace anticulture.karaoke.verseFactory
 
                 if (!currentRow.TryGetValue(word, out currentValue))
                     currentRow.Add(word, 0);
-
-                if (word == "[stop")
-                {
-                }
 
                 currentRow[word]++;
 
