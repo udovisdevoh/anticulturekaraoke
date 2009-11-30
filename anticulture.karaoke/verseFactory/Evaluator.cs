@@ -34,7 +34,7 @@ namespace anticulture.karaoke.verseFactory
         /// <param name="blackThemeList">undesired theme list</param>
         /// <param name="desiredLength">desired length</param>
         /// <returns>score for a verse according to desired and undesired themes</returns>
-        public static int GetScore(Verse currentVerse, ThemeList themeList, ThemeList blackThemeList, byte desiredLength)
+        public static int GetScore(Verse currentVerse, ThemeList themeList, ThemeList blackThemeList, short desiredLength)
         {
             int score = 0;
             score += Match(currentVerse.ToString(), themeList);

@@ -56,7 +56,7 @@ namespace anticulture.karaoke.verseFactory
         /// <param name="verseList">verse list</param>
         /// <param name="desiredLength">desired length</param>
         /// <returns>best verse</returns>
-        private Verse GetMostThemeRelatedVerseWithDesiredLength(IEnumerable<Verse> verseList, byte desiredLength)
+        private Verse GetMostThemeRelatedVerseWithDesiredLength(IEnumerable<Verse> verseList, short desiredLength)
         {
             Verse bestVerse = null;
             int bestScore = -1;
