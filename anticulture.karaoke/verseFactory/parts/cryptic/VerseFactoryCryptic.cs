@@ -48,8 +48,12 @@ namespace anticulture.karaoke.verseFactory
             LetterMatrix letterMatrix = new LetterMatrix(verseList);
 
             string sentence = string.Empty;
-            while (sentence.Length < verseConstructionSettings.DesiredLength)
-                sentence += letterMatrix.GenerateNextChar(VerseConstructionSettings.Random);
+            char currentLetter;
+            do
+            {
+                currentLetter = letterMatrix.GenerateNextChar(VerseConstructionSettings.Random);
+                sentence += currentLetter;
+            } while (sentence.Length < verseConstructionSettings.DesiredLength || currentLetter != ' ');
 
             sentence = sentence.HardTrim();
 

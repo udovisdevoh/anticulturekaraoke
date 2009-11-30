@@ -89,6 +89,14 @@ namespace anticulture.karaoke.verseFactory
         {
             verseConstructionSettings.AddTheme(theme);
         }
+
+        /// <summary>
+        /// Reset themes
+        /// </summary>
+        public void ResetThemes()
+        {
+            verseConstructionSettings.ResetThemes();
+        }
         #endregion
 
         #region Public Properties
