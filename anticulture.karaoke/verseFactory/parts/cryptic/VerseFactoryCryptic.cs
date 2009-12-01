@@ -63,6 +63,25 @@ namespace anticulture.karaoke.verseFactory
 
         #region Private Methods
         /// <summary>
+        /// Generate theme based word
+        /// </summary>
+        /// <param name="letterMatrix">letter matrix</param>
+        /// <returns>theme based word</returns>
+        private string GenerateThemeBasedWord(LetterMatrix letterMatrix)
+        {
+            string word = string.Empty;
+            char currentLetter;
+            do
+            {
+                currentLetter = letterMatrix.GenerateNextChar(VerseConstructionSettings.Random);
+                word += currentLetter;
+            } while (currentLetter != ' ');
+
+            word = word.HardTrim();
+            return word;
+        }
+
+        /// <summary>
         /// Try vers that contain desired theme words
         /// </summary>
         /// <param name="verseList">verse list</param>

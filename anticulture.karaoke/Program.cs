@@ -14,8 +14,7 @@ namespace anticulture.karaoke
             VerseFactory verseFactory = new VerseFactory();
 
             verseFactory.AddTheme(ThemeLoader.Load("urban"));
-            verseFactory.AddTheme(ThemeLoader.Load("activism"));
-            verseFactory.AddTheme(ThemeLoader.Load("philosophy"));
+            verseFactory.AddTheme(ThemeLoader.Load("nature"));
 
             Verse verse;
 
@@ -29,10 +28,13 @@ namespace anticulture.karaoke
             Console.WriteLine(verse.ToString());
 
             verseFactory.Algorithm = VerseConstructionSettings.AlgorithmCryptic;
-            verseFactory.ResetThemes();
-            verseFactory.AddTheme(ThemeLoader.Load("gangsta"));
-            verse = verseFactory.Build();
+            verse = verseFactory.Build(verse);
             Console.WriteLine(verse.ToString());
+
+            verseFactory.Algorithm = VerseConstructionSettings.AlgorithmMarkov;
+            verse = verseFactory.Build(verse);
+            Console.WriteLine(verse.ToString());
+
 
             Console.ReadLine();
         }
