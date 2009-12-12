@@ -14,7 +14,7 @@ namespace anticulture.karaoke.themes
         /// <summary>
         /// Theme file name
         /// </summary>
-        private static string themeFileName = "themes.txt";
+        private static string themeFileName = "themeFile.themes.txt";
 
         /// <summary>
         /// Theme cache
