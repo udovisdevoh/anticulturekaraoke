@@ -68,7 +68,8 @@ clash, dan, strongest, muscle, invincible,
 adrenaline, spear, crusade, saber, smashing, 
 brutality, slash, biting, stabbing, conquest, 
 invasion, fightin, disrespect, strenght, spears, 
-destroyer, threats, murderous, elite, destroys
+destroyer, threats, murderous, elite, destroys, 
+murderer, attacks
 </theme>
 
 <theme name="gore">
@@ -117,7 +118,7 @@ paying, consuming, product, industry, credit,
 poverty, pounds, wage, banner, bid, 
 platinum, riches, material, treasures, snatch, 
 consumes, career, penny, guaranteed, affair, 
-amount, tax
+amount, tax, stock, contra, jobs, steals
 </theme>
 
 <theme name="nature">
@@ -202,7 +203,7 @@ toxic, decaying, dyin, serpents, impaled,
 cemetery, suicidal, decayed, zombie, execution, 
 pestilence, stabbing, burial, plagues, macabre, 
 destroyer, zombies, murderous, suffocating, accident, 
-abomination, destroys, poisonous, diseased
+abomination, destroys, poisonous, diseased, murderer
 </theme>
 
 <theme name="religion">
@@ -235,7 +236,7 @@ martyr, creed, chalice, disbelief, shrine,
 crucify, churches, afterlife, sinful, judas, 
 lambs, antichrist, aura, crucifix, messenger, 
 halo, preachers, followers, abomination, miracles, 
-christianity, purify
+christianity, purify, godless, gloria, religions, pentagram
 </theme>
 
 <theme name="gangsta">
@@ -350,7 +351,8 @@ says, talking, lying, met, voices,
 saying, question, pretend, talkin, asked, 
 explain, asking, claim, smiles, sayin, 
 spoken, spoke, proof, speaks, speaking, 
-conversation, talked, whispered, contact, answered
+conversation, talked, whispered, contact, answered, 
+explanation, proved
 </theme>
 
 <theme name="art">
@@ -385,7 +387,7 @@ sang, bells, rhymes, sings, records,
 mix, bass, chant, sung, dancin, 
 pitch, breakdown, lullaby, choir, funk, 
 tunes, cd, tap, dances, boogie, 
-chanting, clubs, whistle, dub
+chanting, clubs, whistle, dub, anthem
 </theme>
 
 <theme name="sex">
@@ -459,7 +461,7 @@ static, thread, lessons, clever, display,
 connection, technology, logic, button, systems, 
 structure, cosmos, intelligence, integrity, automatic, 
 net, site, connect, vortex, script, 
-random, wires
+random, wires, method
 </theme>
 
 <theme name="exclamation">
@@ -492,7 +494,7 @@ ear, arm, lungs, guts, limbs,
 tongues, eyed, vein, nerves, nerve, 
 lip, toe, mouths, organs, jaws, 
 throats, chin, limb, muscle, jaw, 
-necks, breasts, skins
+necks, breasts, skins, tattoo, wirst
 </theme>
 
 <theme name="food">
@@ -595,7 +597,7 @@ punishment, betray, hypocrisy, miserable, vice,
 submission, coward, contempt, error, disguised, 
 grotesque, submit, arrogance, rejected, sinful, 
 crawls, banished, crawled, cheating, reputation, 
-whine, perversion, apologies, faults
+whine, perversion, apologies, faults, pitiful
 </theme>
 
 <theme name="anger">
@@ -651,7 +653,7 @@ dolor, desperation, depression, wounded, weeping,
 punishment, tragic, scar, scars, sore, 
 cryin, sorrows, angst, miserable, abandon, 
 suffered, isolation, martyr, melancholy, desperately, 
-suicidal, ditch, whine, apologies, sighs
+suicidal, ditch, whine, apologies, sighs, solitary
 </theme>
 
 <theme name="activism">
@@ -679,7 +681,7 @@ order, mass, brand, mission, company,
 defend, nuclear, press, oil, industry, 
 wasteland, global, disorder, material, systems, 
 structure, education, corrupted, factory, integrity, 
-vote, pollution, manifest, population
+vote, pollution, manifest, population, civilization
 </theme>
 
 <theme name="fantastic">
@@ -722,7 +724,8 @@ lair, labyrinth, majestic, serpents, treasures,
 dan, loyalty, cloak, shrine, spear, 
 crusade, ancestors, saber, whips, tradition, 
 shields, summoned, hades, legends, kingdoms, 
-halo, crow, spears, mystical, scythe, tyrants
+halo, crow, spears, mystical, scythe, 
+tyrants, statues, guardians, portal
 </theme>
 
 <theme name="western">
@@ -1354,6 +1357,18 @@ healed, heals, ave, strung, remnants,
 stumbling, droppin, jo, tat, deserted, 
 michael, inhuman, tops, slime, dot, 
 ze, aloud, oss, fuss, suis, 
-untrue, area
+untrue, area, vet, situations, relieve, 
+alt, niemand, possibly, werde, flyin, 
+brew, builds, stink, doc, eu, 
+husband, stale, shedding, spittin, hopin, 
+wack, kom, spots, wi, dared, 
+twin, ny, faking, bonds, silk, 
+meek, torches, deja, buzz, signal, 
+caring, james, flashes, travelled, havoc, 
+mines, peep, ger, sz, rum, 
+mia, clips, flickering, schemes, sv, 
+petty, peak, coldest, rper, unser, 
+attempts, mournful, prevails, skill, rep, 
+malicious, valor, league
 </theme>
 

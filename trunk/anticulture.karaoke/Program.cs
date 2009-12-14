@@ -15,8 +15,8 @@ namespace anticulture.karaoke
 
             //verseFactory.AddTheme(ThemeLoader.Load("urban"));
             //verseFactory.AddTheme(ThemeLoader.Load("nature"));
-            verseFactory.AddTheme(ThemeLoader.Load("money"));
-            verseFactory.AddTheme(ThemeLoader.Load("religion"));
+            verseFactory.AddTheme(ThemeLoader.Load("exclamation"));
+            verseFactory.AddTheme(ThemeLoader.Load("shame"));
 
             Verse verse;
 
