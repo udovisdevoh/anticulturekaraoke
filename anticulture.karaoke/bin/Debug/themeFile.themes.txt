@@ -14,7 +14,8 @@ emotion, caress, embraced, compassion, bride,
 married, beloved, embracing, wedding, hug, 
 purest, attraction, marry, embraces, entwined, 
 passions, sweetness, sweet, admire, seduction, 
-kissin, passionate, seduced, marriage, caressing, swan
+kissin, passionate, seduced, marriage, caressing, 
+swan, caressed, desired, relationships, seduce
 </theme>
 
 <theme name="life">
@@ -23,7 +24,8 @@ breathe, breathing, lifetime, birth, survival,
 survived, reborn, rebirth, born, live, 
 breath, immortality, generations, lifes, newborn, 
 vital, healthy, conceived, conceive, conception, 
-resurrect, surviving, pregnant, hells, survivor
+resurrect, surviving, pregnant, hells, survivor, 
+offspring, fertile, survives
 </theme>
 
 <theme name="urban">
@@ -58,7 +60,9 @@ ladder, brake, doorway, towns, rusted,
 banners, tires, miami, chicago, playground, 
 detroit, hazy, upstairs, stroll, suburban, 
 subway, skyline, facade, urban, boston, 
-memphis, thrash, trucks
+memphis, thrash, trucks, beggar, ambulance, 
+rubble, neighbours, sideways, angeles, gateway, 
+sewer, hometown
 </theme>
 
 <theme name="fight">
@@ -83,7 +87,9 @@ assault, victorious, combat, defending, bloodlust,
 avenge, siege, knuckles, violently, confrontation, 
 defence, conquering, murderers, assassin, menace, 
 threatening, strangle, hurtin, compete, vietnam, 
-eliminate, destruct
+eliminate, destruct, attacked, versus, missiles, 
+exterminate, trauma, cannon, slaying, struggles, 
+threatened, defying, ammunition, rival, retaliation, battlefields
 </theme>
 
 <theme name="gore">
@@ -106,7 +112,10 @@ intestines, parasites, bloodlust, liver, blooded,
 skeleton, skeletons, bloodred, dismembered, contagious, 
 headless, crucifixion, atrocity, infect, butchered, 
 torturing, hells, cadaver, rots, bloodied, 
-festering, rotted, tortures, chainsaw
+festering, rotted, tortures, chainsaw, disfigured, 
+gagged, cannibal, rapes, jagged, bloodshot, 
+spew, slashing, mutilate, bloodbath, bloodline, 
+atrocities, slaughtering, butchery
 </theme>
 
 <theme name="money">
@@ -143,7 +152,8 @@ luxury, contract, collecting, welfare, deals,
 exchange, account, sells, vegas, workers, 
 labor, jewel, capital, production, fraud, 
 fee, property, coin, lawyer, goods, 
-token, gamble, bets
+token, gamble, bets, trading, benefit, 
+beggar, profits, payback, priceless, scam
 </theme>
 
 <theme name="nature">
@@ -190,7 +200,10 @@ crows, insects, gardens, lions, bees,
 tiger, oxygen, cliff, fullmoon, fox, 
 shepherd, aflame, predator, wastelands, raindrops, 
 springs, isle, hooves, summers, ant, 
-nighttime, shark, petals
+nighttime, shark, petals, bolt, rainbows, 
+weeds, tidal, vulture, whirlwind, sharks, 
+fertile, iced, blossom, element, africa, 
+mice, rocky, thunders, hawk, swamp
 </theme>
 
 <theme name="death">
@@ -241,7 +254,10 @@ hellfire, coma, apocalyptic, ghostly, murderers,
 atrocity, assassin, paralysed, hells, strangle, 
 coffins, collapsing, doomsday, symptoms, extermination, 
 diseases, suffocation, sacrifices, eliminate, ominous, 
-shark, survivor
+shark, survivor, injection, termination, entombed, 
+abortion, exterminate, vulture, sharks, trauma, 
+terminate, slaying, perished, testament, atrocities, 
+devastating, hangman, extinct, extinguished
 </theme>
 
 <theme name="religion">
@@ -283,7 +299,11 @@ icon, apocalyptic, prays, adam, crucifixion,
 enlightened, charity, shepherd, covenant, sacrificial, 
 faithless, icons, purified, absolution, enlighten, 
 doomsday, scapegoat, monuments, sacrifices, temptations, 
-sinned, sabbath
+sinned, sabbath, allah, angelic, inquisition, 
+heresy, jehovah, ascending, scriptures, holiness, 
+doctrine, impurity, jews, confessions, immaculate, 
+limbo, testament, redeemer, communion, praised, 
+worshipped, praises, altars
 </theme>
 
 <theme name="gangsta">
@@ -312,7 +332,8 @@ momma, ghetto, pills, ecstasy, gang,
 tag, bounce, thugs, pill, mc, 
 homies, rappin, powder, mamma, hustlin, 
 meth, heroin, bro, biggie, raps, 
-alibi, whack, criminals, sista
+alibi, whack, criminals, sista, blunts, 
+dealers, harlem, outlaw, ecstacy
 </theme>
 
 <theme name="racism">
@@ -329,7 +350,7 @@ taffy, taffies, taff, wetback, wog,
 wop, yank, yankee, yankees, wops, 
 inferior, superior, race, kkk, 88, 
 aryan, genocide, holocaust, slavery, ss, 
-races, negro, racist, hitler
+races, negro, racist, hitler, jews
 </theme>
 
 <theme name="swearing">
@@ -358,7 +379,7 @@ minute, later, week, eternally, minutes,
 date, seconds, cycle, century, timeless, 
 endlessly, month, instant, neverending, perpetual, 
 rewind, aeons, yesterdays, millennium, hourglass, 
-delay, decades
+delay, decades, clocks, decade
 </theme>
 
 <theme name="social">
@@ -392,7 +413,9 @@ dub, players, fest, invitation, gentlemen,
 halloween, beers, trends, cameras, sport, 
 tonite, invited, entertain, baseball, companion, 
 winners, fella, popular, teen, behaviour, 
-avoiding, nighttime, exciting
+avoiding, nighttime, exciting, trading, cruising, 
+ale, backstage, pub, tickets, enjoying, 
+sports, happier, hangman, enjoyed, joys
 </theme>
 
 <theme name="communication">
@@ -410,7 +433,9 @@ spoken, spoke, proof, speaks, speaking,
 conversation, talked, whispered, contact, answered, 
 explanation, proved, asks, argue, communication, 
 declare, response, suggest, proven, listens, 
-speakin, sincerity, phrase, verbal, leaning
+speakin, sincerity, phrase, verbal, leaning, 
+statement, nod, gossip, argument, communicate, 
+insist, questioned, respond
 </theme>
 
 <theme name="art">
@@ -426,7 +451,9 @@ creator, express, expression, poetry, creates,
 original, photograph, designed, scenery, inspired, 
 poet, conceive, photographs, audience, creations, 
 paints, theatre, tragedies, tattooed, tattoo, 
-tattoos, actor, theme
+tattoos, actor, theme, tones, verses, 
+inspire, poem, roles, masterpiece, actors, 
+exposing, creative, gallery, applause, poets
 </theme>
 
 <theme name="music">
@@ -450,7 +477,10 @@ pitch, breakdown, lullaby, choir, funk,
 tunes, cd, tap, dances, boogie, 
 chanting, clubs, whistle, dub, anthem, 
 hymns, chants, melodies, carrion, sounding, 
-singer, enchanting, serenade, swingin, swings, trumpets
+singer, enchanting, serenade, swingin, swings, 
+trumpets, tones, verses, instruments, tempo, 
+backstage, chord, tickets, noises, tapes, 
+humming, waltz
 </theme>
 
 <theme name="sex">
@@ -471,7 +501,8 @@ breast, obscene, attraction, perversion, semen,
 banging, perverted, seduction, erotic, panties, 
 bra, rack, perverse, tempted, sperm, 
 depraved, lustful, moans, orgy, penis, 
-sluts, temptations, bondage, orgasm, impulse
+sluts, temptations, bondage, orgasm, impulse, 
+porno, desired, masturbate, clit, ecstacy
 </theme>
 
 <theme name="metaphysics">
@@ -536,7 +567,9 @@ features, terminal, remote, undo, function,
 math, radiation, abstract, spectral, owned, 
 wired, owns, hack, screens, synthetic, 
 icons, clone, lunar, streaming, utopia, 
-equals, entangled, structures, intellect, hacked, experiment
+equals, entangled, structures, intellect, hacked, 
+experiment, dna, futures, genetic, invented, 
+laser, clones, smarter, chess
 </theme>
 
 <theme name="exclamation">
@@ -553,7 +586,7 @@ ooo, yuh, eh, dum, hmm,
 blah, hoo, aiyyo, bong, yah, 
 aw, hum, whoo, ey, yay, 
 yep, dee, yeh, hah, aah, 
-wha, pow, mm, ahhh
+wha, pow, mm, ahhh, yellin, heh
 </theme>
 
 <theme name="body">
@@ -575,7 +608,7 @@ throats, chin, limb, muscle, jaw,
 necks, breasts, skins, tattoo, wirst, 
 rear, eyelids, ribs, muscles, liver, 
 torso, thumb, tattoos, tattooed, lung, 
-eyeballs, skinned, curl
+eyeballs, skinned, curl, heel
 </theme>
 
 <theme name="food">
@@ -608,7 +641,10 @@ spoon, cattle, fest, swallowing, famine,
 sweeter, sweet, fry, beers, ribs, 
 chip, eggs, starvation, bittersweet, swallows, 
 slicing, boils, beans, crust, chewing, 
-cups, ham, peeling, egg, dish
+cups, ham, peeling, egg, dish, 
+ale, hass, dunkel, soda, salty, 
+sliced, vodka, dishes, pub, fork, 
+pork, cooked
 </theme>
 
 <theme name="woman">
@@ -620,7 +656,8 @@ style, dressed, dress, lovely, mary,
 bride, heels, cute, breast, model, 
 perfume, female, sublime, breasts, maiden, 
 skirt, venus, virgins, delicate, bra, 
-maid, wives, robe, undress
+maid, wives, robe, undress, makeup, 
+models, curves, necklace, gorgeous, glamour, dresses
 </theme>
 
 <theme name="senses">
@@ -638,7 +675,7 @@ sees, senses, spoken, spoke, hearing,
 scent, deaf, blinding, watchin, perception, 
 blindness, gazing, blindly, unheard, mute, 
 perceive, touches, observe, deafening, silenced, 
-smelling, listens, slight
+smelling, listens, slight, sounded, blindfold, smelled
 </theme>
 
 <theme name="consciousness">
@@ -676,7 +713,8 @@ mentality, altered, oblivion, oblivious, reminding,
 enlightened, daydream, remembers, fascination, imaginary, 
 existance, reminded, awareness, certainly, transcend, 
 dreamers, enlighten, lucid, wonderin, realizing, 
-asylum, hypnotic, curiosity, concentration
+asylum, hypnotic, curiosity, concentration, realised, 
+intuition, imagined, certainty
 </theme>
 
 <theme name="shame">
@@ -697,7 +735,8 @@ hypocrite, losin, scourge, prick, traitor,
 perverted, delusions, awkward, redeem, punished, 
 outcast, unwanted, perverse, failures, whipped, 
 kneeling, hypocrites, enslave, treachery, depraved, 
-blamed, banned, blaming, temptations, bondage, torments
+blamed, banned, blaming, temptations, torments, 
+apology, traitors, whining, treacherous, banish
 </theme>
 
 <theme name="anger">
@@ -714,7 +753,8 @@ furious, arrogance, deranged, hateful, upset,
 madman, rages, murderous, primal, chaotic, 
 assholes, disturbed, maniac, bloodlust, malignant, 
 hypocrites, treachery, hater, banned, discontent, 
-arrogant, uncontrolled, nemesis
+arrogant, uncontrolled, nemesis, unchained, traitors, 
+insult, payback, retaliation
 </theme>
 
 <theme name="fear">
@@ -740,7 +780,8 @@ creepin, chills, scares, alert, emergency,
 malignant, crypt, skeleton, skeletons, fearful, 
 hellfire, petrified, ghostly, insecurity, insecurities, 
 menace, threatening, spiders, paralysed, doomsday, 
-obscured, warnings, nemesis, avoiding, ominous, crypts
+obscured, warnings, nemesis, avoiding, ominous, 
+crypts, devilish, repulsive, threatened, freakin
 </theme>
 
 <theme name="sadness">
@@ -765,7 +806,8 @@ suicidal, ditch, whine, apologies, sighs,
 solitary, misfortune, disappointment, punished, outcast, 
 separation, unwanted, grieving, failures, sadly, 
 grieve, treachery, weeps, banned, disappointed, 
-tragedies, separated, discontent, hopelessness, torments
+tragedies, separated, discontent, hopelessness, torments, 
+losses, perdition, saddest, whining, banish
 </theme>
 
 <theme name="activism">
@@ -799,7 +841,8 @@ liberation, empires, injustice, china, welfare,
 mesmerized, survivors, conform, manipulation, polluted, 
 oxygen, conformity, mtv, pawns, fascist, 
 revolt, wastelands, headlines, lawyer, oppressed, 
-utopia, oppose, manipulate, structures, obedience
+utopia, oppose, manipulate, structures, obedience, 
+stagnant, institution, governments, regime, scam
 </theme>
 
 <theme name="fantastic">
@@ -853,7 +896,10 @@ ethereal, ghostly, conquering, phantoms, diabolical,
 ancients, troll, alliance, tribes, aflame, 
 cryptic, arcane, enchanting, elders, chief, 
 doomsday, utopia, monuments, psychic, thor, 
-tortures, bondage, demented, crypts, satans
+tortures, bondage, demented, crypts, satans, 
+cloaked, devilish, scriptures, whipping, dungeons, 
+cannon, bravery, pillars, crowns, daggers, 
+dynasty, atlantis, horsemen, witchcraft, conqueror, ancestral
 </theme>
 
 <theme name="western">
@@ -868,7 +914,7 @@ hay, west, plain, landscape, plains,
 horizons, village, valleys, texas, county, 
 western, grounds, landscapes, herd, inn, 
 mill, towns, countries, straw, suburban, 
-deserts, shovel, fences
+deserts, shovel, fences, saddle, wells, horsemen
 </theme>
 
 <theme name="atypical">
@@ -1725,6 +1771,136 @@ anticipation, radiant, tub, cocked, bloated,
 crutch, casualty, charade, pest, lure, 
 imminent, lamp, fractured, tenderness, stern, 
 terra, wanderer, hijos, unclear, promising, 
-calles
+calles, fuera, dinero, rke, sta, 
+schwarze, badge, print, disregard, backed, 
+determination, pinned, official, tamed, spits, 
+sabe, shaggy, swarming, unearthly, humility, 
+romeo, signals, caution, ram, stressed, 
+rabid, sonic, kommen, lui, lickin, 
+sturm, mrs, jord, alg, vai, 
+splendor, purge, joining, buscar, dearest, 
+nam, hopeful, burdens, stripes, splash, 
+naturally, preserve, oldest, twista, seiner, 
+gern, pushes, snitch, restraint, cam, 
+retarded, epitaph, hardened, departure, transformation, 
+heritage, belial, dzie, mirar, sulphur, 
+duro, grandeur, hombres, allen, aimed, 
+parallel, flipped, belonged, injected, reeling, 
+seriously, placer, jah, chairs, oft, 
+definitely, addict, darkening, scorned, dio, 
+morte, desk, mount, washes, accepting, 
+intoxicated, sweaty, differences, persist, multiply, 
+creo, lettin, schwer, llanto, wut, 
+scheint, indecision, charred, shoved, sensations, 
+seldom, spewing, awesome, mirage, amigos, 
+auto, passenger, ken, hem, absorbed, 
+nickel, sweater, cil, hren, port, 
+ii, wield, releasing, rme, dealin, 
+fourteen, motives, mates, unsure, folded, 
+hire, edges, poke, maim, sank, 
+sh, mijn, langsam, treats, sagen, 
+schnell, confide, matches, motive, mould, 
+sly, catchin, commitment, nuit, nick, 
+fulfilling, untill, pl, underwear, eva, 
+jeep, sto, leak, policy, sickly, 
+fuels, wilt, stamp, engel, nite, 
+unbroken, schwarzen, bringt, muerto, boats, 
+wiggle, bearer, sua, section, stall, 
+slate, heap, compton, chasm, comprehension, 
+collision, raises, firing, suitcase, manage, 
+noc, arse, calor, whirling, pueda, 
+brag, visible, persecution, youve, tested, 
+lucy, decir, couldnt, finns, seinem, 
+mina, ledge, beard, chinese, wayne, 
+gusta, cunning, medication, dejar, blurry, 
+drifted, hecho, eternidad, cus, pursue, 
+gdzie, disarray, prom, packin, sombras, 
+nuh, shorter, withstand, coats, noches, 
+whirl, parted, krieg, keinen, holler, 
+bricht, cages, descended, travels, dank, 
+unanswered, handful, hopefully, misled, background, 
+nineteen, codes, juego, siehst, alibis, 
+sehnsucht, native, thier, maan, freund, 
+robes, youll, session, fabric, cement, 
+clearing, harmless, bitten, completed, stitches, 
+crazed, starved, furnace, contained, encuentro, 
+atop, mirrored, gentleman, possibility, ambitions, 
+cris, mocking, sodom, max, parked, 
+reclaim, wagon, louis, poisoning, barn, 
+incense, baller, deseo, sleeves, schlacht, 
+geben, buckle, mislead, beckoning, binding, 
+ruby, tam, attic, crumbled, delirium, 
+posse, sniff, weh, slowing, throught, 
+ranks, nina, carter, dodge, muddy, 
+possessions, guarded, jede, greener, thrashing, 
+longs, gazed, sensitive, dicen, depravity, 
+clawing, tausend, bah, wrecking, seeping, 
+blistered, wickedness, misleading, churning, shave, 
+posted, baddest, mini, bestowed, tormenting, 
+cower, carne, april, tho, sous, 
+gum, untouchable, expand, whites, cuenta, 
+scraping, mild, collapsed, cristal, unstoppable, 
+reaping, zn, vanishing, jedem, diesen, 
+boxes, mash, kelly, rut, niet, 
+ira, ot, nog, voi, aged, 
+branch, pilot, trenches, affect, rang, 
+hunters, thursday, curve, futuro, bowed, 
+slab, napalm, leaking, permission, europe, 
+layer, retire, missy, magnificent, fulfil, 
+arises, parting, wail, exhale, types, 
+mt, tommy, hella, rippin, tanta, 
+kidding, coated, shrink, patch, callous, 
+tails, lac, jester, cola, muse, 
+disconnected, tylko, fleeing, junkies, ach, 
+uptight, circumstances, mattress, pena, idiots, 
+bake, tai, zieht, nel, lte, 
+livet, gab, virtues, wig, graceful, 
+rover, weakest, combination, starring, foundations, 
+estamos, hizo, flush, valentine, puffin, 
+gripping, twists, olvido, lens, painless, 
+rer, tendr, rocker, safer, similar, 
+pueden, sm, ihnen, cerca, scratched, 
+luft, ville, wald, ganze, lash, 
+spilt, catches, inflict, smeared, suspicion, 
+ruff, gauge, awaited, cual, misplaced, 
+pressing, wed, organic, wrought, changin, 
+sem, tienen, marched, rearranged, transmission, 
+contemplating, realization, sed, seized, anus, 
+tang, sweetly, wastes, accusations, passin, 
+wollen, methods, viejo, barrio, lanes, 
+treating, touchin, blazin, contigo, glorify, 
+tactics, smith, aller, obviously, vielleicht, 
+vara, doesnt, sigo, lou, fag, 
+shatters, swiftly, glances, bu, congregation, 
+embedded, daring, pois, eterno, fortunate, 
+sensual, ravenous, cases, tuned, staff, 
+moist, reckoning, leer, thicker, principle, 
+superficial, busting, answering, meanings, sharpen, 
+receiving, nope, agua, erasing, sos, 
+relieved, charts, evig, sinne, tun, 
+mutter, rapidly, schnee, weaving, darkside, 
+zwischen, construction, pumps, emptied, pu, 
+glocks, diary, teardrops, officer, induced, 
+resides, sixth, shameless, prosperity, systematic, 
+willie, overrated, essential, owner, onwards, 
+strictly, highs, rick, gliding, casualties, 
+haus, tor, ans, schrei, andar, 
+marie, dementia, patron, insatiable, analyze, 
+pobre, sprayed, distrust, endings, vita, 
+spat, medical, abusing, levels, hle, 
+pickin, somewhat, arrested, frente, wissen, 
+trample, lag, ether, wastin, ort, 
+blacks, poisons, freezes, adorned, moss, 
+grains, slayer, ageless, strengthen, degradation, 
+evils, shoots, dla, slammed, fui, 
+juntos, caresses, fakes, treatment, denies, 
+despised, procession, ld, fitted, twitching, 
+voor, glistening, secretly, kiedy, resort, 
+impressions, stickin, infecting, hearin, privilege, 
+pulsating, stinks, ponder, mornings, shredded, 
+crest, japan, infectious, lightly, loathe, 
+props, bara, concede, pens, crackin, 
+umen, cho, headache, negativity, warped, 
+keepers, deceitful, spike, extinguish
 </theme>
 
