@@ -40,6 +40,11 @@ namespace anticulture.karaoke.verseFactory
         /// Analogy verse factory
         /// </summary>
         private VerseFactoryAnalogy verseFactoryAnalogy;
+
+        /// <summary>
+        /// Analogy verse factory
+        /// </summary>
+        private VerseFactoryInterleavedAnalogy verseFactoryInterleavedAnalogy;
         #endregion
 
         #region Constructors
@@ -55,6 +60,7 @@ namespace anticulture.karaoke.verseFactory
             verseFactoryMarkov = new VerseFactoryMarkov(verseConstructionSettings, creationMemory);
             verseFactoryCryptic = new VerseFactoryCryptic(verseConstructionSettings, creationMemory);
             verseFactoryAnalogy = new VerseFactoryAnalogy(verseConstructionSettings, creationMemory);
+            verseFactoryInterleavedAnalogy = new VerseFactoryInterleavedAnalogy(verseConstructionSettings, creationMemory);
         }
         #endregion
 
@@ -81,6 +87,10 @@ namespace anticulture.karaoke.verseFactory
             else if (verseConstructionSettings.Algorithm == VerseConstructionSettings.AlgorithmAnalogy)
             {
                 verse = verseFactoryAnalogy.Build(previousVerse);
+            }
+            else if (verseConstructionSettings.Algorithm == VerseConstructionSettings.AlgorithmInterleavedAnalogy)
+            {
+                verse = verseFactoryInterleavedAnalogy.Build(previousVerse);
             }
             else
             {

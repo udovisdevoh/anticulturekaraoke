@@ -13,6 +13,10 @@ namespace anticulture.karaoke.verseFactory
         private HashSet<string> themeWordList = new HashSet<string>();
 
         private HashSet<Verse> straightSourceSampleVerseList;
+
+        private int rhymeCounter = 0;
+
+        private List<Verse> verseToAddRhyme = new List<Verse>();
         #endregion
 
         #region Public Methods
@@ -24,6 +28,8 @@ namespace anticulture.karaoke.verseFactory
             occurencePerTheme.Clear();
             themeWordList.Clear();
             straightSourceSampleVerseList = null;
+            rhymeCounter = 0;
+            verseToAddRhyme.Clear();
         }
 
         /// <summary>
@@ -62,6 +68,20 @@ namespace anticulture.karaoke.verseFactory
 
             return value;
         }
+
+        public Verse GetVerseToAddRhyme(int differenceFromLatest)
+        {
+            int index = verseToAddRhyme.Count + differenceFromLatest;
+            if (index < 0 || index >= verseToAddRhyme.Count)
+                return null;
+
+            return verseToAddRhyme[index];
+        }
+
+        public void AddVerseToAddRhyme(Verse verse)
+        {
+            verseToAddRhyme.Add(verse);
+        }
         #endregion
 
         #region Private Methods
@@ -92,6 +112,12 @@ namespace anticulture.karaoke.verseFactory
         {
             get { return straightSourceSampleVerseList; }
             set { straightSourceSampleVerseList = value; }
+        }
+
+        public int RhymeCounter
+        {
+            get { return rhymeCounter; }
+            set { rhymeCounter = value; }
         }
         #endregion
     }

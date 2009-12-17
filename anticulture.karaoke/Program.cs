@@ -24,7 +24,8 @@ namespace anticulture.karaoke
 
             verseFactory.ClearCreationMemory();
 
-            verseFactory.Algorithm = VerseConstructionSettings.AlgorithmAnalogy;
+            //verseFactory.Algorithm = VerseConstructionSettings.AlgorithmAnalogy;
+            verseFactory.Algorithm = VerseConstructionSettings.AlgorithmInterleavedAnalogy;
 
             verseFactory.DesiredLength = 16;
 

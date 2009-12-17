@@ -9,7 +9,7 @@ namespace anticulture.karaoke.verseFactory
     /// <summary>
     /// Represents a song's verse
     /// </summary>
-    public class Verse
+    public class Verse : IEquatable<Verse>
     {
         #region Fields
         /// <summary>
@@ -92,6 +92,13 @@ namespace anticulture.karaoke.verseFactory
                     _themeScore = new Dictionary<string, float>();
                 return _themeScore;
             }
+        }
+        #endregion
+
+        #region IEquatable<Verse> Members
+        public bool Equals(Verse other)
+        {
+            return this.ToString().Equals(other.ToString());
         }
         #endregion
     }

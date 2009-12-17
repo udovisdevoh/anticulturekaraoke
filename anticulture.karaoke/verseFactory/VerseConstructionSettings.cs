@@ -30,6 +30,11 @@ namespace anticulture.karaoke.verseFactory
         public const byte AlgorithmAnalogy = 3;
 
         /// <summary>
+        /// Identifies algorithm working with interleaved analogies
+        /// </summary>
+        public const byte AlgorithmInterleavedAnalogy = 4;
+
+        /// <summary>
         /// Default desired length in char
         /// </summary>
         public const byte DefaultDesiredLength = 32;
