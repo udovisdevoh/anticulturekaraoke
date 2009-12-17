@@ -25,6 +25,11 @@ namespace anticulture.karaoke.verseFactory
         public const byte AlgorithmCryptic = 2;
 
         /// <summary>
+        /// Identifies algorithm working with analogies
+        /// </summary>
+        public const byte AlgorithmAnalogy = 3;
+
+        /// <summary>
         /// Default desired length in char
         /// </summary>
         public const byte DefaultDesiredLength = 32;

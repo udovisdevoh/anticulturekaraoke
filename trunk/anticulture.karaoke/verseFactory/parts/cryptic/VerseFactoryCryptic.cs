@@ -22,6 +22,8 @@ namespace anticulture.karaoke.verseFactory
         /// Verse construction settings
         /// </summary>
         private VerseConstructionSettings verseConstructionSettings;
+
+        private CreationMemory creationMemory;
         #endregion
 
         #region Constructor
@@ -29,9 +31,10 @@ namespace anticulture.karaoke.verseFactory
         /// Constructor
         /// </summary>
         /// <param name="verseConstructionSettings">verse construction settings</param>
-        public VerseFactoryCryptic(VerseConstructionSettings verseConstructionSettings)
+        public VerseFactoryCryptic(VerseConstructionSettings verseConstructionSettings, CreationMemory creationMemory)
         {
             this.verseConstructionSettings = verseConstructionSettings;
+            this.creationMemory = creationMemory;
         }
         #endregion
 

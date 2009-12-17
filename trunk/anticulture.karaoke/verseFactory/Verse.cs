@@ -54,6 +54,25 @@ namespace anticulture.karaoke.verseFactory
                 return textValue.Length;
             }
         }
+        
+        public ICollection<string> WordList
+        {
+            get
+            {
+                string line = ToString();
+                line = line.PunctuationToSpace().HardTrim();
+
+                List<string> wordList = new List<string>();
+                string[] words = ToString().Split(' ');
+
+                foreach (string word in words)
+                {
+                    wordList.Add(word.Trim());
+                }
+
+                return wordList;
+            }
+        }
         #endregion
 
         #region Private Properties

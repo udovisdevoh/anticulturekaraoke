@@ -16,14 +16,37 @@ namespace anticulture.karaoke
             //verseFactory.AddTheme(ThemeLoader.Load("urban"));
             //verseFactory.AddTheme(ThemeLoader.Load("nature"));
             verseFactory.AddTheme(ThemeLoader.Load("activism"));
+            //verseFactory.AddTheme(ThemeLoader.Load("food"));
+            verseFactory.AddTheme(ThemeLoader.Load("western"));
             //verseFactory.AddTheme(ThemeLoader.Load("shame"));
 
             Verse verse;
 
-            verseFactory.DesiredLength = 64;
+            verseFactory.ClearCreationMemory();
+
+            verseFactory.DesiredLength = 16;
+
+            for (int i = 0; i < 16; i++)
+            {
+                verse = verseFactory.Build();
+                Console.WriteLine(verse.ToString());
+                if ((i + 1) % 4 == 0)
+                    Console.WriteLine("");
+            }
+
+            /*verseFactory.Algorithm = VerseConstructionSettings.AlgorithmAnalogy;
 
             verse = verseFactory.Build();
             Console.WriteLine(verse.ToString());
+            verse = verseFactory.Build();
+            Console.WriteLine(verse.ToString());
+            verse = verseFactory.Build();
+            Console.WriteLine(verse.ToString());*/
+
+            //verseFactory.ClearCreationMemory();
+
+            //verse = verseFactory.Build();
+            //Console.WriteLine(verse.ToString());
 
             /*verseFactory.Algorithm = VerseConstructionSettings.AlgorithmMarkov;
             verse = verseFactory.Build(verse);

@@ -16,6 +16,8 @@ namespace anticulture.karaoke.verseFactory
         /// Construction settings
         /// </summary>
         private VerseConstructionSettings verseConstructionSettings;
+
+        private CreationMemory creationMemory;
         #endregion
 
         #region Parts
@@ -33,6 +35,11 @@ namespace anticulture.karaoke.verseFactory
         /// Cryptic verse factory
         /// </summary>
         private VerseFactoryCryptic verseFactoryCryptic;
+
+        /// <summary>
+        /// Analogy verse factory
+        /// </summary>
+        private VerseFactoryAnalogy verseFactoryAnalogy;
         #endregion
 
         #region Constructors
@@ -42,9 +49,12 @@ namespace anticulture.karaoke.verseFactory
         public VerseFactory()
         {
             verseConstructionSettings = new VerseConstructionSettings();
-            verseFactoryStraight = new VerseFactoryStraight(verseConstructionSettings);
-            verseFactoryMarkov = new VerseFactoryMarkov(verseConstructionSettings);
-            verseFactoryCryptic = new VerseFactoryCryptic(verseConstructionSettings);
+            creationMemory = new CreationMemory();
+
+            verseFactoryStraight = new VerseFactoryStraight(verseConstructionSettings, creationMemory);
+            verseFactoryMarkov = new VerseFactoryMarkov(verseConstructionSettings, creationMemory);
+            verseFactoryCryptic = new VerseFactoryCryptic(verseConstructionSettings, creationMemory);
+            verseFactoryAnalogy = new VerseFactoryAnalogy(verseConstructionSettings, creationMemory);
         }
         #endregion
 
@@ -67,6 +77,10 @@ namespace anticulture.karaoke.verseFactory
             else if (verseConstructionSettings.Algorithm == VerseConstructionSettings.AlgorithmCryptic)
             {
                 verse = verseFactoryCryptic.Build(previousVerse);
+            }
+            else if (verseConstructionSettings.Algorithm == VerseConstructionSettings.AlgorithmAnalogy)
+            {
+                verse = verseFactoryAnalogy.Build(previousVerse);
             }
             else
             {
@@ -96,6 +110,14 @@ namespace anticulture.karaoke.verseFactory
         public void ResetThemes()
         {
             verseConstructionSettings.ResetThemes();
+        }
+
+        /// <summary>
+        /// Clear creation memory
+        /// </summary>
+        public void ClearCreationMemory()
+        {
+            creationMemory.Clear();
         }
         #endregion
 

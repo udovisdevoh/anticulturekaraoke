@@ -15,7 +15,7 @@ namespace anticulture.karaoke.verseFactory
         /// <summary>
         /// Sampling size
         /// </summary>
-        private const int SamplingSize = 20000;
+        private const int SamplingSize = 2000;
         #endregion
 
         #region Fields
@@ -23,6 +23,8 @@ namespace anticulture.karaoke.verseFactory
         /// Verse construction settings
         /// </summary>
         private VerseConstructionSettings verseConstructionSettings;
+
+        private CreationMemory creationMemory;
         #endregion
 
         #region Constructor
@@ -30,9 +32,10 @@ namespace anticulture.karaoke.verseFactory
         /// Constructor
         /// </summary>
         /// <param name="verseConstructionSettings">verse construction settings</param>
-        public VerseFactoryStraight(VerseConstructionSettings verseConstructionSettings)
+        public VerseFactoryStraight(VerseConstructionSettings verseConstructionSettings, CreationMemory creationMemory)
         {
             this.verseConstructionSettings = verseConstructionSettings;
+            this.creationMemory = creationMemory;
         }
         #endregion
 
@@ -45,7 +48,9 @@ namespace anticulture.karaoke.verseFactory
         public override Verse Build(Verse previousVerse)
         {
             IEnumerable<Verse> verseList = VerseConstructionSettings.LyricSource.GetRandomSourceLineList(VerseConstructionSettings.Random, SamplingSize);
-            return GetMostThemeRelatedVerseWithDesiredLength(verseList, verseConstructionSettings.DesiredLength);
+            Verse bestVerse = GetMostThemeRelatedVerseWithDesiredLength(verseList, verseConstructionSettings.DesiredLength);
+            creationMemory.Remember(bestVerse, verseConstructionSettings);
+            return bestVerse;
         }
         #endregion
 
@@ -63,7 +68,7 @@ namespace anticulture.karaoke.verseFactory
             int currentScore = 0;
             foreach (Verse currentVerse in verseList)
             {
-                currentScore = Evaluator.GetScore(currentVerse, verseConstructionSettings.ThemeList, verseConstructionSettings.ThemeBlackList, desiredLength);
+                currentScore = Evaluator.GetScore(currentVerse, verseConstructionSettings.ThemeList, verseConstructionSettings.ThemeBlackList, desiredLength, creationMemory);
                 if (currentScore > bestScore || bestVerse == null)
                 {
                     bestScore = currentScore;

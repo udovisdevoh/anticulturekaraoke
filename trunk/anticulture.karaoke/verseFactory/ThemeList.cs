@@ -18,6 +18,16 @@ namespace anticulture.karaoke.verseFactory
         private HashSet<Theme> themeList = new HashSet<Theme>();
         #endregion
 
+        #region Public Methods
+        public bool Contains(string word)
+        {
+            foreach (Theme theme in themeList)
+                if (theme.Contains(word))
+                    return true;
+            return false;
+        }
+        #endregion
+
         #region ICollection<Theme> Members
         /// <summary>
         /// Add a theme
