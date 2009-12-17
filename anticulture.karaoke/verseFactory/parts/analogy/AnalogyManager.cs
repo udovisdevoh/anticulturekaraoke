@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using anticulture.karaoke.themes;
 
 namespace anticulture.karaoke.verseFactory
 {
@@ -43,7 +44,10 @@ namespace anticulture.karaoke.verseFactory
 
                 foreach (string analogyCandidate in availableWordListForAnalogy)
                 {
-                    if (desiredThemeList.Contains(analogyCandidate) && !currentThemeListForWord.Contains(analogyCandidate) && !creationMemory.ContainsWord(analogyCandidate) && !wordListInOriginalVerse.Contains(analogyCandidate))
+                    if (desiredThemeList.Contains(analogyCandidate) &&
+                        !currentThemeListForWord.Contains(analogyCandidate) &&
+                        !creationMemory.ContainsWord(analogyCandidate) &&
+                        !wordListInOriginalVerse.Contains(analogyCandidate))
                     {
                         bestAnalogy = analogyCandidate;
                         break;
@@ -51,7 +55,8 @@ namespace anticulture.karaoke.verseFactory
                 }
             }
 
-            creationMemory.RememberWord(bestAnalogy);
+            if (bestAnalogy != null)
+                creationMemory.RememberWord(bestAnalogy);
 
             return bestAnalogy;
         }

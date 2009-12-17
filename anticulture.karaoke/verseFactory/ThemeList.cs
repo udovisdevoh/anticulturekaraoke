@@ -15,7 +15,19 @@ namespace anticulture.karaoke.verseFactory
         /// <summary>
         /// Internal references to themes
         /// </summary>
-        private HashSet<Theme> themeList = new HashSet<Theme>();
+        private HashSet<Theme> themeList;
+        #endregion
+
+        #region Constructors
+        public ThemeList()
+        {
+            themeList = new HashSet<Theme>();
+        }
+
+        public ThemeList(IEnumerable<Theme> themeList)
+        {
+            this.themeList = new HashSet<Theme>(themeList);
+        }
         #endregion
 
         #region Public Methods
