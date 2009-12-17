@@ -8,15 +8,10 @@ namespace anticulture.karaoke.verseFactory
     /// <summary>
     /// Analogic verse factory
     /// </summary>
-    class VerseFactoryAnalogy : AbstractVerseFactory
+    class VerseFactoryAnalogy : VerseFactoryStraight
     {
-        #region Fields
-        /// <summary>
-        /// Verse construction settings
-        /// </summary>
-        private VerseConstructionSettings verseConstructionSettings;
-
-        private CreationMemory creationMemory;
+        #region Parts
+        private AnalogyManager analogyManager = new AnalogyManager();
         #endregion
 
         #region Constructors
@@ -24,11 +19,7 @@ namespace anticulture.karaoke.verseFactory
         /// Builds analogic verse
         /// </summary>
         /// <param name="verseConstructionSettings">verse construction settings</param>
-        public VerseFactoryAnalogy(VerseConstructionSettings verseConstructionSettings, CreationMemory creationMemory)
-        {
-            this.verseConstructionSettings = verseConstructionSettings;
-            this.creationMemory = creationMemory;
-        }
+        public VerseFactoryAnalogy(VerseConstructionSettings verseConstructionSettings, CreationMemory creationMemory) : base(verseConstructionSettings, creationMemory) { }
         #endregion
 
         #region Public Methods
@@ -39,11 +30,37 @@ namespace anticulture.karaoke.verseFactory
         /// <returns>analogic verse</returns>
         public override Verse Build(Verse previousVerse)
         {
-            #warning Implement VerseFactoryAnalogy.Build()
+            Verse verse = base.Build(previousVerse);
+            verse = AddAnalogies(verse);
+            return verse;
+        }
+        #endregion
 
-            //creationMemory.Remember(verse, verseConstructionSettings);
-
-            throw new NotImplementedException();
+        #region Private Methods
+        /// <summary>
+        /// Add analogies to verse
+        /// </summary>
+        /// <param name="verse">original verse</param>
+        /// <returns>verse with new analogies</returns>
+        private Verse AddAnalogies(Verse verse)
+        {
+            string bestAnalogy;
+            if (verseConstructionSettings.ThemeList.Count > 0)
+            {
+                foreach (string word in verse.WordList)
+                {
+                    if (verseConstructionSettings.ThemeList.Contains(word))
+                    {
+                        bestAnalogy = analogyManager.TryGetBestAnalogy(word, verseConstructionSettings.ThemeList, Evaluator.GetThemeList(word),creationMemory, verse.WordList);
+                        if (bestAnalogy != null)
+                        {
+                            verse = verse.ReplaceWord(word, bestAnalogy);
+                            return verse;
+                        }
+                    }
+                }
+            }
+            return verse;
         }
         #endregion
     }

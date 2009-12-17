@@ -46,6 +46,7 @@ namespace anticulture.karaoke.verseFactory
         /// <returns>char based markov chain based verse</returns>
         public override Verse Build(Verse previousVerse)
         {
+            int tries = 0;
             IEnumerable<Verse> verseList = VerseConstructionSettings.LyricSource.GetRandomSourceLineList(VerseConstructionSettings.Random, SamplingSize);
             verseList = TryGetMostThemeRelatedVerseList(verseList);
             LetterMatrix letterMatrix = new LetterMatrix(verseList);
@@ -56,6 +57,9 @@ namespace anticulture.karaoke.verseFactory
             {
                 currentLetter = letterMatrix.GenerateNextChar(VerseConstructionSettings.Random);
                 sentence += currentLetter;
+                tries++;
+                if (tries > 10000)
+                    break;
             } while (sentence.Length < verseConstructionSettings.DesiredLength || currentLetter != ' ');
 
             sentence = sentence.HardTrim();

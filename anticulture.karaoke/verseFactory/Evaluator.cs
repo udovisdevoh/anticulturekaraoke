@@ -120,6 +120,15 @@ namespace anticulture.karaoke.verseFactory
 
             return occurenceCountPerTheme;
         }
+
+        public static ThemeList GetThemeList(string word)
+        {
+            ThemeList selectedThemeList = new ThemeList();
+            foreach (Theme theme in ThemeLoader.ThemeList)
+                if (theme.Contains(word))
+                    selectedThemeList.Add(theme);
+            return selectedThemeList;
+        }
         #endregion
 
         #region Private Methods

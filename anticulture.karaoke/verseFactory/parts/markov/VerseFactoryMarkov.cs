@@ -63,8 +63,6 @@ namespace anticulture.karaoke.verseFactory
             //if (verse.Length * 1.4 < verseConstructionSettings.DesiredLength || verseConstructionSettings.DesiredLength * 1.4 < verse.Length)
             //    return null;
 
-            creationMemory.Remember(verse, verseConstructionSettings);
-
             return verse;
         }
         #endregion

@@ -6,7 +6,7 @@ using anticulture.karaoke.themes;
 
 namespace anticulture.karaoke.verseFactory
 {
-    class VerseConstructionSettings
+    public class VerseConstructionSettings
     {
         #region Constants
         /// <summary>

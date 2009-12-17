@@ -36,6 +36,11 @@ namespace anticulture.karaoke.verseFactory
             themeWordList.UnionWith(Evaluator.GetThemeWords(verse, verseConstructionSettings.ThemeList));
             AddOccurenceCountPerTheme(Evaluator.CountOccurencePerTheme(verse, verseConstructionSettings.ThemeList));
         }
+        
+        public void RememberWord(string word)
+        {
+            themeWordList.Add(word);
+        }
 
         public bool ContainsWord(string word)
         {

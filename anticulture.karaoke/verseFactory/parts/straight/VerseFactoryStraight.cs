@@ -22,9 +22,9 @@ namespace anticulture.karaoke.verseFactory
         /// <summary>
         /// Verse construction settings
         /// </summary>
-        private VerseConstructionSettings verseConstructionSettings;
+        protected VerseConstructionSettings verseConstructionSettings;
 
-        private CreationMemory creationMemory;
+        protected CreationMemory creationMemory;
         #endregion
 
         #region Constructor
@@ -54,7 +54,6 @@ namespace anticulture.karaoke.verseFactory
 
             creationMemory.StraightSourceSampleVerseList.Remove(bestVerse);
 
-            creationMemory.Remember(bestVerse, verseConstructionSettings);
             return bestVerse;
         }
         #endregion
