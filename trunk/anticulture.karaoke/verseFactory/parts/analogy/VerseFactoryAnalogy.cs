@@ -40,7 +40,6 @@ namespace anticulture.karaoke.verseFactory
 
             Verse verse = base.Build(previousVerse);
             verse = analogyManager.AddAnalogies(verse, false,verseConstructionSettings,creationMemory);
-
             verseConstructionSettings.ThemeBlackList = blackListBackup;
 
             return verse;

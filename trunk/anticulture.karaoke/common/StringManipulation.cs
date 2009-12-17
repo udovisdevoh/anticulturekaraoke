@@ -24,6 +24,7 @@ namespace anticulture.karaoke
         private static Regex notALetterNorSpace = new Regex(@"[^a-zA-Z ]");
         #endregion
 
+        #region Public Methods
         /// <summary>
         /// Clean the string
         /// </summary>
@@ -83,5 +84,15 @@ namespace anticulture.karaoke
             source = source.Trim();
             return source;
         }
+
+        public static bool IsForeignLanguage(this string source)
+        {
+            foreach (char currentChar in source)
+                if (currentChar > '\x00FF')
+                    return true;
+            
+            return false;
+        }
+        #endregion
     }
 }
