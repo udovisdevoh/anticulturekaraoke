@@ -12,6 +12,8 @@ namespace anticulture.karaoke.verseFactory
     {
         #region Parts
         private AnalogyManager analogyManager = new AnalogyManager();
+
+        private ThemeList disabledBlackList = new ThemeList();
         #endregion
 
         #region Constructors
@@ -19,7 +21,10 @@ namespace anticulture.karaoke.verseFactory
         /// Builds analogic verse
         /// </summary>
         /// <param name="verseConstructionSettings">verse construction settings</param>
-        public VerseFactoryAnalogy(VerseConstructionSettings verseConstructionSettings, CreationMemory creationMemory) : base(verseConstructionSettings, creationMemory) { }
+        public VerseFactoryAnalogy(VerseConstructionSettings verseConstructionSettings, CreationMemory creationMemory) : base(verseConstructionSettings, creationMemory)
+        {
+            samplingSize = 2000;
+        }
         #endregion
 
         #region Public Methods
@@ -30,8 +35,14 @@ namespace anticulture.karaoke.verseFactory
         /// <returns>analogic verse</returns>
         public override Verse Build(Verse previousVerse)
         {
+            ThemeList blackListBackup = verseConstructionSettings.ThemeBlackList;
+            verseConstructionSettings.ThemeBlackList = disabledBlackList;
+
             Verse verse = base.Build(previousVerse);
             verse = AddAnalogies(verse);
+
+            verseConstructionSettings.ThemeBlackList = blackListBackup;
+
             return verse;
         }
         #endregion
@@ -49,14 +60,11 @@ namespace anticulture.karaoke.verseFactory
             {
                 foreach (string word in verse.WordList)
                 {
-                    if (verseConstructionSettings.ThemeList.Contains(word))
+                    bestAnalogy = analogyManager.TryGetBestAnalogy(word, verseConstructionSettings.ThemeList, Evaluator.GetThemeList(word),creationMemory, verse.WordList);
+                    if (bestAnalogy != null)
                     {
-                        bestAnalogy = analogyManager.TryGetBestAnalogy(word, verseConstructionSettings.ThemeList, Evaluator.GetThemeList(word),creationMemory, verse.WordList);
-                        if (bestAnalogy != null)
-                        {
-                            verse = verse.ReplaceWord(word, bestAnalogy);
-                            return verse;
-                        }
+                        verse = verse.ReplaceWord(word, bestAnalogy);
+                        return verse;
                     }
                 }
             }

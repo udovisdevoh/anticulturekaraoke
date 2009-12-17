@@ -172,6 +172,7 @@ namespace anticulture.karaoke.verseFactory
         public ThemeList ThemeBlackList
         {
             get { return themeBlackList; }
+            set { themeBlackList = value; }
         }
         #endregion
     }

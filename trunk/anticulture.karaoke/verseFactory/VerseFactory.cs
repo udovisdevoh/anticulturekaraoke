@@ -107,6 +107,15 @@ namespace anticulture.karaoke.verseFactory
         }
 
         /// <summary>
+        /// Censor a theme in construction settings
+        /// </summary>
+        /// <param name="theme">theme to censor</param>
+        public void CensorTheme(Theme theme)
+        {
+            verseConstructionSettings.CensorTheme(theme);
+        }
+
+        /// <summary>
         /// Reset themes
         /// </summary>
         public void ResetThemes()
