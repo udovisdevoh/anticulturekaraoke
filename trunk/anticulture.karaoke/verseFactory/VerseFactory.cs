@@ -92,6 +92,8 @@ namespace anticulture.karaoke.verseFactory
                 verse = verseFactoryStraight.Build(previousVerse);
             }
 
+            creationMemory.Remember(verse, verseConstructionSettings);
+
             return verse;
         }
 

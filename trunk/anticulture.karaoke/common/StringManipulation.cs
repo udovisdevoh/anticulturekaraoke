@@ -66,5 +66,22 @@ namespace anticulture.karaoke
         {
             return notALetterNorSpace.Replace(text, " ");
         }
+
+        public static string ReplaceWord(this string source, string fromWord, string toWord)
+        {
+            Regex fromWordMatcher = new Regex("([^a-zA-Z])" + fromWord + "([^a-zA-Z])");
+            source = " " + source + " ";
+
+            Match match = fromWordMatcher.Match(source);
+
+            if (match != null && match.Value.Length > 2)
+            {
+                toWord = match.Value.Substring(0,1) + toWord + match.Value.Substring(match.Value.Length - 1, 1);
+                source = source.Replace(match.Value, toWord);
+            }
+
+            source = source.Trim();
+            return source;
+        }
     }
 }

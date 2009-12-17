@@ -54,15 +54,15 @@ namespace anticulture.karaoke.verseFactory
                 return textValue.Length;
             }
         }
-        
-        public ICollection<string> WordList
+
+        public HashSet<string> WordList
         {
             get
             {
                 string line = ToString();
                 line = line.PunctuationToSpace().HardTrim();
 
-                List<string> wordList = new List<string>();
+                HashSet<string> wordList = new HashSet<string>();
                 string[] words = ToString().Split(' ');
 
                 foreach (string word in words)
@@ -72,6 +72,11 @@ namespace anticulture.karaoke.verseFactory
 
                 return wordList;
             }
+        }
+
+        public Verse ReplaceWord(string fromWord, string toWord)
+        {
+            return new Verse(textValue.ReplaceWord(fromWord, toWord));
         }
         #endregion
 
