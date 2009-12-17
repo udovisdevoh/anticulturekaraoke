@@ -128,6 +128,9 @@ namespace anticulture.karaoke.verseFactory
                 line = streamReader.ReadLine();
                 line = line.HardTrim();
 
+                if (line.IsForeignLanguage())
+                    continue;
+
                 Verse verse;
 
                 if (!verseListCache.TryGetValue(line, out verse))
