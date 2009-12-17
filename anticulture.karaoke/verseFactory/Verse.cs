@@ -80,7 +80,7 @@ namespace anticulture.karaoke.verseFactory
         }
         #endregion
 
-        #region Private Properties
+        #region Properties
         /// <summary>
         /// Score for teach theme
         /// </summary>

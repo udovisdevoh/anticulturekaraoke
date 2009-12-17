@@ -47,7 +47,7 @@ namespace anticulture.karaoke.verseFactory
                     verseConstructionSettings.ThemeBlackList = disabledBlackList;
                     verse = analogyManager.AddAnalogies(verseToRhymeFrom, true, verseConstructionSettings, creationMemory);
                     verseConstructionSettings.ThemeBlackList = blackListBackup;
-                    if (verse.Equals(verseToRhymeFrom))
+                    if (verse.Equals(verseToRhymeFrom) /*|| verse.WordList.Last() == verseToRhymeFrom.WordList.Last()*/)
                         verse = null;
                 }
             }
