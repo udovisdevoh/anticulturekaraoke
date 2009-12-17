@@ -74,7 +74,7 @@ namespace anticulture.karaoke.verseFactory
         /// <param name="random">random number generator</param>
         /// <param name="samplingSize">sampling size</param>
         /// <returns>random source lines</returns>
-        public IEnumerable<Verse> GetRandomSourceLineList(Random random, int samplingSize)
+        public HashSet<Verse> GetRandomSourceLineList(Random random, int samplingSize)
         {
             int samplingSizeSqrt = (int)(Math.Sqrt(samplingSize));
             HashSet<Verse> verseList = new HashSet<Verse>();

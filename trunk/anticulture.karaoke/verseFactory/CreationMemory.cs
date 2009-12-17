@@ -11,6 +11,8 @@ namespace anticulture.karaoke.verseFactory
         private Dictionary<string, int> occurencePerTheme = new Dictionary<string, int>();
 
         private HashSet<string> themeWordList = new HashSet<string>();
+
+        private HashSet<Verse> straightSourceSampleVerseList;
         #endregion
 
         #region Public Methods
@@ -21,6 +23,7 @@ namespace anticulture.karaoke.verseFactory
         {
             occurencePerTheme.Clear();
             themeWordList.Clear();
+            straightSourceSampleVerseList = null;
         }
 
         /// <summary>
@@ -76,6 +79,14 @@ namespace anticulture.karaoke.verseFactory
                     count = currentCount;
 
             return count;
+        }
+        #endregion
+
+        #region Properties
+        public HashSet<Verse> StraightSourceSampleVerseList
+        {
+            get { return straightSourceSampleVerseList; }
+            set { straightSourceSampleVerseList = value; }
         }
         #endregion
     }
