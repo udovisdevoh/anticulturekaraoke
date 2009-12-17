@@ -38,16 +38,19 @@ namespace anticulture.karaoke.verseFactory
             Verse verse = null;
             Verse verseToRhymeFrom = null;
 
-            if (creationMemory.RhymeCounter % 2 == 1)
+            if (creationMemory.RhymeSpan == -1)
+                creationMemory.RhymeSpan = verseConstructionSettings.GenerateRandomRhymeSpan();
+
+            if (IsMatchRyhmePattern(creationMemory.RhymeSpan,creationMemory.RhymeCounter))
             {
-                verseToRhymeFrom = creationMemory.GetVerseToAddRhyme(-1);
+                verseToRhymeFrom = creationMemory.GetVerseToAddRhyme(-creationMemory.RhymeSpan);
                 if (verseToRhymeFrom != null)
                 {
                     blackListBackup = verseConstructionSettings.ThemeBlackList;
                     verseConstructionSettings.ThemeBlackList = disabledBlackList;
                     verse = analogyManager.AddAnalogies(verseToRhymeFrom, true, verseConstructionSettings, creationMemory);
                     verseConstructionSettings.ThemeBlackList = blackListBackup;
-                    if (verse.Equals(verseToRhymeFrom) /*|| verse.WordList.Last() == verseToRhymeFrom.WordList.Last()*/)
+                    if (verse.Equals(verseToRhymeFrom))
                         verse = null;
                 }
             }
@@ -60,6 +63,16 @@ namespace anticulture.karaoke.verseFactory
 
 
             return verse;
+        }
+
+        private bool IsMatchRyhmePattern(int span, int counter)
+        {
+            if (counter % (span * 2) >= span)
+            {
+                return true;
+            }
+
+            return false;
         }
         #endregion
     }

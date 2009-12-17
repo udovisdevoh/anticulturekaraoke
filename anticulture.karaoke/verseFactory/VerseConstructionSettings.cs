@@ -118,6 +118,11 @@ namespace anticulture.karaoke.verseFactory
                 themeList.Remove(theme);
             themeBlackList.Add(theme);
         }
+
+        public int GenerateRandomRhymeSpan()
+        {
+            return random.Next(1, 5);
+        }
         #endregion
 
         #region Public Properties
