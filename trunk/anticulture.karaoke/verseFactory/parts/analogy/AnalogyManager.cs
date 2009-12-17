@@ -26,6 +26,33 @@ namespace anticulture.karaoke.verseFactory
 
         #region Public Methods
         /// <summary>
+        /// Add analogies to verse
+        /// </summary>
+        /// <param name="verse">original verse</param>
+        /// <param name="isUnlimitedReplace">whether we allow unlimited replacement</param>
+        /// <param name="creationMemory">creation memory</param>
+        /// <param name="verseConstructionSettings">verse construction settings</param>
+        /// <returns>verse with new analogies</returns>
+        public Verse AddAnalogies(Verse verse, bool isUnlimitedReplace, VerseConstructionSettings verseConstructionSettings, CreationMemory creationMemory)
+        {
+            string bestAnalogy;
+            if (verseConstructionSettings.ThemeList.Count > 0)
+            {
+                foreach (string word in verse.WordList)
+                {
+                    bestAnalogy = TryGetBestAnalogy(word, verseConstructionSettings.ThemeList, Evaluator.GetThemeList(word), creationMemory, verse.WordList);
+                    if (bestAnalogy != null)
+                    {
+                        verse = verse.ReplaceWord(word, bestAnalogy);
+                        if (!isUnlimitedReplace)
+                            return verse;
+                    }
+                }
+            }
+            return verse;
+        }
+
+        /// <summary>
         /// Tries to find best analogy for word
         /// </summary>
         /// <param name="word">word to get analogy from</param>
@@ -33,7 +60,7 @@ namespace anticulture.karaoke.verseFactory
         /// <param name="currentThemeNameListForWord">current theme name list for word</param>
         /// <param name="creationMemory">creation memory</param>
         /// <returns>best analogy or null if no analogy found</returns>
-        public string TryGetBestAnalogy(string word, ThemeList desiredThemeList, ThemeList currentThemeListForWord, CreationMemory creationMemory, HashSet<string> wordListInOriginalVerse)
+        private string TryGetBestAnalogy(string word, ThemeList desiredThemeList, ThemeList currentThemeListForWord, CreationMemory creationMemory, HashSet<string> wordListInOriginalVerse)
         {
             string bestAnalogy = null;
             Dictionary<string,float> row;

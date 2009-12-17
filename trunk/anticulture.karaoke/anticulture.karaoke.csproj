@@ -61,6 +61,7 @@
     <Compile Include="verseFactory\parts\analogy\AnalogyManager.cs" />
     <Compile Include="verseFactory\parts\analogy\VerseFactoryAnalogy.cs" />
     <Compile Include="verseFactory\parts\cryptic\LetterMatrix.cs" />
+    <Compile Include="verseFactory\parts\interleavedAnalogy\VerseFactoryInterleavedAnalogy.cs" />
     <Compile Include="verseFactory\VerseConstructionSettings.cs" />
     <Compile Include="verseFactory\parts\cryptic\VerseFactoryCryptic.cs" />
     <Compile Include="verseFactory\Evaluator.cs" />
