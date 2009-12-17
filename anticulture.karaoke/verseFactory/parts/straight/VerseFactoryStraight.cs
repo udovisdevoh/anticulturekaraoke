@@ -15,7 +15,7 @@ namespace anticulture.karaoke.verseFactory
         /// <summary>
         /// Sampling size
         /// </summary>
-        private const int SamplingSize = 2000;
+        private const int SamplingSize = 20000;
         #endregion
 
         #region Fields
@@ -47,8 +47,13 @@ namespace anticulture.karaoke.verseFactory
         /// <returns>straight verse</returns>
         public override Verse Build(Verse previousVerse)
         {
-            IEnumerable<Verse> verseList = VerseConstructionSettings.LyricSource.GetRandomSourceLineList(VerseConstructionSettings.Random, SamplingSize);
-            Verse bestVerse = GetMostThemeRelatedVerseWithDesiredLength(verseList, verseConstructionSettings.DesiredLength);
+            if (creationMemory.StraightSourceSampleVerseList == null || creationMemory.StraightSourceSampleVerseList.Count < 1)
+                creationMemory.StraightSourceSampleVerseList = VerseConstructionSettings.LyricSource.GetRandomSourceLineList(VerseConstructionSettings.Random, SamplingSize);
+
+            Verse bestVerse = GetMostThemeRelatedVerseWithDesiredLength(creationMemory.StraightSourceSampleVerseList, verseConstructionSettings.DesiredLength);
+
+            creationMemory.StraightSourceSampleVerseList.Remove(bestVerse);
+
             creationMemory.Remember(bestVerse, verseConstructionSettings);
             return bestVerse;
         }
