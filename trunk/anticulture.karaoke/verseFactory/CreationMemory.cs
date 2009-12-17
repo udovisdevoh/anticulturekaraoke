@@ -14,9 +14,18 @@ namespace anticulture.karaoke.verseFactory
 
         private HashSet<Verse> straightSourceSampleVerseList;
 
-        private int rhymeCounter = 0;
+        private int rhymeCounter;
+
+        private int rhymeSpan;
 
         private List<Verse> verseToAddRhyme = new List<Verse>();
+        #endregion
+
+        #region Constructor
+        public CreationMemory()
+        {
+            Clear();
+        }
         #endregion
 
         #region Public Methods
@@ -30,6 +39,7 @@ namespace anticulture.karaoke.verseFactory
             straightSourceSampleVerseList = null;
             rhymeCounter = 0;
             verseToAddRhyme.Clear();
+            rhymeSpan = -1;
         }
 
         /// <summary>
@@ -118,6 +128,12 @@ namespace anticulture.karaoke.verseFactory
         {
             get { return rhymeCounter; }
             set { rhymeCounter = value; }
+        }
+
+        public int RhymeSpan
+        {
+            get { return rhymeSpan; }
+            set { rhymeSpan = value; }
         }
         #endregion
     }
