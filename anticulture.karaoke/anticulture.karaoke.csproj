@@ -55,6 +55,8 @@
     <Compile Include="themes\themeLoader\ThemeLoader.cs" />
     <Compile Include="themes\themeLoader\ThemeTextLoader.cs" />
     <Compile Include="verseFactory\AbstractVerseFactory.cs" />
+    <Compile Include="verseFactory\CreationMemory.cs" />
+    <Compile Include="verseFactory\parts\analogy\VerseFactoryAnalogy.cs" />
     <Compile Include="verseFactory\parts\cryptic\LetterMatrix.cs" />
     <Compile Include="verseFactory\VerseConstructionSettings.cs" />
     <Compile Include="verseFactory\parts\cryptic\VerseFactoryCryptic.cs" />

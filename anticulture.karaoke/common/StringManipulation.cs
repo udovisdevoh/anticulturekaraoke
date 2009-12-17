@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using anticulture.karaoke.verseFactory;
 
 namespace anticulture.karaoke
@@ -11,6 +12,18 @@ namespace anticulture.karaoke
     /// </summary>
     static class StringManipulation
     {
+        #region Fields
+        /// <summary>
+        /// Anything but a letter
+        /// </summary>
+        private static Regex notALetter = new Regex(@"[^a-zA-Z]");
+
+        /// <summary>
+        /// Anything but a letter or space
+        /// </summary>
+        private static Regex notALetterNorSpace = new Regex(@"[^a-zA-Z ]");
+        #endregion
+
         /// <summary>
         /// Clean the string
         /// </summary>
@@ -49,5 +62,9 @@ namespace anticulture.karaoke
             return new string(arr);
         }
 
+        public static string PunctuationToSpace(this string text)
+        {
+            return notALetterNorSpace.Replace(text, " ");
+        }
     }
 }

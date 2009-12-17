@@ -36,8 +36,22 @@ namespace anticulture.karaoke.verseFactory
         /// <returns>score for a verse according to desired and undesired themes</returns>
         public static int GetScore(Verse currentVerse, ThemeList themeList, ThemeList blackThemeList, short desiredLength)
         {
+            return GetScore(currentVerse, themeList, blackThemeList, desiredLength, null);
+        }
+
+        /// <summary>
+        /// Get score for a verse according to desired and undesired themes
+        /// </summary>
+        /// <param name="currentVerse">current verse</param>
+        /// <param name="themeList">desired theme list</param>
+        /// <param name="blackThemeList">undesired theme list</param>
+        /// <param name="desiredLength">desired length</param>
+        /// <param name="creationMemory">creation memory (can be null)</param>
+        /// <returns>score for a verse according to desired and undesired themes</returns>
+        public static int GetScore(Verse currentVerse, ThemeList themeList, ThemeList blackThemeList, short desiredLength, CreationMemory creationMemory)
+        {
             int score = 0;
-            score += Match(currentVerse.ToString(), themeList);
+            score += Match(currentVerse.ToString(), themeList, creationMemory);
             score -= Match(currentVerse.ToString(), blackThemeList);
 
             score = score - Math.Abs(notALetterNorSpace.Replace(currentVerse.ToString(), "").Length - desiredLength);
@@ -54,10 +68,57 @@ namespace anticulture.karaoke.verseFactory
         /// <returns>score for a verse according to desired and undesired themes</returns>
         public static int GetScore(Verse currentVerse, ThemeList themeList, ThemeList blackThemeList)
         {
+            return GetScore(currentVerse, themeList, blackThemeList, null);
+        }
+
+        /// <summary>
+        /// Get score for a verse according to desired and undesired themes
+        /// </summary>
+        /// <param name="currentVerse">current verse</param>
+        /// <param name="themeList">desired theme list</param>
+        /// <param name="blackThemeList">undesired theme list</param>
+        /// <param name="creationMemory">creation memory (can be null)</param>
+        /// <returns>score for a verse according to desired and undesired themes</returns>
+        public static int GetScore(Verse currentVerse, ThemeList themeList, ThemeList blackThemeList, CreationMemory creationMemory)
+        {
             int score = 0;
-            score += Match(currentVerse.ToString(), themeList);
+            score += Match(currentVerse.ToString(), themeList, creationMemory);
             score -= Match(currentVerse.ToString(), blackThemeList);
             return score;
+        }
+
+        public static IEnumerable<string> GetThemeWords(Verse verse, ThemeList themeList)
+        {
+            List<string> themeWords = new List<string>();
+
+            foreach (string word in verse.WordList)
+                if (themeList.Contains(word))
+                    themeWords.Add(word);
+
+            return themeWords;
+        }
+
+        public static Dictionary<string, int> CountOccurencePerTheme(Verse verse, ThemeList themeList)
+        {
+            Dictionary<string, int> occurenceCountPerTheme = new Dictionary<string, int>();
+
+            int count;
+
+            foreach (Theme theme in themeList)
+            {
+                foreach (string word in verse.WordList)
+                {
+                    if (theme.Contains(word))
+                    {
+                        if (!occurenceCountPerTheme.TryGetValue(theme.Name, out count))
+                            occurenceCountPerTheme.Add(theme.Name, 0);
+
+                        occurenceCountPerTheme[theme.Name]++;
+                    }
+                }
+            }
+
+            return occurenceCountPerTheme;
         }
         #endregion
 
@@ -70,7 +131,20 @@ namespace anticulture.karaoke.verseFactory
         /// <returns>how mutch the verse line matches provided theme list</returns>
         private static int Match(string verseLine, ThemeList themeList)
         {
+            return Match(verseLine, themeList,null);
+        }
+
+        /// <summary>
+        /// How mutch the verse line matches provided theme list
+        /// </summary>
+        /// <param name="verseLine">verse line</param>
+        /// <param name="themeList">provided theme list</param>
+        /// <param name="creationMemory">creation memory (can be null)</param>
+        /// <returns>how mutch the verse line matches provided theme list</returns>
+        private static int Match(string verseLine, ThemeList themeList, CreationMemory creationMemory)
+        {
             int match = 0;
+            int themeAddedValue;
             string[] words = verseLine.Split(' ');
             HashSet<string> wordIgnoreList = new HashSet<string>();
 
@@ -81,9 +155,21 @@ namespace anticulture.karaoke.verseFactory
                     string word = currentWord.Trim();
                     if (currentTheme.Contains(word) && word.Length > 0 && !wordIgnoreList.Contains(word))
                     {
-                        match += 10;
-                        wordIgnoreList.Add(word);
-                        break;
+                        if (creationMemory == null || !creationMemory.ContainsWord(word))
+                        {
+                            if (creationMemory == null)
+                            {
+                                themeAddedValue = 10;
+                            }
+                            else
+                            {
+                                themeAddedValue = creationMemory.GetThemeAddedValue(currentTheme.Name);
+                            }
+
+                            match += themeAddedValue;
+                            wordIgnoreList.Add(word);
+                            break;
+                        }
                     }
                 }
             }
