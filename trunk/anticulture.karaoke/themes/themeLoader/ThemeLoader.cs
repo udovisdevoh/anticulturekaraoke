@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using anticulture.karaoke.verseFactory;
 
 namespace anticulture.karaoke.themes
 {
@@ -20,6 +21,8 @@ namespace anticulture.karaoke.themes
         /// Theme cache
         /// </summary>
         private static Dictionary<string, Theme> themeCache;
+
+        private static ThemeList themeList;
         #endregion
 
         #region Constructor
@@ -59,9 +62,15 @@ namespace anticulture.karaoke.themes
         /// <summary>
         /// Theme list
         /// </summary>
-        public static IEnumerable<Theme> ThemeList
+        public static ThemeList ThemeList
         {
-            get { return themeCache.Values; }
+            get
+            {
+                if (themeList == null)
+                    themeList = new ThemeList(themeCache.Values);
+
+                return themeList;
+            }
         }
         #endregion
     }

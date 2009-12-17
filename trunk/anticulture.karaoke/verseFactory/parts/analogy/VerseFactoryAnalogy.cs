@@ -39,7 +39,7 @@ namespace anticulture.karaoke.verseFactory
             verseConstructionSettings.ThemeBlackList = disabledBlackList;
 
             Verse verse = base.Build(previousVerse);
-            verse = AddAnalogies(verse);
+            verse = AddAnalogies(verse, false);
 
             verseConstructionSettings.ThemeBlackList = blackListBackup;
 
@@ -52,8 +52,9 @@ namespace anticulture.karaoke.verseFactory
         /// Add analogies to verse
         /// </summary>
         /// <param name="verse">original verse</param>
+        /// <param name="isUnlimitedReplace">whether we allow unlimited replacement</param>
         /// <returns>verse with new analogies</returns>
-        private Verse AddAnalogies(Verse verse)
+        private Verse AddAnalogies(Verse verse, bool isUnlimitedReplace)
         {
             string bestAnalogy;
             if (verseConstructionSettings.ThemeList.Count > 0)
@@ -64,7 +65,8 @@ namespace anticulture.karaoke.verseFactory
                     if (bestAnalogy != null)
                     {
                         verse = verse.ReplaceWord(word, bestAnalogy);
-                        return verse;
+                        if (!isUnlimitedReplace)
+                            return verse;
                     }
                 }
             }
