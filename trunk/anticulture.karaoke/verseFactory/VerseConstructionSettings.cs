@@ -84,7 +84,7 @@ namespace anticulture.karaoke.verseFactory
         /// <summary>
         /// Random number generator
         /// </summary>
-        private static Random random = new Random();
+        private Random random = new Random();
         #endregion
 
         #region Public Methods
@@ -121,7 +121,7 @@ namespace anticulture.karaoke.verseFactory
 
         public int GenerateRandomRhymeSpan()
         {
-            return random.Next(1, 5);
+            return random.Next(1, 2);
         }
         #endregion
 
@@ -161,14 +161,6 @@ namespace anticulture.karaoke.verseFactory
         }
 
         /// <summary>
-        /// Random number generator
-        /// </summary>
-        public static Random Random
-        {
-            get { return random; }
-        }
-
-        /// <summary>
         /// Desired themes
         /// </summary>
         public ThemeList ThemeList
@@ -183,6 +175,14 @@ namespace anticulture.karaoke.verseFactory
         {
             get { return themeBlackList; }
             set { themeBlackList = value; }
+        }
+
+        /// <summary>
+        /// Random number generator
+        /// </summary>
+        public Random Random
+        {
+            get { return random; }
         }
         #endregion
     }

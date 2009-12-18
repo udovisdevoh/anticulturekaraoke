@@ -80,11 +80,11 @@ namespace anticulture.karaoke.verseFactory
             IEnumerable<Verse> verseListReversed;
 
             if (previousVerse == null)
-                verseListStraight = VerseConstructionSettings.LyricSource.GetRandomContiguousSourceLineList(VerseConstructionSettings.Random, SamplingSize);
+                verseListStraight = VerseConstructionSettings.LyricSource.GetRandomContiguousSourceLineList(verseConstructionSettings.Random, SamplingSize);
             else
-                verseListStraight = VerseConstructionSettings.LyricSource.GetRandomContiguousSourceLineList(VerseConstructionSettings.Random, SamplingSize, previousVerse.ToString(), true);
+                verseListStraight = VerseConstructionSettings.LyricSource.GetRandomContiguousSourceLineList(verseConstructionSettings.Random, SamplingSize, previousVerse.ToString(), true);
 
-            verseListReversed = VerseConstructionSettings.LyricSourceReversed.GetRandomContiguousSourceLineList(VerseConstructionSettings.Random, SamplingSize);
+            verseListReversed = VerseConstructionSettings.LyricSourceReversed.GetRandomContiguousSourceLineList(verseConstructionSettings.Random, SamplingSize);
 
             List<Verse> verseList = new List<Verse>();
 
@@ -98,7 +98,7 @@ namespace anticulture.karaoke.verseFactory
                 wordMatrix.resetCursor();
                 do
                 {
-                    currentWord = wordMatrix.GenerateNextWord(VerseConstructionSettings.Random);
+                    currentWord = wordMatrix.GenerateNextWord(verseConstructionSettings.Random);
                     verseContent += " " + currentWord;
                 } while (verseContent.Length < verseConstructionSettings.DesiredLength - 5 && currentWord != null);
 
