@@ -64,12 +64,11 @@
     <Compile Include="verseFactory\parts\analogy\VerseFactoryAnalogy.cs" />
     <Compile Include="verseFactory\parts\cryptic\LetterMatrix.cs" />
     <Compile Include="verseFactory\parts\interleavedAnalogy\VerseFactoryInterleavedAnalogy.cs" />
+    <Compile Include="verseFactory\parts\splice\VerseFactorySplice.cs" />
     <Compile Include="verseFactory\VerseConstructionSettings.cs" />
     <Compile Include="verseFactory\parts\cryptic\VerseFactoryCryptic.cs" />
     <Compile Include="verseFactory\Evaluator.cs" />
     <Compile Include="verseFactory\LyricSource.cs" />
-    <Compile Include="verseFactory\parts\markov\VerseFactoryMarkov.cs" />
-    <Compile Include="verseFactory\parts\markov\WordMatrix.cs" />
     <Compile Include="verseFactory\parts\straight\VerseFactoryStraight.cs" />
     <Compile Include="common\StringManipulation.cs" />
     <Compile Include="verseFactory\ThemeList.cs" />

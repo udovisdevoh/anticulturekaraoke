@@ -27,7 +27,7 @@ namespace anticulture.karaoke.verseFactory
 
         #region Public Methods
         /// <summary>
-        /// Build analogic verse
+        /// Build interleaved analogic verse
         /// </summary>
         /// <param name="previousVerse">previous verse</param>
         /// <returns>analogic verse</returns>
