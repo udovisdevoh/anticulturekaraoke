@@ -56,6 +56,8 @@
     <Compile Include="themes\ThemeException.cs" />
     <Compile Include="themes\themeLoader\ThemeLoader.cs" />
     <Compile Include="themes\themeLoader\ThemeTextLoader.cs" />
+    <Compile Include="unitTests\TestVerseFactory.cs" />
+    <Compile Include="unitTests\UnitTests.cs" />
     <Compile Include="verseFactory\AbstractVerseFactory.cs" />
     <Compile Include="verseFactory\CreationMemory.cs" />
     <Compile Include="verseFactory\parts\analogy\AnalogyManager.cs" />
