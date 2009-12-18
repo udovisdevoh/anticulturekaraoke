@@ -27,11 +27,6 @@ namespace anticulture.karaoke.verseFactory
         private VerseFactoryStraight verseFactoryStraight;
 
         /// <summary>
-        /// Markov verse factory
-        /// </summary>
-        private VerseFactoryMarkov verseFactoryMarkov;
-
-        /// <summary>
         /// Cryptic verse factory
         /// </summary>
         private VerseFactoryCryptic verseFactoryCryptic;
@@ -42,9 +37,14 @@ namespace anticulture.karaoke.verseFactory
         private VerseFactoryAnalogy verseFactoryAnalogy;
 
         /// <summary>
-        /// Analogy verse factory
+        /// Interleaved analogy verse factory
         /// </summary>
         private VerseFactoryInterleavedAnalogy verseFactoryInterleavedAnalogy;
+
+        /// <summary>
+        /// Spliced verse factory
+        /// </summary>
+        private VerseFactorySplice verseFactorySplice;
         #endregion
 
         #region Constructors
@@ -57,10 +57,10 @@ namespace anticulture.karaoke.verseFactory
             creationMemory = new CreationMemory();
 
             verseFactoryStraight = new VerseFactoryStraight(verseConstructionSettings, creationMemory);
-            verseFactoryMarkov = new VerseFactoryMarkov(verseConstructionSettings, creationMemory);
             verseFactoryCryptic = new VerseFactoryCryptic(verseConstructionSettings, creationMemory);
             verseFactoryAnalogy = new VerseFactoryAnalogy(verseConstructionSettings, creationMemory);
             verseFactoryInterleavedAnalogy = new VerseFactoryInterleavedAnalogy(verseConstructionSettings, creationMemory);
+            verseFactorySplice = new VerseFactorySplice(verseConstructionSettings, creationMemory);
         }
         #endregion
 
@@ -76,10 +76,6 @@ namespace anticulture.karaoke.verseFactory
             {
                 verse = verseFactoryStraight.Build(previousVerse);
             }
-            else if (verseConstructionSettings.Algorithm == VerseConstructionSettings.AlgorithmMarkov)
-            {
-                verse = verseFactoryMarkov.Build(previousVerse);
-            }
             else if (verseConstructionSettings.Algorithm == VerseConstructionSettings.AlgorithmCryptic)
             {
                 verse = verseFactoryCryptic.Build(previousVerse);
@@ -91,6 +87,10 @@ namespace anticulture.karaoke.verseFactory
             else if (verseConstructionSettings.Algorithm == VerseConstructionSettings.AlgorithmInterleavedAnalogy)
             {
                 verse = verseFactoryInterleavedAnalogy.Build(previousVerse);
+            }
+            else if (verseConstructionSettings.Algorithm == VerseConstructionSettings.AlgorithmSplice)
+            {
+                verse = verseFactorySplice.Build(previousVerse);
             }
             else
             {

@@ -15,9 +15,9 @@ namespace anticulture.karaoke.verseFactory
         public const byte AlgorithmStraight = 0;
 
         /// <summary>
-        /// Identifies word based markov chain algorithm
+        /// Identifies splicing based algorithm
         /// </summary>
-        public const byte AlgorithmMarkov = 1;
+        public const byte AlgorithmSplice = 1;
 
         /// <summary>
         /// Identifies cryptic char based markov chain algorithm
@@ -166,6 +166,7 @@ namespace anticulture.karaoke.verseFactory
         public ThemeList ThemeList
         {
             get { return themeList; }
+            set { themeList = value; }
         }
 
         /// <summary>

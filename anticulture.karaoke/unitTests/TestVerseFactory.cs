@@ -18,14 +18,12 @@ namespace anticulture.karaoke
             TestAlgorythm(verseFactory, VerseConstructionSettings.AlgorithmInterleavedAnalogy);
             TestAlgorythm(verseFactory, VerseConstructionSettings.AlgorithmAnalogy);
             TestAlgorythm(verseFactory, VerseConstructionSettings.AlgorithmStraight);
-            TestAlgorythm(verseFactory, VerseConstructionSettings.AlgorithmMarkov);
             TestAlgorythm(verseFactory, VerseConstructionSettings.AlgorithmCryptic);
+            TestAlgorythm(verseFactory, VerseConstructionSettings.AlgorithmSplice);
         }
 
         private static void TestAlgorythm(VerseFactory verseFactory, byte algorithmId)
         {
-            
-
             verseFactory.AddTheme(ThemeLoader.Load("activism"));
             verseFactory.AddTheme(ThemeLoader.Load("fantastic"));
             verseFactory.AddTheme(ThemeLoader.Load("philosophy"));
