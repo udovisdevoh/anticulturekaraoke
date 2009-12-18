@@ -34,9 +34,9 @@ namespace anticulture.karaoke.verseFactory
         /// <param name="blackThemeList">undesired theme list</param>
         /// <param name="desiredLength">desired length</param>
         /// <returns>score for a verse according to desired and undesired themes</returns>
-        public static int GetScore(Verse currentVerse, ThemeList themeList, ThemeList blackThemeList, short desiredLength)
+        public static int GetScore(Verse currentVerse, ThemeList themeList, ThemeList blackThemeList, short desiredLength, Random random)
         {
-            return GetScore(currentVerse, themeList, blackThemeList, desiredLength, null);
+            return GetScore(currentVerse, themeList, blackThemeList, desiredLength, null, random);
         }
 
         /// <summary>
@@ -48,13 +48,15 @@ namespace anticulture.karaoke.verseFactory
         /// <param name="desiredLength">desired length</param>
         /// <param name="creationMemory">creation memory (can be null)</param>
         /// <returns>score for a verse according to desired and undesired themes</returns>
-        public static int GetScore(Verse currentVerse, ThemeList themeList, ThemeList blackThemeList, short desiredLength, CreationMemory creationMemory)
+        public static int GetScore(Verse currentVerse, ThemeList themeList, ThemeList blackThemeList, short desiredLength, CreationMemory creationMemory, Random random)
         {
             int score = 0;
             score += Match(currentVerse.ToString(), themeList, creationMemory);
             score -= Match(currentVerse.ToString(), blackThemeList);
 
             score = score - Math.Abs(notALetterNorSpace.Replace(currentVerse.ToString(), "").Length - desiredLength);
+
+            score += random.Next(-5, 5);
 
             return score;
         }

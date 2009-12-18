@@ -47,7 +47,7 @@ namespace anticulture.karaoke.verseFactory
         public override Verse Build(Verse previousVerse)
         {
             int tries = 0;
-            IEnumerable<Verse> verseList = VerseConstructionSettings.LyricSource.GetRandomSourceLineList(VerseConstructionSettings.Random, SamplingSize);
+            IEnumerable<Verse> verseList = VerseConstructionSettings.LyricSource.GetRandomSourceLineList(verseConstructionSettings.Random, SamplingSize);
             verseList = TryGetMostThemeRelatedVerseList(verseList);
             LetterMatrix letterMatrix = new LetterMatrix(verseList);
 
@@ -55,7 +55,7 @@ namespace anticulture.karaoke.verseFactory
             char currentLetter;
             do
             {
-                currentLetter = letterMatrix.GenerateNextChar(VerseConstructionSettings.Random);
+                currentLetter = letterMatrix.GenerateNextChar(verseConstructionSettings.Random);
                 sentence += currentLetter;
                 tries++;
                 if (tries > 10000)
@@ -80,7 +80,7 @@ namespace anticulture.karaoke.verseFactory
             char currentLetter;
             do
             {
-                currentLetter = letterMatrix.GenerateNextChar(VerseConstructionSettings.Random);
+                currentLetter = letterMatrix.GenerateNextChar(verseConstructionSettings.Random);
                 word += currentLetter;
             } while (currentLetter != ' ');
 

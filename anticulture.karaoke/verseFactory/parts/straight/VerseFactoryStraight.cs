@@ -48,7 +48,7 @@ namespace anticulture.karaoke.verseFactory
         public override Verse Build(Verse previousVerse)
         {
             if (creationMemory.StraightSourceSampleVerseList == null || creationMemory.StraightSourceSampleVerseList.Count < 1)
-                creationMemory.StraightSourceSampleVerseList = VerseConstructionSettings.LyricSource.GetRandomSourceLineList(VerseConstructionSettings.Random, samplingSize);
+                creationMemory.StraightSourceSampleVerseList = VerseConstructionSettings.LyricSource.GetRandomSourceLineList(verseConstructionSettings.Random, samplingSize);
 
             Verse bestVerse = GetMostThemeRelatedVerseWithDesiredLength(creationMemory.StraightSourceSampleVerseList, verseConstructionSettings.DesiredLength);
 
@@ -72,7 +72,7 @@ namespace anticulture.karaoke.verseFactory
             int currentScore = 0;
             foreach (Verse currentVerse in verseList)
             {
-                currentScore = Evaluator.GetScore(currentVerse, verseConstructionSettings.ThemeList, verseConstructionSettings.ThemeBlackList, desiredLength, creationMemory);
+                currentScore = Evaluator.GetScore(currentVerse, verseConstructionSettings.ThemeList, verseConstructionSettings.ThemeBlackList, desiredLength, creationMemory, verseConstructionSettings.Random);
                 if (currentScore > bestScore || bestVerse == null)
                 {
                     bestScore = currentScore;

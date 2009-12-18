@@ -15,9 +15,17 @@ namespace anticulture.karaoke
 
             //verseFactory.AddTheme(ThemeLoader.Load("urban"));
             //verseFactory.AddTheme(ThemeLoader.Load("nature"));
-            verseFactory.AddTheme(ThemeLoader.Load("food"));
             //verseFactory.AddTheme(ThemeLoader.Load("food"));
-            verseFactory.AddTheme(ThemeLoader.Load("religion"));
+            verseFactory.AddTheme(ThemeLoader.Load("activism"));
+            verseFactory.AddTheme(ThemeLoader.Load("fantastic"));
+            verseFactory.AddTheme(ThemeLoader.Load("philosophy"));
+            verseFactory.AddTheme(ThemeLoader.Load("geek"));
+            verseFactory.AddTheme(ThemeLoader.Load("metaphysics"));
+            //verseFactory.AddTheme(ThemeLoader.Load("food"));
+            //verseFactory.AddTheme(ThemeLoader.Load("religion"));
+            //verseFactory.AddTheme(ThemeLoader.Load("money"));
+            //verseFactory.AddTheme(ThemeLoader.Load("gore"));
+            //verseFactory.AddTheme(ThemeLoader.Load("gangsta"));
             //verseFactory.AddTheme(ThemeLoader.Load("shame"));
 
             Verse verse;
@@ -26,8 +34,9 @@ namespace anticulture.karaoke
 
             //verseFactory.Algorithm = VerseConstructionSettings.AlgorithmAnalogy;
             verseFactory.Algorithm = VerseConstructionSettings.AlgorithmInterleavedAnalogy;
+            //verseFactory.Algorithm = VerseConstructionSettings.AlgorithmStraight;
 
-            verseFactory.DesiredLength = 16;
+            verseFactory.DesiredLength = 32;
 
             for (int i = 0; i < 16; i++)
             {
