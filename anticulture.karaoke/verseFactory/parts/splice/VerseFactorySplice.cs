@@ -7,13 +7,22 @@ namespace anticulture.karaoke.verseFactory
 {
     class VerseFactorySplice : VerseFactoryStraight
     {
+        #region Constants
+        public const int samplingWinnerSize = 20;
+
+        public const int samplingContinuingSize = 20;
+        #endregion
+
         #region Constructors
         /// <summary>
         /// Builds analogic verse
         /// </summary>
         /// <param name="verseConstructionSettings">verse construction settings</param>
         public VerseFactorySplice(VerseConstructionSettings verseConstructionSettings, CreationMemory creationMemory)
-            : base(verseConstructionSettings, creationMemory) {}
+            : base(verseConstructionSettings, creationMemory)
+        {
+            this.samplingSize = 500;
+        }
         #endregion
 
         #region Public Methods
@@ -24,9 +33,78 @@ namespace anticulture.karaoke.verseFactory
         /// <returns>analogic verse</returns>
         public override Verse Build(Verse previousVerse)
         {
-            #warning Implement VerseFactorySplice.Build()
-            Verse verse = base.Build(previousVerse);
-            return verse;
+            if (creationMemory.SplicedVerseList == null || creationMemory.SplicedVerseList.Count < 1)
+                creationMemory.SplicedVerseList = BuildSplicedVerseList(previousVerse);
+
+            return GetMostThemeRelatedVerseWithDesiredLength(creationMemory.SplicedVerseList, verseConstructionSettings.DesiredLength);
+        }
+        #endregion
+
+        #region Private Methods
+        private ICollection<Verse> GetShortVerseListToKeep(float lengthScalar, Verse previousVerse)
+        {
+            ICollection<Verse> verseListToKeep = new List<Verse>();
+            for (int i = 0; i < samplingWinnerSize; i++)
+            {
+                verseListToKeep.Add(Build(previousVerse, lengthScalar));
+            }
+            return verseListToKeep;
+        }
+
+        private Verse Build(Verse previousVerse, float lengthScalar)
+        {
+            short desiredLength = (short)(lengthScalar * (float)(verseConstructionSettings.DesiredLength));
+            if (creationMemory.StraightSourceSampleVerseList == null || creationMemory.StraightSourceSampleVerseList.Count < 1)
+                creationMemory.StraightSourceSampleVerseList = VerseConstructionSettings.LyricSource.GetRandomSourceLineList(verseConstructionSettings.Random, samplingSize);
+            Verse bestVerse = GetMostThemeRelatedVerseWithDesiredLength(creationMemory.StraightSourceSampleVerseList, desiredLength);
+            creationMemory.StraightSourceSampleVerseList.Remove(bestVerse);
+            return bestVerse;
+        }
+
+        private ICollection<Verse> BuildSplicedVerseList(Verse previousVerse)
+        {
+            ICollection<Verse> verseList = GetShortVerseListToKeep(0.333f, previousVerse);
+            verseList = TrimShortVerseList(verseList, verseConstructionSettings.DesiredLength, 0.5f);
+            verseList = ExtendShortVerse(verseList, verseConstructionSettings.DesiredLength);
+            return verseList;
+        }
+
+        private ICollection<Verse> TrimShortVerseList(ICollection<Verse> verseList, short totalDesiredLength, float lengthScallar)
+        {
+            short halfLengthMax = (short)((float)(totalDesiredLength) * lengthScallar);
+            foreach (Verse verse in verseList)
+                while (verse.Length > halfLengthMax && verse.ToString().Trim().Contains(' '))
+                    verse.RemoveLastWord();
+            return verseList;
+        }
+
+        private ICollection<Verse> ExtendShortVerse(ICollection<Verse> verseList, short totalDesiredLength)
+        {
+            ICollection<Verse> extendedVerseList = new HashSet<Verse>();
+            foreach (Verse verse in verseList)
+                extendedVerseList.Add(ExtendShortVerse(verse, totalDesiredLength));
+            return extendedVerseList;
+        }
+
+        private Verse ExtendShortVerse(Verse startingVerse, short totalDesiredLength)
+        {
+            IEnumerable<Verse> extenstionVerseList = GetExtenstionVerseList(startingVerse.WordList.Last());
+            ICollection<Verse> extendedVerseList = new HashSet<Verse>();
+
+            foreach (Verse extensionVerse in extenstionVerseList)
+                extendedVerseList.Add(MergeVerses(startingVerse, extensionVerse));
+
+            return GetMostThemeRelatedVerseWithDesiredLength(extendedVerseList, verseConstructionSettings.DesiredLength);
+        }
+
+        private IEnumerable<Verse> GetExtenstionVerseList(string startingWord)
+        {
+            return VerseConstructionSettings.LyricSource.GetRandomContiguousSourceLineList(verseConstructionSettings.Random, samplingContinuingSize, startingWord, true);
+        }
+
+        private Verse MergeVerses(Verse startingVerse, Verse extensionVerse)
+        {
+            return new Verse(startingVerse.ToString().RemoveLastWord() + " " + extensionVerse.ToString());
         }
         #endregion
     }
