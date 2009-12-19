@@ -46,7 +46,9 @@ namespace anticulture.karaoke.verseFactory
             ICollection<Verse> verseListToKeep = new List<Verse>();
             for (int i = 0; i < samplingWinnerSize; i++)
             {
-                verseListToKeep.Add(Build(previousVerse, lengthScalar));
+                Verse verse = Build(previousVerse, lengthScalar);
+                if (verse != null)
+                    verseListToKeep.Add(verse);
             }
             return verseListToKeep;
         }
@@ -63,9 +65,9 @@ namespace anticulture.karaoke.verseFactory
 
         private ICollection<Verse> BuildSplicedVerseList(Verse previousVerse)
         {
-            ICollection<Verse> verseList = GetShortVerseListToKeep(0.333f, previousVerse);
-            verseList = TrimShortVerseList(verseList, verseConstructionSettings.DesiredLength, 0.5f);
-            verseList = ExtendShortVerse(verseList, verseConstructionSettings.DesiredLength);
+            ICollection<Verse> verseList = GetShortVerseListToKeep(0.333f, previousVerse); //TODO, remove null return
+            verseList = TrimShortVerseList(verseList, verseConstructionSettings.DesiredLength, 0.5f); //TODO, remove null return
+            verseList = ExtendShortVerse(verseList, verseConstructionSettings.DesiredLength); //TODO, remove null return
             return verseList;
         }
 
@@ -82,7 +84,11 @@ namespace anticulture.karaoke.verseFactory
         {
             ICollection<Verse> extendedVerseList = new HashSet<Verse>();
             foreach (Verse verse in verseList)
-                extendedVerseList.Add(ExtendShortVerse(verse, totalDesiredLength));
+            {
+                Verse extendedVerse = ExtendShortVerse(verse, totalDesiredLength);
+                if (extendedVerse != null)
+                    extendedVerseList.Add(extendedVerse);
+            }
             return extendedVerseList;
         }
 
@@ -92,7 +98,11 @@ namespace anticulture.karaoke.verseFactory
             ICollection<Verse> extendedVerseList = new HashSet<Verse>();
 
             foreach (Verse extensionVerse in extenstionVerseList)
-                extendedVerseList.Add(MergeVerses(startingVerse, extensionVerse));
+            {
+                Verse mergedVerse = MergeVerses(startingVerse, extensionVerse);
+                if (mergedVerse != null)
+                    extendedVerseList.Add(mergedVerse);
+            }
 
             return GetMostThemeRelatedVerseWithDesiredLength(extendedVerseList, verseConstructionSettings.DesiredLength);
         }
