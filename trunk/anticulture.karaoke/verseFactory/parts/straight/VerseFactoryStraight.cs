@@ -24,6 +24,9 @@ namespace anticulture.karaoke.verseFactory
         /// </summary>
         protected VerseConstructionSettings verseConstructionSettings;
 
+        /// <summary>
+        /// Creation memory
+        /// </summary>
         protected CreationMemory creationMemory;
         #endregion
 
@@ -58,14 +61,14 @@ namespace anticulture.karaoke.verseFactory
         }
         #endregion
 
-        #region Private Methods
+        #region Protected Methods
         /// <summary>
         /// Get best verse from verse list
         /// </summary>
         /// <param name="verseList">verse list</param>
         /// <param name="desiredLength">desired length</param>
         /// <returns>best verse</returns>
-        private Verse GetMostThemeRelatedVerseWithDesiredLength(IEnumerable<Verse> verseList, short desiredLength)
+        protected Verse GetMostThemeRelatedVerseWithDesiredLength(IEnumerable<Verse> verseList, short desiredLength)
         {
             Verse bestVerse = null;
             int bestScore = -1;

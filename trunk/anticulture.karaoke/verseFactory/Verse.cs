@@ -78,6 +78,11 @@ namespace anticulture.karaoke.verseFactory
         {
             return new Verse(textValue.ReplaceWord(fromWord, toWord));
         }
+
+        public void RemoveLastWord()
+        {
+            textValue = textValue.RemoveLastWord();
+        }
         #endregion
 
         #region Properties

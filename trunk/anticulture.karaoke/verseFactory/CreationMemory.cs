@@ -19,6 +19,8 @@ namespace anticulture.karaoke.verseFactory
         private int rhymeSpan;
 
         private List<Verse> verseToAddRhyme = new List<Verse>();
+
+        private ICollection<Verse> splicedVerseList = new List<Verse>();
         #endregion
 
         #region Constructor
@@ -40,6 +42,7 @@ namespace anticulture.karaoke.verseFactory
             rhymeCounter = 0;
             verseToAddRhyme.Clear();
             rhymeSpan = -1;
+            splicedVerseList.Clear();
         }
 
         /// <summary>
@@ -134,6 +137,12 @@ namespace anticulture.karaoke.verseFactory
         {
             get { return rhymeSpan; }
             set { rhymeSpan = value; }
+        }
+
+        public ICollection<Verse> SplicedVerseList
+        {
+            get { return splicedVerseList; }
+            set { splicedVerseList = value; }
         }
         #endregion
     }

@@ -93,6 +93,16 @@ namespace anticulture.karaoke
             
             return false;
         }
+
+        public static string RemoveLastWord(this string source)
+        {
+            source = source.Trim();
+            if (!source.Contains(' '))
+                return source;
+            
+            int lastSpacePosition = source.LastIndexOf(' ');
+            return source.Substring(0, lastSpacePosition).Trim();
+        }
         #endregion
     }
 }
