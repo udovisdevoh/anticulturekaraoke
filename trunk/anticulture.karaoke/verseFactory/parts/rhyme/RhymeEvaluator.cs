@@ -13,10 +13,16 @@ namespace anticulture.karaoke.verseFactory
         private const string phoneticTableFile = "phoneticTable.dat.txt";
 
         private const int howManyPhoneticSymbolForEnding = 2;
+
+        private const int howManyEnglishLetterForEnding = 4;
         #endregion
 
         #region Parts
         private PhoneticTable phoneticTable = new PhoneticTable(phoneticTableFile);
+
+        private SimilarPhoneticValueCache similarPhoneticValueCache = new SimilarPhoneticValueCache();
+
+        private BoolRhymeCache boolRhymeCache = new BoolRhymeCache();
         #endregion
 
         #region Public Methods
@@ -34,7 +40,20 @@ namespace anticulture.karaoke.verseFactory
                 if (lastWord.Length > 0 && lastWordToRhymeWith.Length > 0 && lastWord[0] == lastWordToRhymeWith[0])
                     continue;
 
-                if (IsRhymeWith(lastWord,lastWordToRhymeWith))
+                #warning Fill boolRhymeCache with prerendered information
+
+                bool isRhymeWith = false;
+                if (boolRhymeCache.ContainsRhymeInfoAbout(lastWord,lastWordToRhymeWith))
+                {
+                    isRhymeWith = boolRhymeCache.IsRhymeWith(lastWord,lastWordToRhymeWith);
+                }
+                else
+                {
+                    isRhymeWith = IsRhymeWith(lastWord, lastWordToRhymeWith);
+                    boolRhymeCache.AddRhymeInfo(lastWord, lastWordToRhymeWith, isRhymeWith);
+                }
+
+                if (isRhymeWith)
                 {
                     score += valueByRhyme;
                     break;
@@ -51,11 +70,10 @@ namespace anticulture.karaoke.verseFactory
             string phoneticValue1 = phoneticTable.GetPhoneticValueOf(word1);
             string phoneticValue2 = phoneticTable.GetPhoneticValueOf(word2);
 
-            #warning Remove comments
-            //if (phoneticValue1 == null)
-            //    phoneticValue1 = GetPhoneticValueOfWordUsingSimilarWordEnding(word1);
-            //if (phoneticValue2 == null)
-            //    phoneticValue2 = GetPhoneticValueOfWordUsingSimilarWordEnding(word2);
+            if (phoneticValue1 == null)
+                phoneticValue1 = GetPhoneticValueOfWordUsingSimilarWordEnding(word1);
+            if (phoneticValue2 == null)
+                phoneticValue2 = GetPhoneticValueOfWordUsingSimilarWordEnding(word2);
 
             if (phoneticValue1 == null || phoneticValue2 == null)
                 return false;
@@ -81,6 +99,53 @@ namespace anticulture.karaoke.verseFactory
             }
 
             return ending.Trim();
+        }
+
+        private string GetPhoneticValueOfWordUsingSimilarWordEnding(string word)
+        {
+            string englishEnding;
+            if (word.Length >= howManyEnglishLetterForEnding)
+                englishEnding = word.Substring(word.Length - howManyEnglishLetterForEnding);
+            else
+                englishEnding = word;
+
+            string similarWord = GetWordEndsWith(englishEnding);
+
+            if (similarWord == null)
+                return null;
+
+            string valueFromCache = similarPhoneticValueCache.TryGetPhoneticValueOf(similarWord);
+
+            if (valueFromCache == null)
+            {
+                valueFromCache = phoneticTable.GetPhoneticValueOf(similarWord);
+                if (valueFromCache == null)
+                    valueFromCache = "null";
+                similarPhoneticValueCache.Add(similarWord, valueFromCache);
+            }
+            else
+            {
+            }
+
+            if (valueFromCache == "null")
+                valueFromCache = null;
+
+            return valueFromCache;
+        }
+
+        private string GetWordEndsWith(string englishEnding)
+        {
+            foreach (HomophoneGroup homophoneGroup in phoneticTable)
+            {
+                foreach (string currentWord in homophoneGroup)
+                {
+                    if (currentWord.EndsWith(englishEnding))
+                    {
+                        return phoneticTable.GetPhoneticValueOf(currentWord);
+                    }
+                }
+            }
+            return null;
         }
         #endregion
     }
