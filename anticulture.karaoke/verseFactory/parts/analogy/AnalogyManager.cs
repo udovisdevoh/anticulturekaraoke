@@ -60,7 +60,7 @@ namespace anticulture.karaoke.verseFactory
         /// <param name="currentThemeNameListForWord">current theme name list for word</param>
         /// <param name="creationMemory">creation memory</param>
         /// <returns>best analogy or null if no analogy found</returns>
-        private string TryGetBestAnalogy(string word, ThemeList desiredThemeList, ThemeList currentThemeListForWord, CreationMemory creationMemory, HashSet<string> wordListInOriginalVerse)
+        private string TryGetBestAnalogy(string word, ThemeList desiredThemeList, ThemeList currentThemeListForWord, CreationMemory creationMemory, List<string> wordListInOriginalVerse)
         {
             string bestAnalogy = null;
             Dictionary<string,float> row;

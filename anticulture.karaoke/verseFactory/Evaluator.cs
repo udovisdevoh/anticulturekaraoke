@@ -25,6 +25,10 @@ namespace anticulture.karaoke.verseFactory
         private static Regex notALetterNorSpace = new Regex(@"[^a-zA-Z ]");
         #endregion
 
+        #region Parts
+        private static RhymeEvaluator rhymeEvaluator = new RhymeEvaluator();
+        #endregion
+
         #region Public Methods
         /// <summary>
         /// Get score for a verse according to desired and undesired themes
@@ -47,14 +51,34 @@ namespace anticulture.karaoke.verseFactory
         /// <param name="blackThemeList">undesired theme list</param>
         /// <param name="desiredLength">desired length</param>
         /// <param name="creationMemory">creation memory (can be null)</param>
+        /// <param name="random">random number generator</param>
         /// <returns>score for a verse according to desired and undesired themes</returns>
         public static int GetScore(Verse currentVerse, ThemeList themeList, ThemeList blackThemeList, short desiredLength, CreationMemory creationMemory, Random random)
+        {
+            return GetScore(currentVerse, themeList, blackThemeList, desiredLength, creationMemory, null, random);
+        }
+        
+        /// <summary>
+        /// Get score for a verse according to desired and undesired themes
+        /// </summary>
+        /// <param name="currentVerse">current verse</param>
+        /// <param name="themeList">desired theme list</param>
+        /// <param name="blackThemeList">undesired theme list</param>
+        /// <param name="desiredLength">desired length</param>
+        /// <param name="creationMemory">creation memory (can be null)</param>
+        /// <param name="versesToRhymeWith">facultative (can be null) list of verse to rhyme with</param>
+        /// <param name="random">random number generator</param>
+        /// <returns>score for a verse according to desired and undesired themes</returns>
+        public static int GetScore(Verse currentVerse, ThemeList themeList, ThemeList blackThemeList, short desiredLength, CreationMemory creationMemory, Queue<Verse> versesToRhymeWith, Random random)
         {
             int score = 0;
             score += Match(currentVerse.ToString(), themeList, creationMemory);
             score -= Match(currentVerse.ToString(), blackThemeList);
 
             score = score - Math.Abs(notALetterNorSpace.Replace(currentVerse.ToString(), "").Length - desiredLength);
+
+            if (versesToRhymeWith != null)
+                score += rhymeEvaluator.GetScore(currentVerse, versesToRhymeWith);
 
             score += random.Next(-5, 5);
 

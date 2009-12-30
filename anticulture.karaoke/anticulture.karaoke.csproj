@@ -64,6 +64,9 @@
     <Compile Include="verseFactory\parts\analogy\VerseFactoryAnalogy.cs" />
     <Compile Include="verseFactory\parts\cryptic\LetterMatrix.cs" />
     <Compile Include="verseFactory\parts\interleavedAnalogy\VerseFactoryInterleavedAnalogy.cs" />
+    <Compile Include="verseFactory\parts\rhyme\RhymeEvaluator.cs" />
+    <Compile Include="verseFactory\parts\rhyme\VerseFactoryRhyme.cs" />
+    <Compile Include="verseFactory\parts\splice\SplicingException.cs" />
     <Compile Include="verseFactory\parts\splice\VerseFactorySplice.cs" />
     <Compile Include="verseFactory\VerseConstructionSettings.cs" />
     <Compile Include="verseFactory\parts\cryptic\VerseFactoryCryptic.cs" />

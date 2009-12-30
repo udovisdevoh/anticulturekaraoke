@@ -65,9 +65,9 @@ namespace anticulture.karaoke.verseFactory
 
         private ICollection<Verse> BuildSplicedVerseList(Verse previousVerse)
         {
-            ICollection<Verse> verseList = GetShortVerseListToKeep(0.333f, previousVerse); //TODO, remove null return
-            verseList = TrimShortVerseList(verseList, verseConstructionSettings.DesiredLength, 0.5f); //TODO, remove null return
-            verseList = ExtendShortVerse(verseList, verseConstructionSettings.DesiredLength); //TODO, remove null return
+            ICollection<Verse> verseList = GetShortVerseListToKeep(0.5f, previousVerse);
+            verseList = TrimShortVerseList(verseList, verseConstructionSettings.DesiredLength, 0.5f);
+            verseList = ExtendShortVerse(verseList, verseConstructionSettings.DesiredLength);
             return verseList;
         }
 
@@ -85,16 +85,23 @@ namespace anticulture.karaoke.verseFactory
             ICollection<Verse> extendedVerseList = new HashSet<Verse>();
             foreach (Verse verse in verseList)
             {
-                Verse extendedVerse = ExtendShortVerse(verse, totalDesiredLength);
-                if (extendedVerse != null)
-                    extendedVerseList.Add(extendedVerse);
+                try
+                {
+                    Verse extendedVerse = ExtendShortVerse(verse, totalDesiredLength);
+                    if (extendedVerse != null)
+                        extendedVerseList.Add(extendedVerse);
+                }
+                catch (SplicingException)
+                {
+                    //Skip this verse
+                }
             }
             return extendedVerseList;
         }
 
         private Verse ExtendShortVerse(Verse startingVerse, short totalDesiredLength)
         {
-            IEnumerable<Verse> extenstionVerseList = GetExtenstionVerseList(startingVerse.WordList.Last());
+            IEnumerable<Verse> extenstionVerseList = GetExtenstionVerseList(startingVerse.LastTwoWords);
             ICollection<Verse> extendedVerseList = new HashSet<Verse>();
 
             foreach (Verse extensionVerse in extenstionVerseList)
@@ -114,7 +121,7 @@ namespace anticulture.karaoke.verseFactory
 
         private Verse MergeVerses(Verse startingVerse, Verse extensionVerse)
         {
-            return new Verse(startingVerse.ToString().RemoveLastWord() + " " + extensionVerse.ToString());
+            return new Verse(startingVerse.ToString().RemoveLastWord().RemoveLastWord() + " " + extensionVerse.ToString());
         }
         #endregion
     }

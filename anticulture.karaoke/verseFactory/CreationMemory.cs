@@ -21,6 +21,8 @@ namespace anticulture.karaoke.verseFactory
         private List<Verse> verseToAddRhyme = new List<Verse>();
 
         private ICollection<Verse> splicedVerseList = new List<Verse>();
+
+        private Queue<Verse> verseListToRhymeWith = new Queue<Verse>();
         #endregion
 
         #region Constructor
@@ -54,6 +56,7 @@ namespace anticulture.karaoke.verseFactory
         {
             themeWordList.UnionWith(Evaluator.GetThemeWords(verse, verseConstructionSettings.ThemeList));
             AddOccurenceCountPerTheme(Evaluator.CountOccurencePerTheme(verse, verseConstructionSettings.ThemeList));
+            verseListToRhymeWith.Enqueue(verse);
         }
         
         public void RememberWord(string word)
@@ -143,6 +146,12 @@ namespace anticulture.karaoke.verseFactory
         {
             get { return splicedVerseList; }
             set { splicedVerseList = value; }
+        }
+
+        public Queue<Verse> VerseListToRhymeWith
+        {
+            get { return verseListToRhymeWith; }
+            set { verseListToRhymeWith = value; }
         }
         #endregion
     }
