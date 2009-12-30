@@ -55,14 +55,14 @@ namespace anticulture.karaoke.verseFactory
             }
         }
 
-        public HashSet<string> WordList
+        public List<string> WordList
         {
             get
             {
                 string line = ToString();
                 line = line.PunctuationToSpace().HardTrim();
 
-                HashSet<string> wordList = new HashSet<string>();
+                List<string> wordList = new List<string>();
                 string[] words = ToString().Split(' ');
 
                 foreach (string word in words)
@@ -96,6 +96,25 @@ namespace anticulture.karaoke.verseFactory
                 if (_themeScore == null)
                     _themeScore = new Dictionary<string, float>();
                 return _themeScore;
+            }
+        }
+
+        public string LastTwoWords
+        {
+            get
+            {
+                if (WordList.Count >= 2)
+                {
+                    return WordList[WordList.Count - 2] + " " + WordList[WordList.Count - 1];
+                }
+                else if (WordList.Count >= 1)
+                {
+                    return WordList.Last();
+                }
+                else
+                {
+                    throw new SplicingException("Not enough word");
+                }
             }
         }
         #endregion

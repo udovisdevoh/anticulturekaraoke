@@ -70,12 +70,24 @@ namespace anticulture.karaoke.verseFactory
         /// <returns>best verse</returns>
         protected Verse GetMostThemeRelatedVerseWithDesiredLength(IEnumerable<Verse> verseList, short desiredLength)
         {
+            return GetMostThemeRelatedVerseWithDesiredLength(verseList, desiredLength, null);
+        }
+
+        /// <summary>
+        /// Get best verse from verse list
+        /// </summary>
+        /// <param name="verseList">verse list</param>
+        /// <param name="desiredLength">desired length</param>
+        /// <param name="versesToRhymeWith">facultative verse to rhyme with (can be null)</param>
+        /// <returns>best verse</returns>
+        protected Verse GetMostThemeRelatedVerseWithDesiredLength(IEnumerable<Verse> verseList, short desiredLength, Queue<Verse> versesToRhymeWith)
+        {
             Verse bestVerse = null;
             int bestScore = -1;
             int currentScore = 0;
             foreach (Verse currentVerse in verseList)
             {
-                currentScore = Evaluator.GetScore(currentVerse, verseConstructionSettings.ThemeList, verseConstructionSettings.ThemeBlackList, desiredLength, creationMemory, verseConstructionSettings.Random);
+                currentScore = Evaluator.GetScore(currentVerse, verseConstructionSettings.ThemeList, verseConstructionSettings.ThemeBlackList, desiredLength, creationMemory, versesToRhymeWith, verseConstructionSettings.Random);
                 if (currentScore > bestScore || bestVerse == null)
                 {
                     bestScore = currentScore;

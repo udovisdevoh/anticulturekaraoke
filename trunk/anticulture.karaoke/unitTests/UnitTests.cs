@@ -9,11 +9,7 @@ namespace anticulture.karaoke
     {
         public static void TestAll()
         {
-            #warning Remove loop
-            while (true)
-            {
-                TestVerseFactory.Test();
-            }
+            TestVerseFactory.Test();
             Console.ReadLine();
         }
     }
