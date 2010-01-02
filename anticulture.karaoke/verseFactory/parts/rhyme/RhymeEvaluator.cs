@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 namespace anticulture.karaoke.verseFactory
 {
@@ -12,6 +13,8 @@ namespace anticulture.karaoke.verseFactory
 
         private const string phoneticTableFile = "phoneticTable.dat.txt";
 
+        private const string rhymeChartFile = "rhymeChart.dat.txt";
+
         private const int howManyPhoneticSymbolForEnding = 2;
 
         private const int howManyEnglishLetterForEnding = 4;
@@ -20,9 +23,14 @@ namespace anticulture.karaoke.verseFactory
         #region Parts
         private PhoneticTable phoneticTable = new PhoneticTable(phoneticTableFile);
 
-        private SimilarPhoneticValueCache similarPhoneticValueCache = new SimilarPhoneticValueCache();
+        private Dictionary<string, string> rhymeChart;
+        #endregion
 
-        private BoolRhymeCache boolRhymeCache = new BoolRhymeCache();
+        #region Constructor
+        public RhymeEvaluator()
+        {
+            rhymeChart = BuildRhymeChart(rhymeChartFile);
+        }
         #endregion
 
         #region Public Methods
@@ -40,20 +48,7 @@ namespace anticulture.karaoke.verseFactory
                 if (lastWord.Length > 0 && lastWordToRhymeWith.Length > 0 && lastWord[0] == lastWordToRhymeWith[0])
                     continue;
 
-                #warning Fill boolRhymeCache with prerendered information
-
-                bool isRhymeWith = false;
-                if (boolRhymeCache.ContainsRhymeInfoAbout(lastWord,lastWordToRhymeWith))
-                {
-                    isRhymeWith = boolRhymeCache.IsRhymeWith(lastWord,lastWordToRhymeWith);
-                }
-                else
-                {
-                    isRhymeWith = IsRhymeWith(lastWord, lastWordToRhymeWith);
-                    boolRhymeCache.AddRhymeInfo(lastWord, lastWordToRhymeWith, isRhymeWith);
-                }
-
-                if (isRhymeWith)
+                if (IsRhymeWith(lastWord, lastWordToRhymeWith))
                 {
                     score += valueByRhyme;
                     break;
@@ -67,85 +62,49 @@ namespace anticulture.karaoke.verseFactory
         #region Private Methods
         private bool IsRhymeWith(string word1, string word2)
         {
-            string phoneticValue1 = phoneticTable.GetPhoneticValueOf(word1);
-            string phoneticValue2 = phoneticTable.GetPhoneticValueOf(word2);
-
-            if (phoneticValue1 == null)
-                phoneticValue1 = GetPhoneticValueOfWordUsingSimilarWordEnding(word1);
-            if (phoneticValue2 == null)
-                phoneticValue2 = GetPhoneticValueOfWordUsingSimilarWordEnding(word2);
-
-            if (phoneticValue1 == null || phoneticValue2 == null)
-                return false;
-
-            return GetPhoneticEnding(phoneticValue1) == GetPhoneticEnding(phoneticValue2);
-        }
-
-        private string GetPhoneticEnding(string phoneticValue)
-        {
-            if (!phoneticValue.Contains(' '))
-                return phoneticValue;
-
-            string[] wordList = phoneticValue.Split(' ');
-
-            string ending = string.Empty;
-
-            int key;
-            for (int i = 0; i < howManyPhoneticSymbolForEnding; i++)
+            string ending1, ending2;
+            if (rhymeChart.TryGetValue(word1, out ending1))
             {
-                key = wordList.Length - i - 1;
-                if (key > 0 && key < wordList.Length)
-                    ending = wordList[key] + " " + ending;
-            }
-
-            return ending.Trim();
-        }
-
-        private string GetPhoneticValueOfWordUsingSimilarWordEnding(string word)
-        {
-            string englishEnding;
-            if (word.Length >= howManyEnglishLetterForEnding)
-                englishEnding = word.Substring(word.Length - howManyEnglishLetterForEnding);
-            else
-                englishEnding = word;
-
-            string similarWord = GetWordEndsWith(englishEnding);
-
-            if (similarWord == null)
-                return null;
-
-            string valueFromCache = similarPhoneticValueCache.TryGetPhoneticValueOf(similarWord);
-
-            if (valueFromCache == null)
-            {
-                valueFromCache = phoneticTable.GetPhoneticValueOf(similarWord);
-                if (valueFromCache == null)
-                    valueFromCache = "null";
-                similarPhoneticValueCache.Add(similarWord, valueFromCache);
-            }
-            else
-            {
-            }
-
-            if (valueFromCache == "null")
-                valueFromCache = null;
-
-            return valueFromCache;
-        }
-
-        private string GetWordEndsWith(string englishEnding)
-        {
-            foreach (HomophoneGroup homophoneGroup in phoneticTable)
-            {
-                foreach (string currentWord in homophoneGroup)
+                if (rhymeChart.TryGetValue(word2, out ending2))
                 {
-                    if (currentWord.EndsWith(englishEnding))
+                    if (ending1 == ending2)
                     {
-                        return phoneticTable.GetPhoneticValueOf(currentWord);
+                        return true;
                     }
                 }
             }
-            return null;
+            return false;
+        }
+
+        private Dictionary<string, string> BuildRhymeChart(string rhymeChartFile)
+        {
+            Dictionary<string, string> rhymeChart = new Dictionary<string,string>();
+            string line;
+            using (StreamReader streamReader = new StreamReader(rhymeChartFile))
+            {
+                while (true)
+                {
+                    line = streamReader.ReadLine();
+                    if (line == null)
+                        break;
+
+                    if (line.Length > 1)
+                        rhymeChart.Add(GetWord(line), GetRhymeCategory(line));
+                }
+            }
+            return rhymeChart;
+        }
+
+        private string GetRhymeCategory(string line)
+        {
+            line = line.Substring(line.IndexOf(':') + 1).Trim();
+            return line;
+        }
+
+        private string GetWord(string line)
+        {
+            line = line.Substring(0, line.IndexOf(':')).Trim();
+            return line;
         }
         #endregion
     }
