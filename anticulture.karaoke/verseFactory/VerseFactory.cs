@@ -50,6 +50,11 @@ namespace anticulture.karaoke.verseFactory
         /// Rhyme verse factory
         /// </summary>
         private VerseFactoryRhyme verseFactoryRhyme;
+
+        /// <summary>
+        /// Word verse factory
+        /// </summary>
+        private VerseFactoryWords verseFactoryWords;
         #endregion
 
         #region Constructors
@@ -67,6 +72,7 @@ namespace anticulture.karaoke.verseFactory
             verseFactoryInterleavedAnalogy = new VerseFactoryInterleavedAnalogy(verseConstructionSettings, creationMemory);
             verseFactorySplice = new VerseFactorySplice(verseConstructionSettings, creationMemory);
             verseFactoryRhyme = new VerseFactoryRhyme(verseConstructionSettings, creationMemory);
+            verseFactoryWords = new VerseFactoryWords(verseConstructionSettings, creationMemory);
         }
         #endregion
 
@@ -101,6 +107,10 @@ namespace anticulture.karaoke.verseFactory
             else if (verseConstructionSettings.Algorithm == VerseConstructionSettings.AlgorithmRhyme)
             {
                 verse = verseFactoryRhyme.Build(previousVerse);
+            }
+            else if (verseConstructionSettings.Algorithm == VerseConstructionSettings.AlgorithmWords)
+            {
+                verse = verseFactoryWords.Build(previousVerse);
             }
             else
             {

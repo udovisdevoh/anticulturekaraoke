@@ -15,12 +15,34 @@ namespace anticulture.karaoke
             VerseFactory verseFactory = new VerseFactory();
             verseFactory.ClearCreationMemory();
 
+            TestAlgorythmNewAge(verseFactory, VerseConstructionSettings.AlgorithmWords);
+            verseFactory.ClearCreationMemory();
+
             TestAlgorythm(verseFactory, VerseConstructionSettings.AlgorithmRhyme);
             TestAlgorythm(verseFactory, VerseConstructionSettings.AlgorithmSplice);
             TestAlgorythm(verseFactory, VerseConstructionSettings.AlgorithmInterleavedAnalogy);
             TestAlgorythm(verseFactory, VerseConstructionSettings.AlgorithmAnalogy);
             TestAlgorythm(verseFactory, VerseConstructionSettings.AlgorithmStraight);
             TestAlgorythm(verseFactory, VerseConstructionSettings.AlgorithmCryptic);
+        }
+
+        private static void TestAlgorythmNewAge(VerseFactory verseFactory, byte algorithmId)
+        {
+            verseFactory.AddTheme(ThemeLoader.Load("newage"));
+
+            Verse verse;
+
+            verseFactory.Algorithm = algorithmId;
+
+            verseFactory.DesiredLength = 32;
+
+            for (int i = 0; i < 4; i++)
+            {
+                verse = verseFactory.Build();
+                Console.WriteLine(verse.ToString());
+                if ((i + 1) % 4 == 0)
+                    Console.WriteLine("");
+            }
         }
 
         private static void TestAlgorythm(VerseFactory verseFactory, byte algorithmId)
