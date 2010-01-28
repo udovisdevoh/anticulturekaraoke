@@ -62,6 +62,9 @@ namespace anticulture.karaoke.verseFactory
         #region Private Methods
         private bool IsRhymeWith(string word1, string word2)
         {
+            if (word1 == word2)
+                return false;
+
             string ending1, ending2;
             if (rhymeChart.TryGetValue(word1, out ending1))
             {

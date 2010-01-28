@@ -29,7 +29,7 @@ namespace anticulture.karaoke.verseFactory
             if (creationMemory.StraightSourceSampleVerseList == null || creationMemory.StraightSourceSampleVerseList.Count < 1)
                 creationMemory.StraightSourceSampleVerseList = VerseConstructionSettings.LyricSource.GetRandomSourceLineList(verseConstructionSettings.Random, samplingSize);
 
-            while (creationMemory.VerseListToRhymeWith.Count > 4)
+            if (creationMemory.VerseListToRhymeWith.Count > 8)
                 creationMemory.VerseListToRhymeWith.Clear();
 
             Verse bestVerse = GetMostThemeRelatedVerseWithDesiredLength(creationMemory.StraightSourceSampleVerseList, verseConstructionSettings.DesiredLength, creationMemory.VerseListToRhymeWith);
