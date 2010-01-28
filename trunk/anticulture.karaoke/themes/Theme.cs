@@ -33,6 +33,23 @@ namespace anticulture.karaoke.themes
         }
         #endregion
 
+        #region Public Methods
+        public string GetRandomWord(Random random)
+        {
+            int index = random.Next(0, wordList.Count);
+            int count = 0;
+            foreach (string word in wordList)
+            {
+                if (count == index)
+                {
+                    return word;
+                }
+                count++;
+            }
+            throw new ThemeException("Theme is empty, cannot pick a random word");
+        }
+        #endregion
+
         #region Properties
         /// <summary>
         /// Theme's name

@@ -38,6 +38,23 @@ namespace anticulture.karaoke.verseFactory
                     return true;
             return false;
         }
+
+        public Theme GetRandomTheme(Random random)
+        {
+            int index = random.Next(0, themeList.Count);
+
+            int count = 0;
+            foreach (Theme theme in themeList)
+            {
+                if (count == index)
+                {
+                    return theme;
+                }
+                count++;
+            }
+
+            throw new ThemeException("Theme list is empty, cannot pick a random theme");
+        }
         #endregion
 
         #region ICollection<Theme> Members
