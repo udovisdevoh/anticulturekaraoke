@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using ArtificialArt.Markov;
 
 namespace anticulture.karaoke.verseFactory
 {
@@ -49,7 +50,12 @@ namespace anticulture.karaoke.verseFactory
             int tries = 0;
             IEnumerable<Verse> verseList = VerseConstructionSettings.LyricSource.GetRandomSourceLineList(verseConstructionSettings.Random, SamplingSize);
             verseList = TryGetMostThemeRelatedVerseList(verseList);
-            LetterMatrix letterMatrix = new LetterMatrix(verseList);
+
+            List<string> lineList = new List<string>();
+            foreach (Verse verse in verseList)
+                lineList.Add(verse.ToString());
+
+            LetterMatrix letterMatrix = new LetterMatrix(lineList);
 
             string sentence = string.Empty;
             char currentLetter;
