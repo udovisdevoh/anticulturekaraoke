@@ -83,6 +83,26 @@
     <Compile Include="verseFactory\VerseFactory.cs" />
     <Compile Include="verseFactory\VerseFactoryException.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="textSources\lyrics.en.reversed.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="textSources\lyrics.en.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="textSources\phoneticTable.dat.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="textSources\rhymeChart.dat.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="textSources\themeFile.themes.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="textSources\trimmedSemanticMatrix.trimmedSemanticMatrix.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

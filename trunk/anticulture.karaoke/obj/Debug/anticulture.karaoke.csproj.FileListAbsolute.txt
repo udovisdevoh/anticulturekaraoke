@@ -1,6 +1,0 @@
-C:\Documents and Settings\Udovis Devoh\My Documents\Programming\anticulturekaraoke\anticulture.karaoke\bin\Debug\anticulture.karaoke.exe
-C:\Documents and Settings\Udovis Devoh\My Documents\Programming\anticulturekaraoke\anticulture.karaoke\bin\Debug\anticulture.karaoke.pdb
-C:\Documents and Settings\Udovis Devoh\My Documents\Programming\anticulturekaraoke\anticulture.karaoke\obj\Debug\ResolveAssemblyReference.cache
-C:\Documents and Settings\Udovis Devoh\My Documents\Programming\anticulturekaraoke\anticulture.karaoke\obj\Debug\anticulture.karaoke.exe
-C:\Documents and Settings\Udovis Devoh\My Documents\Programming\anticulturekaraoke\anticulture.karaoke\obj\Debug\anticulture.karaoke.pdb
-C:\Documents and Settings\Udovis Devoh\My Documents\Programming\anticulturekaraoke\anticulture.karaoke\bin\Debug\artificialart.dll

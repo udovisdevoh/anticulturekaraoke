@@ -10,7 +10,7 @@ namespace anticulture.karaoke.verseFactory
     class AnalogyManager
     {
         #region Constants
-        private const string semanticMatrixFileName = "trimmedSemanticMatrix.trimmedSemanticMatrix.xml";
+        private const string semanticMatrixFileName = "textSources/trimmedSemanticMatrix.trimmedSemanticMatrix.xml";
         #endregion
 
         #region Fields
