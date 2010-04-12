@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
-using Linguistics;
+using ArtificialArt.Linguistics;
 
 namespace anticulture.karaoke.verseFactory
 {
