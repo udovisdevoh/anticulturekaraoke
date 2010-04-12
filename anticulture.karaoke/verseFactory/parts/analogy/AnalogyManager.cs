@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using anticulture.karaoke.themes;
-using Markov;
+using ArtificialArt.Markov;
 
 namespace anticulture.karaoke.verseFactory
 {
