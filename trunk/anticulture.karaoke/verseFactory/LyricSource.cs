@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using Linguistics;
 
 namespace anticulture.karaoke.verseFactory
 {
@@ -189,7 +190,6 @@ namespace anticulture.karaoke.verseFactory
                     end = pivot;
                 }
             }
-
             return pivot;
         }
         #endregion
