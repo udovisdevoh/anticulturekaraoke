@@ -11,9 +11,9 @@ namespace anticulture.karaoke.verseFactory
         #region Constants
         private const int valueByRhyme = 11;
 
-        private const string phoneticTableFile = "phoneticTable.dat.txt";
+        private const string phoneticTableFile = "textSources/phoneticTable.dat.txt";
 
-        private const string rhymeChartFile = "rhymeChart.dat.txt";
+        private const string rhymeChartFile = "textSources/rhymeChart.dat.txt";
 
         private const int howManyPhoneticSymbolForEnding = 2;
 

@@ -52,12 +52,12 @@ namespace anticulture.karaoke.verseFactory
         /// <summary>
         /// Ordered lyrics file name
         /// </summary>
-        public const string lyricsFileName = "lyrics.en.txt";
+        public const string lyricsFileName = "textSources/lyrics.en.txt";
 
         /// <summary>
         /// Reversed order lyrics file name
         /// </summary>
-        public const string reversedLyricsFileName = "lyrics.en.reversed.txt";
+        public const string reversedLyricsFileName = "textSources/lyrics.en.reversed.txt";
         #endregion
 
         #region Fields
