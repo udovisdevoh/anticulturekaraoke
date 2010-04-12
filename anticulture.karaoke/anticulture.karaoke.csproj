@@ -63,7 +63,6 @@
     <Compile Include="verseFactory\CreationMemory.cs" />
     <Compile Include="verseFactory\parts\analogy\AnalogyManager.cs" />
     <Compile Include="verseFactory\parts\analogy\VerseFactoryAnalogy.cs" />
-    <Compile Include="verseFactory\parts\cryptic\LetterMatrix.cs" />
     <Compile Include="verseFactory\parts\interleavedAnalogy\VerseFactoryInterleavedAnalogy.cs" />
     <Compile Include="verseFactory\parts\words\VerseFactoryWords.cs" />
     <Compile Include="verseFactory\phonetics\HomophoneGroup.cs" />
