@@ -149,8 +149,10 @@ namespace anticulture.karaoke.verseFactory
 
         public static ThemeList GetThemeList(string word)
         {
+            ThemeLoader themeLoader = new ThemeLoader();
+
             ThemeList selectedThemeList = new ThemeList();
-            foreach (Theme theme in ThemeLoader.ThemeList)
+            foreach (Theme theme in themeLoader.ThemeList)
                 if (theme.Contains(word))
                     selectedThemeList.Add(theme);
             return selectedThemeList;

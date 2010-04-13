@@ -9,27 +9,27 @@ namespace anticulture.karaoke.themes
     /// <summary>
     /// This class is used to load themes from text files
     /// </summary>
-    public static class ThemeLoader
+    public class ThemeLoader
     {
         #region Fields
         /// <summary>
         /// Theme file name
         /// </summary>
-        private static string themeFileName = "textSources/themeFile.themes.txt";
+        private string themeFileName = "textSources/themeFile.themes.txt";
 
         /// <summary>
         /// Theme cache
         /// </summary>
-        private static Dictionary<string, Theme> themeCache;
+        private Dictionary<string, Theme> themeCache;
 
-        private static ThemeList themeList;
+        private ThemeList themeList;
         #endregion
 
         #region Constructor
         /// <summary>
         /// Static constructor, we load the themes from file
         /// </summary>
-        static ThemeLoader()
+        public ThemeLoader()
         {
             themeCache = ThemeFileLoader.LoadThemeList(themeFileName);
         }
@@ -41,7 +41,7 @@ namespace anticulture.karaoke.themes
         /// </summary>
         /// <param name="themeName">theme's name</param>
         /// <returns>loaded theme</returns>
-        public static Theme Load(string themeName)
+        public Theme Load(string themeName)
         {
             Theme theme;
             if (!themeCache.TryGetValue(themeName, out theme))
@@ -54,7 +54,7 @@ namespace anticulture.karaoke.themes
         /// <summary>
         /// Theme name list
         /// </summary>
-        public static IEnumerable<string> ThemeNameList
+        public IEnumerable<string> ThemeNameList
         {
             get{return themeCache.Keys;}
         }
@@ -62,7 +62,7 @@ namespace anticulture.karaoke.themes
         /// <summary>
         /// Theme list
         /// </summary>
-        public static ThemeList ThemeList
+        public ThemeList ThemeList
         {
             get
             {

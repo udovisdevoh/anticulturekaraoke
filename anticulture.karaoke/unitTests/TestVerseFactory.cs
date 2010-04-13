@@ -28,7 +28,8 @@ namespace anticulture.karaoke
 
         private static void TestAlgorythmNewAge(VerseFactory verseFactory, byte algorithmId)
         {
-            verseFactory.AddTheme(ThemeLoader.Load("newage"));
+            ThemeLoader themeLoader = new ThemeLoader();
+            verseFactory.AddTheme(themeLoader.Load("newage"));
 
             Verse verse;
 
@@ -47,11 +48,12 @@ namespace anticulture.karaoke
 
         private static void TestAlgorythm(VerseFactory verseFactory, byte algorithmId)
         {
-            verseFactory.AddTheme(ThemeLoader.Load("activism"));
-            verseFactory.AddTheme(ThemeLoader.Load("fantastic"));
-            verseFactory.AddTheme(ThemeLoader.Load("philosophy"));
-            verseFactory.AddTheme(ThemeLoader.Load("geek"));
-            verseFactory.AddTheme(ThemeLoader.Load("metaphysics"));
+            ThemeLoader themeLoader = new ThemeLoader();
+            verseFactory.AddTheme(themeLoader.Load("activism"));
+            verseFactory.AddTheme(themeLoader.Load("fantastic"));
+            verseFactory.AddTheme(themeLoader.Load("philosophy"));
+            verseFactory.AddTheme(themeLoader.Load("geek"));
+            verseFactory.AddTheme(themeLoader.Load("metaphysics"));
 
             Verse verse;
 
