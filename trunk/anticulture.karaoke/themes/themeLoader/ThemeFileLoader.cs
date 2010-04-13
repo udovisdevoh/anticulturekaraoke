@@ -9,7 +9,7 @@ namespace anticulture.karaoke.themes
     /// <summary>
     /// This class is used to read theme lists from file
     /// </summary>
-    static class ThemeFileLoader
+    class ThemeFileLoader
     {
         #region Public Methods
         /// <summary>
@@ -17,7 +17,7 @@ namespace anticulture.karaoke.themes
         /// </summary>
         /// <param name="themeFileName">theme file name</param>
         /// <returns>theme list</returns>
-        public static Dictionary<string, Theme> LoadThemeList(string themeFileName)
+        public Dictionary<string, Theme> LoadThemeList(string themeFileName)
         {
             Dictionary<string, Theme> themeList = new Dictionary<string, Theme>();
 
@@ -45,7 +45,7 @@ namespace anticulture.karaoke.themes
         /// </summary>
         /// <param name="wordList">word list</param>
         /// <param name="theme">theme</param>
-        private static void AddWordListToTheme(IEnumerable<string> wordList, Theme theme)
+        private void AddWordListToTheme(IEnumerable<string> wordList, Theme theme)
         {
             foreach (String word in wordList)
                 theme.Add(word);
@@ -57,7 +57,7 @@ namespace anticulture.karaoke.themes
         /// <param name="themeName">theme's name</param>
         /// <param name="themeList">list to look into</param>
         /// <returns>found theme or new theme</returns>
-        private static Theme GetOrCreateTheme(String themeName, Dictionary<string, Theme> themeList)
+        private Theme GetOrCreateTheme(String themeName, Dictionary<string, Theme> themeList)
         {
             Theme theme;
             if (!themeList.TryGetValue(themeName, out theme))
@@ -73,7 +73,7 @@ namespace anticulture.karaoke.themes
         /// </summary>
         /// <param name="line">text line</param>
         /// <returns>whether the line is a list of words for a theme</returns>
-        private static bool IsWordList(string line)
+        private bool IsWordList(string line)
         {
             return !line.Contains('<');
         }
@@ -84,7 +84,7 @@ namespace anticulture.karaoke.themes
         /// <param name="line">line</param>
         /// <param name="currentThemeName">current theme</param>
         /// <returns>old theme or new theme</returns>
-        private static string TrySwitchTheme(string line, string currentThemeName)
+        private string TrySwitchTheme(string line, string currentThemeName)
         {
             line = line.Trim();
             line = line.Replace(" ", "");
@@ -103,7 +103,7 @@ namespace anticulture.karaoke.themes
         /// </summary>
         /// <param name="line">line</param>
         /// <returns>word list from line</returns>
-        private static IEnumerable<string> ExtractWordList(string line)
+        private IEnumerable<string> ExtractWordList(string line)
         {
             string[] wordArray = line.Split(',');
             List<string> wordList = new List<string>();

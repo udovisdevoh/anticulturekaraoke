@@ -31,7 +31,8 @@ namespace anticulture.karaoke.themes
         /// </summary>
         public ThemeLoader()
         {
-            themeCache = ThemeFileLoader.LoadThemeList(themeFileName);
+            ThemeFileLoader themeFileLoader = new ThemeFileLoader();
+            themeCache = themeFileLoader.LoadThemeList(themeFileName);
         }
         #endregion
 
