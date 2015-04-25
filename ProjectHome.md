@@ -1,0 +1,1 @@
+High level music sequence random riff generator and lyric generator.
